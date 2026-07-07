@@ -194,8 +194,10 @@ export function RyuxRoadmapPage() {
         <div className="footer__links">
           <a href="/#marketplace">Marketplace</a>
           <a href="/roadmap">Roadmap</a>
-          <a href="#status">Status</a>
           <a href="/docs">Docs</a>
+          <a href={ryuxConfig.xUrl} target="_blank" rel="noreferrer">
+            X
+          </a>
         </div>
       </footer>
     </main>

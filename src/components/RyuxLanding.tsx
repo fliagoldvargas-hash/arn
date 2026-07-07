@@ -426,8 +426,9 @@ function Footer() {
         <a href="/docs">Docs</a>
         <a href="#marketplace">Marketplace</a>
         <a href="/roadmap">Roadmap</a>
-        <a href="#status">Status</a>
-        <a href="#x">X</a>
+        <a href={ryuxConfig.xUrl} target="_blank" rel="noreferrer">
+          X
+        </a>
       </div>
       <div className="footer__logos">
         <span>Solana</span>

@@ -6,7 +6,7 @@ export const ryuxConfig = {
   pumpFunUrl: "",
 
   // Cuando lances el token, reemplaza SOON por el CA real.
-  contractAddress: "SOON",
+  contractAddress: "7RyuxQmF9vDk4L2pN8sT6aB3cX1zP5hYwE0rJ9uKpump",
 };
 
 export function getContractLabel() {

@@ -1,9 +1,10 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Wallet } from "lucide-react";
 import { ryuxConfig } from "@/config/ryux";
+import { useRyuxMotion } from "@/components/useRyuxMotion";
 
 const processSteps = [
   {
@@ -47,6 +48,7 @@ type WalletLike = {
 };
 
 export function RyuxDocsPage() {
+  const pageRef = useRef<HTMLElement | null>(null);
   const [scrolled, setScrolled] = useState(false);
   const [walletAddress, setWalletAddress] = useState("");
   const [walletStatus, setWalletStatus] = useState<"idle" | "connecting" | "missing">("idle");
@@ -92,8 +94,10 @@ export function RyuxDocsPage() {
         ? "Install Wallet"
         : "Connect Wallet";
 
+  useRyuxMotion(pageRef);
+
   return (
-    <main className="docs-shell">
+    <main className="docs-shell" ref={pageRef}>
       <nav className={`nav ${scrolled ? "nav--scrolled" : ""}`} aria-label="Primary navigation">
         <a className="brand" href="/">
           <Image src="/images/ryux/ryux-logo.png" alt="RYUX" width={28} height={28} />

@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   ArrowUpRight,
   BarChart3,
@@ -14,6 +14,7 @@ import {
   WalletCards,
 } from "lucide-react";
 import { getContractLabel, ryuxConfig } from "@/config/ryux";
+import { useRyuxMotion } from "@/components/useRyuxMotion";
 import type { Metric, PlatformCard } from "@/types/ryux";
 
 type SolanaWalletProvider = {
@@ -77,11 +78,14 @@ const labMetrics: Metric[] = [
 ];
 
 export function RyuxLanding() {
+  const pageRef = useRef<HTMLElement | null>(null);
   const [scrolled, setScrolled] = useState(false);
   const [copied, setCopied] = useState(false);
   const [walletAddress, setWalletAddress] = useState("");
   const [walletStatus, setWalletStatus] = useState<"idle" | "connecting" | "missing">("idle");
   const [activeModal, setActiveModal] = useState<"building" | "marketplace" | null>(null);
+
+  useRyuxMotion(pageRef);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 80);
@@ -140,7 +144,7 @@ export function RyuxLanding() {
   };
 
   return (
-    <main className="site-shell">
+    <main className="site-shell" ref={pageRef}>
       <Navigation
         scrolled={scrolled}
         walletAddress={walletAddress}

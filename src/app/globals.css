@@ -71,7 +71,8 @@ button {
   padding: 0 32px;
   background: rgba(0, 0, 0, 0.7);
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-  transition: background 0.4s cubic-bezier(0.4, 0, 0.2, 1), backdrop-filter 0.4s ease;
+  transition: background 0.4s cubic-bezier(0.4, 0, 0.2, 1), backdrop-filter 0.4s ease, border-color 0.3s ease;
+  will-change: transform;
 }
 
 .nav--scrolled {
@@ -119,7 +120,7 @@ button {
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: rgba(255, 255, 255, 0.75);
-  transition: color 0.2s ease;
+  transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease, transform 0.2s ease;
 }
 
 .nav__links a:hover,
@@ -143,10 +144,18 @@ button {
   border: 1px solid var(--line);
   background: transparent;
   color: rgba(255, 255, 255, 0.65);
+  will-change: transform;
 }
 
 .social-link {
   width: 30px;
+}
+
+.social-link:hover,
+.connect:hover {
+  transform: translateY(-2px);
+  border-color: rgba(255, 255, 255, 0.34);
+  background: rgba(255, 255, 255, 0.045);
 }
 
 .social-link--image img {
@@ -277,17 +286,22 @@ button {
   font-weight: 700;
   letter-spacing: 0.11em;
   text-transform: uppercase;
-  transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+  transition: transform 0.22s ease, border-color 0.22s ease, background 0.22s ease, box-shadow 0.22s ease;
+  will-change: transform;
 }
 
 .button:hover {
-  transform: translateY(-1px);
+  transform: translateY(-2px);
   border-color: rgba(255, 255, 255, 0.5);
 }
 
 .button--primary {
   background: #fff;
   color: #050505;
+}
+
+.button--primary:hover {
+  box-shadow: 0 12px 32px rgba(255, 255, 255, 0.14);
 }
 
 .button--ghost {
@@ -311,10 +325,12 @@ button {
   font-family: var(--font-sans), Arial, sans-serif;
   font-size: 20px;
   line-height: 1.2;
-  transition: border-color 0.2s ease, background 0.2s ease, color 0.2s ease;
+  transition: border-color 0.22s ease, background 0.22s ease, color 0.22s ease, transform 0.22s ease;
+  will-change: transform;
 }
 
 .hero-copy-ca:hover {
+  transform: translateY(-2px);
   border-color: rgba(255, 255, 255, 0.22);
   background: rgba(255, 255, 255, 0.055);
   color: rgba(255, 255, 255, 0.92);
@@ -411,6 +427,14 @@ button {
   padding: 44px 62px;
   border-right: 1px solid rgba(255, 255, 255, 0.1);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  transition: background 0.22s ease, border-color 0.22s ease, transform 0.22s ease;
+  will-change: transform;
+}
+
+.platform-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.035);
 }
 
 .platform-card:nth-child(2),
@@ -471,6 +495,13 @@ button {
   font-size: 13px;
   line-height: 1.2;
   appearance: none;
+  transition: color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.text-link:hover {
+  transform: translateX(3px);
+  border-color: rgba(255, 255, 255, 0.72);
+  color: #fff;
 }
 
 .text-link--center {
@@ -794,6 +825,17 @@ button {
 .vision-panel {
   border: 1px solid rgba(255, 255, 255, 0.1);
   background: rgba(255, 255, 255, 0.018);
+  transition: background 0.22s ease, border-color 0.22s ease, transform 0.22s ease;
+  will-change: transform;
+}
+
+.doc-card:hover,
+.skill-card:hover,
+.technical-panel:hover,
+.vision-panel:hover {
+  transform: translateY(-3px);
+  border-color: rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.035);
 }
 
 .doc-card {
@@ -1127,6 +1169,14 @@ button {
   padding: 54px 58px 50px;
   border: 1px solid rgba(255, 255, 255, 0.1);
   background: rgba(255, 255, 255, 0.018);
+  transition: background 0.22s ease, border-color 0.22s ease, transform 0.22s ease;
+  will-change: transform;
+}
+
+.roadmap-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.035);
 }
 
 .roadmap-dot {
@@ -1210,6 +1260,17 @@ button {
   font-family: var(--font-display), var(--font-sans), sans-serif;
   font-size: 11px;
   letter-spacing: 0.08em;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
 }
 
 @media (max-width: 900px) {

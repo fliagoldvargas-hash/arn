@@ -210,6 +210,7 @@ function Navigation({
         <a href="#platform">Build</a>
         <a href="#marketplace">Marketplace</a>
         <a href="/docs">Docs</a>
+        <a href="/roadmap">Roadmap</a>
       </div>
       <div className="nav__actions">
         <a className="social-link" href={ryuxConfig.xUrl} target="_blank" rel="noreferrer" aria-label="RYUX on X">

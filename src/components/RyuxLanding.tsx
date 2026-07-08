@@ -212,7 +212,7 @@ function Navigation({
       </a>
       <div className="nav__links">
         <a href="#platform">Build</a>
-        <a href="#marketplace">Marketplace</a>
+        <a href="/marketplace">Marketplace</a>
         <a href="/docs">Docs</a>
         <a href="/roadmap">Roadmap</a>
       </div>
@@ -429,7 +429,7 @@ function Footer() {
     <footer className="footer">
       <div className="footer__links">
         <a href="/docs">Docs</a>
-        <a href="#marketplace">Marketplace</a>
+        <a href="/marketplace">Marketplace</a>
         <a href="/roadmap">Roadmap</a>
         <a href={ryuxConfig.xUrl} target="_blank" rel="noreferrer">
           X

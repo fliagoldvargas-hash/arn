@@ -46,7 +46,7 @@ export function useRyuxMotion(scope: RefObject<HTMLElement | null>) {
       );
 
       if (reduceMotion) {
-        gsap.set([".nav", heroTargets, revealTargets], { clearProps: "all" });
+        gsap.set([".nav", ...heroTargets, ...revealTargets], { clearProps: "all" });
         return;
       }
 

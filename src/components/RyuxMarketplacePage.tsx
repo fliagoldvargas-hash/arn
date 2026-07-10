@@ -10,8 +10,16 @@ type WalletLike = {
   isPhantom?: boolean;
   isSolflare?: boolean;
   connect: (options?: { onlyIfTrusted?: boolean }) => Promise<{ publicKey: { toString: () => string } }>;
-  signMessage?: (message: Uint8Array, display?: "utf8" | "hex") => Promise<Uint8Array>;
+  signMessage?: (message: Uint8Array, display?: "utf8" | "hex") => Promise<SignedMessageResult>;
 };
+
+type SignedMessageResult =
+  | Uint8Array
+  | number[]
+  | {
+      signature?: Uint8Array | number[];
+      publicKey?: { toString: () => string };
+    };
 
 type DemoAgent = {
   name: string;
@@ -216,7 +224,14 @@ export function RyuxMarketplacePage() {
       setVoteStatus("submitting");
       setVoteMessage("Sign the vote in your wallet.");
 
-      const signature = await provider.signMessage(new TextEncoder().encode(message), "utf8");
+      const signedMessage = await provider.signMessage(new TextEncoder().encode(message), "utf8");
+      const signature = getSignatureBytes(signedMessage);
+
+      if (!signature) {
+        setVoteMessage("Wallet signature could not be read. Try signing again.");
+        return;
+      }
+
       const response = await fetch("/api/holder-votes", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -445,6 +460,24 @@ function emptyVoteTotals(): HolderVoteResponse["totals"] {
     }),
     {} as HolderVoteResponse["totals"],
   );
+}
+
+function getSignatureBytes(signedMessage: SignedMessageResult) {
+  if (signedMessage instanceof Uint8Array) return signedMessage;
+
+  if (Array.isArray(signedMessage)) {
+    return Uint8Array.from(signedMessage);
+  }
+
+  if (signedMessage.signature instanceof Uint8Array) {
+    return signedMessage.signature;
+  }
+
+  if (Array.isArray(signedMessage.signature)) {
+    return Uint8Array.from(signedMessage.signature);
+  }
+
+  return null;
 }
 
 function getSolanaProvider() {

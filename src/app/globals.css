@@ -1563,6 +1563,43 @@ button {
   border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
+.holder-vote-page {
+  min-height: 100vh;
+}
+
+.holder-vote-page .holder-vote-section {
+  margin-bottom: 96px;
+  padding-top: 0;
+  border-top: 0;
+}
+
+.holder-vote-hero {
+  position: relative;
+  z-index: 1;
+  width: min(780px, calc(100% - 48px));
+  margin: 0 auto;
+  padding: 172px 0 62px;
+  text-align: center;
+}
+
+.holder-vote-hero h1 {
+  margin: 28px 0 0;
+  color: #fff;
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: clamp(54px, 9vw, 104px);
+  font-style: italic;
+  font-weight: 400;
+  line-height: 0.95;
+}
+
+.holder-vote-hero p {
+  width: min(560px, 100%);
+  margin: 24px auto 0;
+  color: rgba(255, 255, 255, 0.62);
+  font-size: 16px;
+  line-height: 1.75;
+}
+
 .holder-vote-head {
   width: min(620px, 100%);
   margin: 0 auto 42px;
@@ -1588,7 +1625,7 @@ button {
 
 .holder-vote-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 18px;
 }
 
@@ -1613,7 +1650,7 @@ button {
 }
 
 .holder-vote-option:disabled {
-  cursor: wait;
+  cursor: not-allowed;
   opacity: 0.76;
 }
 

@@ -153,12 +153,9 @@ export function RyuxLanding() {
       />
       <Hero copied={copied} onCopy={copyAddress} onStartBuilding={() => setActiveModal("building")} />
       <Platform />
-      <Marketplace onOpenMarketplace={() => setActiveModal("marketplace")} />
+      <Marketplace />
       <Labs />
-      <Cta
-        onStartBuilding={() => setActiveModal("building")}
-        onOpenMarketplace={() => setActiveModal("marketplace")}
-      />
+      <Cta onStartBuilding={() => setActiveModal("building")} />
       <Footer />
       {activeModal ? (
         <SystemUpdateModal
@@ -212,7 +209,7 @@ function Navigation({
       </a>
       <div className="nav__links">
         <a href="#platform">Build</a>
-        <a href="/marketplace">Marketplace</a>
+        <a href="/holder-voting">Holder Voting</a>
         <a href="/docs">Docs</a>
         <a href="/roadmap">Roadmap</a>
       </div>
@@ -265,8 +262,8 @@ function Hero({
           <button className="button button--primary" onClick={onStartBuilding}>
             Start Building
           </button>
-          <a className="button button--ghost" href="/docs">
-            Read the Docs
+          <a className="button button--ghost" href="/holder-voting">
+            Holder Voting
           </a>
         </div>
         <button className="hero-copy-ca" onClick={onCopy}>
@@ -332,7 +329,7 @@ function Platform() {
   );
 }
 
-function Marketplace({ onOpenMarketplace }: { onOpenMarketplace: () => void }) {
+function Marketplace() {
   return (
     <section className="section marketplace" id="marketplace">
       <SectionIntro eyebrow="MARKETPLACE" title="Discover agents worth investing in.">
@@ -343,9 +340,9 @@ function Marketplace({ onOpenMarketplace }: { onOpenMarketplace: () => void }) {
         Every agent on the marketplace is transparent. On-chain treasury, verified creator, real-time metrics. No black
         boxes.
       </p>
-      <button className="text-link text-link--center" onClick={onOpenMarketplace}>
-        Explore the marketplace <ArrowUpRight size={13} />
-      </button>
+      <a className="text-link text-link--center" href="/holder-voting">
+        Vote as a holder <ArrowUpRight size={13} />
+      </a>
     </section>
   );
 }
@@ -368,10 +365,8 @@ function Labs() {
 
 function Cta({
   onStartBuilding,
-  onOpenMarketplace,
 }: {
   onStartBuilding: () => void;
-  onOpenMarketplace: () => void;
 }) {
   return (
     <section className="section cta" id="connect">
@@ -384,9 +379,9 @@ function Cta({
         <button className="button button--primary" onClick={onStartBuilding}>
           Start Building
         </button>
-        <button className="button button--ghost" onClick={onOpenMarketplace}>
-          Explore Agents
-        </button>
+        <a className="button button--ghost" href="/holder-voting">
+          Holder Voting
+        </a>
       </div>
     </section>
   );
@@ -429,7 +424,7 @@ function Footer() {
     <footer className="footer">
       <div className="footer__links">
         <a href="/docs">Docs</a>
-        <a href="/marketplace">Marketplace</a>
+        <a href="/holder-voting">Holder Voting</a>
         <a href="/roadmap">Roadmap</a>
         <a href={ryuxConfig.xUrl} target="_blank" rel="noreferrer">
           X

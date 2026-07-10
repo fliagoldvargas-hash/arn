@@ -35,7 +35,13 @@ type DemoAgent = {
 };
 
 type HolderVoteOption = {
-  id: "agent-profiles" | "partner-listings" | "holder-dashboard" | "marketplace-filters";
+  id:
+    | "agent-profiles"
+    | "partner-listings"
+    | "holder-dashboard"
+    | "marketplace-filters"
+    | "holder-rewards"
+    | "buyback-transparency";
   label: string;
   detail: string;
 };
@@ -114,12 +120,22 @@ const holderVoteOptions: HolderVoteOption[] = [
   },
   {
     id: "marketplace-filters",
-    label: "Marketplace filters",
-    detail: "Better discovery by agent type, market cap, activity, and launch stage.",
+    label: "Marketplace preview access",
+    detail: "Give holders the first public vote on when the marketplace preview becomes visible.",
+  },
+  {
+    id: "holder-rewards",
+    label: "Holder rewards tracker",
+    detail: "A holder view for rewards, community allocations, and claimed token distributions.",
+  },
+  {
+    id: "buyback-transparency",
+    label: "Buyback transparency",
+    detail: "A public log that tracks creator rewards used for RYUX buybacks and treasury actions.",
   },
 ];
 
-export function RyuxMarketplacePage() {
+export function RyuxMarketplacePage({ holderVotingOnly = false }: { holderVotingOnly?: boolean }) {
   const pageRef = useRef<HTMLElement | null>(null);
   const [scrolled, setScrolled] = useState(false);
   const [walletAddress, setWalletAddress] = useState("");
@@ -130,7 +146,8 @@ export function RyuxMarketplacePage() {
   const [userVote, setUserVote] = useState<HolderVoteResponse["userVote"]>(null);
   const [voteStatus, setVoteStatus] = useState<"idle" | "loading" | "submitting">("loading");
   const [voteMessage, setVoteMessage] = useState("");
-  const holderVotingEnabled = process.env.NEXT_PUBLIC_ENABLE_HOLDER_VOTING === "true" || holderVotePreview;
+  const holderVotingEnabled =
+    holderVotingOnly || process.env.NEXT_PUBLIC_ENABLE_HOLDER_VOTING === "true" || holderVotePreview;
 
   useRyuxMotion(pageRef);
 
@@ -266,9 +283,12 @@ export function RyuxMarketplacePage() {
       : walletStatus === "missing"
         ? "Install Wallet"
         : "Connect Wallet";
+  const lockedVoteLabel = userVote
+    ? holderVoteOptions.find((option) => option.id === userVote.vote_option)?.label ?? userVote.vote_label
+    : "";
 
   return (
-    <main className="marketplace-demo-shell" ref={pageRef}>
+    <main className={`marketplace-demo-shell ${holderVotingOnly ? "holder-vote-page" : ""}`} ref={pageRef}>
       <nav className={`nav ${scrolled ? "nav--scrolled" : ""}`} aria-label="Primary navigation">
         <a className="brand" href="/">
           <Image src="/images/ryux/ryux-logo.png" alt="RYUX" width={28} height={28} />
@@ -276,7 +296,7 @@ export function RyuxMarketplacePage() {
         </a>
         <div className="nav__links">
           <a href="/#platform">Build</a>
-          <a href="/marketplace">Marketplace</a>
+          <a href="/holder-voting">Holder Voting</a>
           <a href="/docs">Docs</a>
           <a href="/roadmap">Roadmap</a>
         </div>
@@ -291,86 +311,99 @@ export function RyuxMarketplacePage() {
         </div>
       </nav>
 
-      <section className="marketplace-demo-hero">
-        <div className="marketplace-demo-mark">
-          <Image src="/images/ryux/ryux-logo.png" alt="" width={42} height={42} />
-        </div>
-        <span className="docs-eyebrow">THE RYUX COLLECTION</span>
-        <h1>Agent Library</h1>
-        <p>
-          Browse a demo catalog of autonomous AI agent projects for the RYUX ecosystem.
-          Each card is placeholder data for investor previews.
-        </p>
-
-        <div className="marketplace-demo-stats">
-          {stats.map(([value, label]) => (
-            <div key={label}>
-              <strong>{value}</strong>
-              <span>{label}</span>
-            </div>
-          ))}
-        </div>
-
-        <label className="marketplace-demo-search">
-          <Search size={15} />
-          <input placeholder="Search the catalog..." />
-        </label>
-      </section>
-
-      <section className="marketplace-demo-library" aria-label="RYUX demo marketplace">
-        <div className="marketplace-demo-toolbar">
-          <div className="marketplace-demo-tabs">
-            {["All Entries", "Trending", "Recently Added", "Top Valued"].map((tab, index) => (
-              <button className={index === 0 ? "is-active" : ""} key={tab}>
-                {tab}
-              </button>
-            ))}
+      {holderVotingOnly ? (
+        <section className="holder-vote-hero">
+          <div className="marketplace-demo-mark">
+            <Image src="/images/ryux/ryux-logo.png" alt="" width={42} height={42} />
           </div>
-          <select aria-label="Sort demo agents">
-            <option>Newest First</option>
-            <option>By Market Cap</option>
-            <option>By Volume</option>
-          </select>
-        </div>
+          <span className="docs-eyebrow">RYUX HOLDERS</span>
+          <h1>Holder Voting</h1>
+          <p>Verified RYUX holders decide which product surface gets priority next.</p>
+        </section>
+      ) : (
+        <>
+          <section className="marketplace-demo-hero">
+            <div className="marketplace-demo-mark">
+              <Image src="/images/ryux/ryux-logo.png" alt="" width={42} height={42} />
+            </div>
+            <span className="docs-eyebrow">THE RYUX COLLECTION</span>
+            <h1>Agent Library</h1>
+            <p>
+              Browse a demo catalog of autonomous AI agent projects for the RYUX ecosystem.
+              Each card is placeholder data for investor previews.
+            </p>
 
-        <div className="marketplace-demo-grid">
-          {demoAgents.map((agent) => (
-            <article className={`marketplace-demo-card marketplace-demo-card--${agent.tone}`} key={agent.name}>
-              <div className="marketplace-demo-card__head">
-                <div className="marketplace-demo-orb">
-                  <Activity size={18} />
+            <div className="marketplace-demo-stats">
+              {stats.map(([value, label]) => (
+                <div key={label}>
+                  <strong>{value}</strong>
+                  <span>{label}</span>
                 </div>
-                <div>
-                  <h2>{agent.name}</h2>
-                  <span>{agent.ticker}</span>
-                </div>
+              ))}
+            </div>
+
+            <label className="marketplace-demo-search">
+              <Search size={15} />
+              <input placeholder="Search the catalog..." />
+            </label>
+          </section>
+
+          <section className="marketplace-demo-library" aria-label="RYUX demo marketplace">
+            <div className="marketplace-demo-toolbar">
+              <div className="marketplace-demo-tabs">
+                {["All Entries", "Trending", "Recently Added", "Top Valued"].map((tab, index) => (
+                  <button className={index === 0 ? "is-active" : ""} key={tab}>
+                    {tab}
+                  </button>
+                ))}
               </div>
-              <p>{agent.description}</p>
-              <svg className="marketplace-demo-chart" viewBox="0 0 238 78" role="img" aria-label={`${agent.name} demo price chart`}>
-                <path d={agent.chart} />
-              </svg>
-              <div className="marketplace-demo-price">
-                <strong>{agent.price}</strong>
-                <span>{agent.change}</span>
-              </div>
-              <div className="marketplace-demo-metrics">
-                <div>
-                  <span>MCAP</span>
-                  <strong>{agent.mcap}</strong>
-                </div>
-                <div>
-                  <span>VOL</span>
-                  <strong>{agent.volume}</strong>
-                </div>
-              </div>
-              <div className="marketplace-demo-card__foot">
-                <span>{agent.ca}</span>
-                <Share2 size={14} />
-              </div>
-            </article>
-          ))}
-        </div>
-      </section>
+              <select aria-label="Sort demo agents">
+                <option>Newest First</option>
+                <option>By Market Cap</option>
+                <option>By Volume</option>
+              </select>
+            </div>
+
+            <div className="marketplace-demo-grid">
+              {demoAgents.map((agent) => (
+                <article className={`marketplace-demo-card marketplace-demo-card--${agent.tone}`} key={agent.name}>
+                  <div className="marketplace-demo-card__head">
+                    <div className="marketplace-demo-orb">
+                      <Activity size={18} />
+                    </div>
+                    <div>
+                      <h2>{agent.name}</h2>
+                      <span>{agent.ticker}</span>
+                    </div>
+                  </div>
+                  <p>{agent.description}</p>
+                  <svg className="marketplace-demo-chart" viewBox="0 0 238 78" role="img" aria-label={`${agent.name} demo price chart`}>
+                    <path d={agent.chart} />
+                  </svg>
+                  <div className="marketplace-demo-price">
+                    <strong>{agent.price}</strong>
+                    <span>{agent.change}</span>
+                  </div>
+                  <div className="marketplace-demo-metrics">
+                    <div>
+                      <span>MCAP</span>
+                      <strong>{agent.mcap}</strong>
+                    </div>
+                    <div>
+                      <span>VOL</span>
+                      <strong>{agent.volume}</strong>
+                    </div>
+                  </div>
+                  <div className="marketplace-demo-card__foot">
+                    <span>{agent.ca}</span>
+                    <Share2 size={14} />
+                  </div>
+                </article>
+              ))}
+            </div>
+          </section>
+        </>
+      )}
 
       {holderVotingEnabled ? (
         <section className="holder-vote-section" aria-label="RYUX holder voting">
@@ -392,7 +425,7 @@ export function RyuxMarketplacePage() {
               return (
                 <button
                   className={`holder-vote-option ${isSelected ? "is-selected" : ""}`}
-                  disabled={voteStatus === "submitting"}
+                  disabled={voteStatus === "submitting" || Boolean(userVote)}
                   key={option.id}
                   onClick={() => void submitHolderVote(option)}
                   type="button"
@@ -418,7 +451,9 @@ export function RyuxMarketplacePage() {
             {voteStatus === "submitting" ? <Loader2 className="is-spinning" size={14} /> : <Wallet size={14} />}
             <span>
               {voteMessage ||
-                (walletAddress
+                (userVote
+                  ? `Vote locked: ${lockedVoteLabel}`
+                  : walletAddress
                   ? `Connected: ${walletAddress.slice(0, 4)}...${walletAddress.slice(-4)}`
                   : "Connect wallet to vote as a verified holder.")}
             </span>
@@ -430,7 +465,7 @@ export function RyuxMarketplacePage() {
         <p>&copy; 2026 RYUX Demo</p>
         <div className="footer__links">
           <a href="/">Home</a>
-          <a href="/marketplace">Library</a>
+          <a href="/holder-voting">Holder Voting</a>
           <a href="/#platform">Build</a>
           <a href="/docs">Docs</a>
           <a href={ryuxConfig.xUrl} target="_blank" rel="noreferrer">

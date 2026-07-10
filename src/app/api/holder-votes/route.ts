@@ -8,7 +8,9 @@ const voteOptions = [
   { id: "agent-profiles", label: "Agent profiles" },
   { id: "partner-listings", label: "Partner project listings" },
   { id: "holder-dashboard", label: "Holder dashboard" },
-  { id: "marketplace-filters", label: "Marketplace filters" },
+  { id: "marketplace-filters", label: "Marketplace preview access" },
+  { id: "holder-rewards", label: "Holder rewards tracker" },
+  { id: "buyback-transparency", label: "Buyback transparency" },
 ] as const;
 
 type VoteOptionId = (typeof voteOptions)[number]["id"];
@@ -120,6 +122,12 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: "Wallet signature could not be verified." }, { status: 401 });
   }
 
+  const existingVote = await getExistingHolderVote(walletAddress);
+
+  if (existingVote && existingVote.vote_option !== option.id) {
+    return NextResponse.json({ error: "This wallet already voted. Holder votes are locked." }, { status: 409 });
+  }
+
   const tokenBalanceRaw = await getRyuxTokenBalance(walletAddress);
 
   if (BigInt(tokenBalanceRaw) <= BigInt(0)) {
@@ -153,6 +161,18 @@ export async function POST(request: NextRequest) {
     ok: true,
     vote: records[0],
   });
+}
+
+async function getExistingHolderVote(walletAddress: string) {
+  const response = await supabaseFetch(
+    `/rest/v1/holder_votes?select=wallet_address,vote_option,vote_label&wallet_address=eq.${encodeURIComponent(walletAddress)}&limit=1`,
+    { method: "GET" },
+  );
+
+  if (!response.ok) return null;
+
+  const records = (await response.json()) as Array<Pick<HolderVoteRecord, "wallet_address" | "vote_option" | "vote_label">>;
+  return records[0] ?? null;
 }
 
 function createVoteMessage(walletAddress: string, optionId: string, optionLabel: string, timestamp: string) {

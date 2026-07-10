@@ -283,14 +283,19 @@ function supabaseFetch(path: string, init: RequestInit) {
   }
 
   const extraHeaders = init.headers as Record<string, string> | undefined;
+  const headers: Record<string, string> = {
+    apikey: serviceRoleKey,
+    "Content-Type": "application/json",
+    "User-Agent": "ryux-holder-vote-api/1.0",
+    ...extraHeaders,
+  };
+
+  if (!serviceRoleKey.startsWith("sb_secret_")) {
+    headers.Authorization = `Bearer ${serviceRoleKey}`;
+  }
 
   return fetch(`${supabaseUrl}${path}`, {
     ...init,
-    headers: {
-      apikey: serviceRoleKey,
-      Authorization: `Bearer ${serviceRoleKey}`,
-      "Content-Type": "application/json",
-      ...extraHeaders,
-    },
+    headers,
   });
 }

@@ -1,12 +1,9 @@
 export const ryuxConfig = {
   xUrl: "https://x.com/Ryuxfun",
 
-  // Cuando lances el token, pega aca el link completo de Pump.fun.
-  // Ejemplo: "https://pump.fun/coin/TU_CONTRACT_ADDRESS"
-  pumpFunUrl: "",
+  pumpFunUrl: "https://pump.fun/coin/A4XawuDZWNQmpH38Vj1K8UF7HDWqvMMREqF48rMQpump",
 
-  // Cuando lances el token, reemplaza SOON por el CA real.
-  contractAddress: "SOON",
+  contractAddress: "A4XawuDZWNQmpH38Vj1K8UF7HDWqvMMREqF48rMQpump",
 };
 
 export function getContractLabel() {

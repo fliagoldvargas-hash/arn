@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
-import { Activity, Search, Share2, Wallet } from "lucide-react";
+import { Activity, CheckCircle2, Loader2, Search, Share2, Wallet } from "lucide-react";
 import { ryuxConfig } from "@/config/ryux";
 import { useRyuxMotion } from "@/components/useRyuxMotion";
 
@@ -10,6 +10,7 @@ type WalletLike = {
   isPhantom?: boolean;
   isSolflare?: boolean;
   connect: (options?: { onlyIfTrusted?: boolean }) => Promise<{ publicKey: { toString: () => string } }>;
+  signMessage?: (message: Uint8Array, display?: "utf8" | "hex") => Promise<Uint8Array>;
 };
 
 type DemoAgent = {
@@ -23,6 +24,22 @@ type DemoAgent = {
   ca: string;
   tone: "blue" | "green" | "violet";
   chart: string;
+};
+
+type HolderVoteOption = {
+  id: "agent-profiles" | "partner-listings" | "holder-dashboard" | "marketplace-filters";
+  label: string;
+  detail: string;
+};
+
+type HolderVoteResponse = {
+  configured: boolean;
+  totals: Record<HolderVoteOption["id"], number>;
+  totalVotes?: number;
+  userVote?: {
+    vote_option: HolderVoteOption["id"];
+    vote_label: string;
+  } | null;
 };
 
 const demoAgents: DemoAgent[] = [
@@ -71,11 +88,41 @@ const stats = [
   ["$91.2K", "Total Liquidity"],
 ];
 
+const holderVoteOptions: HolderVoteOption[] = [
+  {
+    id: "agent-profiles",
+    label: "Agent profiles",
+    detail: "Deeper pages for each agent with category, CA, status, and activity context.",
+  },
+  {
+    id: "partner-listings",
+    label: "Partner project listings",
+    detail: "Add early external projects that fit the RYUX agent marketplace vision.",
+  },
+  {
+    id: "holder-dashboard",
+    label: "Holder dashboard",
+    detail: "A connected wallet view for holder status, rewards, and early access.",
+  },
+  {
+    id: "marketplace-filters",
+    label: "Marketplace filters",
+    detail: "Better discovery by agent type, market cap, activity, and launch stage.",
+  },
+];
+
 export function RyuxMarketplacePage() {
   const pageRef = useRef<HTMLElement | null>(null);
   const [scrolled, setScrolled] = useState(false);
   const [walletAddress, setWalletAddress] = useState("");
   const [walletStatus, setWalletStatus] = useState<"idle" | "connecting" | "missing">("idle");
+  const [holderVotePreview, setHolderVotePreview] = useState(false);
+  const [voteTotals, setVoteTotals] = useState<HolderVoteResponse["totals"]>(() => emptyVoteTotals());
+  const [totalVotes, setTotalVotes] = useState(0);
+  const [userVote, setUserVote] = useState<HolderVoteResponse["userVote"]>(null);
+  const [voteStatus, setVoteStatus] = useState<"idle" | "loading" | "submitting">("loading");
+  const [voteMessage, setVoteMessage] = useState("");
+  const holderVotingEnabled = process.env.NEXT_PUBLIC_ENABLE_HOLDER_VOTING === "true" || holderVotePreview;
 
   useRyuxMotion(pageRef);
 
@@ -86,22 +133,114 @@ export function RyuxMarketplacePage() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  useEffect(() => {
+    const searchParams = new URLSearchParams(window.location.search);
+    const hasPreviewParam = searchParams.get("holderVotePreview") === "1";
+
+    if (hasPreviewParam) {
+      window.localStorage.setItem("ryux-holder-vote-preview", "1");
+      setHolderVotePreview(true);
+      return;
+    }
+
+    setHolderVotePreview(window.localStorage.getItem("ryux-holder-vote-preview") === "1");
+  }, []);
+
+  useEffect(() => {
+    if (!holderVotingEnabled) return;
+
+    void loadHolderVotes(walletAddress);
+  }, [holderVotingEnabled, walletAddress]);
+
   const connectWallet = async () => {
     const provider = getSolanaProvider();
 
     if (!provider) {
       setWalletStatus("missing");
       window.open("https://phantom.app/", "_blank", "noopener,noreferrer");
-      return;
+      return undefined;
     }
 
     try {
       setWalletStatus("connecting");
       const response = await provider.connect();
-      setWalletAddress(response.publicKey.toString());
+      const nextWalletAddress = response.publicKey.toString();
+      setWalletAddress(nextWalletAddress);
       setWalletStatus("idle");
+      return nextWalletAddress;
     } catch {
       setWalletStatus("idle");
+      return undefined;
+    }
+  };
+
+  const loadHolderVotes = async (activeWalletAddress = "") => {
+    setVoteStatus("loading");
+
+    try {
+      const query = activeWalletAddress ? `?wallet=${encodeURIComponent(activeWalletAddress)}` : "";
+      const response = await fetch(`/api/holder-votes${query}`);
+      const data = (await response.json()) as HolderVoteResponse;
+
+      setVoteTotals(data.totals ?? emptyVoteTotals());
+      setTotalVotes(data.totalVotes ?? 0);
+      setUserVote(data.userVote ?? null);
+
+      if (!data.configured) {
+        setVoteMessage("Holder voting storage is being configured.");
+      } else {
+        setVoteMessage("");
+      }
+    } catch {
+      setVoteMessage("Holder voting is temporarily unavailable.");
+    } finally {
+      setVoteStatus("idle");
+    }
+  };
+
+  const submitHolderVote = async (option: HolderVoteOption) => {
+    const provider = getSolanaProvider();
+    const activeWalletAddress = walletAddress || (await connectWallet());
+
+    if (!provider || !activeWalletAddress) return;
+
+    if (!provider.signMessage) {
+      setVoteMessage("This wallet does not support message signing.");
+      return;
+    }
+
+    const timestamp = Date.now().toString();
+    const message = createVoteMessage(activeWalletAddress, option.id, option.label, timestamp);
+
+    try {
+      setVoteStatus("submitting");
+      setVoteMessage("Sign the vote in your wallet.");
+
+      const signature = await provider.signMessage(new TextEncoder().encode(message), "utf8");
+      const response = await fetch("/api/holder-votes", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          walletAddress: activeWalletAddress,
+          optionId: option.id,
+          message,
+          signature: Array.from(signature),
+        }),
+      });
+
+      const data = (await response.json()) as { error?: string };
+
+      if (!response.ok) {
+        setVoteMessage(data.error ?? "Vote could not be saved.");
+        return;
+      }
+
+      setVoteMessage("Vote saved. Holder status verified.");
+      await loadHolderVotes(activeWalletAddress);
+    } catch {
+      setVoteMessage("Vote was not signed or could not be saved.");
+    } finally {
+      setVoteStatus("idle");
     }
   };
 
@@ -218,6 +357,60 @@ export function RyuxMarketplacePage() {
         </div>
       </section>
 
+      {holderVotingEnabled ? (
+        <section className="holder-vote-section" aria-label="RYUX holder voting">
+          <div className="holder-vote-head">
+            <span className="docs-eyebrow">HOLDER VOTE</span>
+            <h2>Choose what ships next</h2>
+            <p>
+              Connect a wallet, sign a vote, and RYUX verifies holder status before saving it.
+              One wallet can keep one active vote.
+            </p>
+          </div>
+
+          <div className="holder-vote-grid">
+            {holderVoteOptions.map((option) => {
+              const count = voteTotals[option.id] ?? 0;
+              const share = totalVotes > 0 ? Math.round((count / totalVotes) * 100) : 0;
+              const isSelected = userVote?.vote_option === option.id;
+
+              return (
+                <button
+                  className={`holder-vote-option ${isSelected ? "is-selected" : ""}`}
+                  disabled={voteStatus === "submitting"}
+                  key={option.id}
+                  onClick={() => void submitHolderVote(option)}
+                  type="button"
+                >
+                  <span className="holder-vote-option__top">
+                    <strong>{option.label}</strong>
+                    {isSelected ? <CheckCircle2 size={18} /> : null}
+                  </span>
+                  <span className="holder-vote-option__detail">{option.detail}</span>
+                  <span className="holder-vote-option__bar" aria-hidden="true">
+                    <span style={{ width: `${share}%` }} />
+                  </span>
+                  <span className="holder-vote-option__meta">
+                    {count} votes
+                    <span>{share}%</span>
+                  </span>
+                </button>
+              );
+            })}
+          </div>
+
+          <div className="holder-vote-status" role="status">
+            {voteStatus === "submitting" ? <Loader2 className="is-spinning" size={14} /> : <Wallet size={14} />}
+            <span>
+              {voteMessage ||
+                (walletAddress
+                  ? `Connected: ${walletAddress.slice(0, 4)}...${walletAddress.slice(-4)}`
+                  : "Connect wallet to vote as a verified holder.")}
+            </span>
+          </div>
+        </section>
+      ) : null}
+
       <footer className="footer docs-footer">
         <p>&copy; 2026 RYUX Demo</p>
         <div className="footer__links">
@@ -231,6 +424,26 @@ export function RyuxMarketplacePage() {
         </div>
       </footer>
     </main>
+  );
+}
+
+function createVoteMessage(walletAddress: string, optionId: string, optionLabel: string, timestamp: string) {
+  return [
+    "RYUX Holder Vote",
+    `Wallet: ${walletAddress}`,
+    `Option: ${optionLabel}`,
+    `Option ID: ${optionId}`,
+    `Timestamp: ${timestamp}`,
+  ].join("\n");
+}
+
+function emptyVoteTotals(): HolderVoteResponse["totals"] {
+  return holderVoteOptions.reduce(
+    (totals, option) => ({
+      ...totals,
+      [option.id]: 0,
+    }),
+    {} as HolderVoteResponse["totals"],
   );
 }
 

@@ -21,12 +21,12 @@ const lora = Lora({
 });
 
 export const metadata: Metadata = {
-  title: "RYUX · The Autonomous Agent Protocol",
+  title: "Auren Agents - The Autonomous Agent Protocol",
   description:
     "Deploy, discover, and invest in autonomous AI agents on Solana. The platform for onchain intelligence.",
   icons: {
-    icon: "/images/ryux/ryux-logo.png",
-    apple: "/images/ryux/ryux-logo.png",
+    icon: "/images/auren/auren-logo.png",
+    apple: "/images/auren/auren-logo.png",
   },
 };
 

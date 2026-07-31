@@ -4,6 +4,8 @@ import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { Wallet } from "lucide-react";
 import { ryuxConfig } from "@/config/ryux";
+import { LightRays } from "@/components/LightRays";
+import { SpecularButton } from "@/components/SpecularButton";
 import { useRyuxMotion } from "@/components/useRyuxMotion";
 
 type WalletLike = {
@@ -29,8 +31,8 @@ const phases: RoadmapPhase[] = [
     phase: "PHASE 1",
     count: "4/4",
     title: "Genesis Launch",
-    body: "RYUX is live. The token launch, website, X presence, documentation, wallet connect, and launch-state modals are in place.",
-    milestones: ["Token Launch", "RYUX Website", "X / Twitter Live", "Docs and Roadmap Pages"],
+    body: "AUREN is live. The token launch, website, X presence, documentation, wallet connect, and launch-state modals are in place.",
+    milestones: ["Token Launch", "AUREN Website", "X / Twitter Live", "Docs and Roadmap Pages"],
   },
   {
     date: "15 JUL 2026",
@@ -56,7 +58,7 @@ const phases: RoadmapPhase[] = [
     phase: "PHASE 4",
     count: "0/5",
     title: "Agent Builder Layer",
-    body: "RYUX begins opening the infrastructure layer for creators to configure agents, connect skills, and prepare automated workflows.",
+    body: "AUREN begins opening the infrastructure layer for creators to configure agents, connect skills, and prepare automated workflows.",
     milestones: ["Agent Templates", "Skill Modules", "Creator Setup Flow", "Agent Metadata", "Cloud Deploy Prep"],
   },
   {
@@ -121,10 +123,25 @@ export function RyuxRoadmapPage() {
 
   return (
     <main className="roadmap-shell" ref={pageRef}>
+      <div className="light-rays-bg" aria-hidden="true">
+        <LightRays
+          raysOrigin="top-center"
+          raysColor="#76f8ff"
+          raysSpeed={0.82}
+          lightSpread={1.12}
+          rayLength={2.25}
+          fadeDistance={1.42}
+          saturation={1}
+          followMouse
+          mouseInfluence={0.12}
+          noiseAmount={0.08}
+          distortion={0.24}
+        />
+      </div>
       <nav className={`nav ${scrolled ? "nav--scrolled" : ""}`} aria-label="Primary navigation">
         <a className="brand" href="/">
-          <Image src="/images/ryux/ryux-logo.png" alt="RYUX" width={28} height={28} />
-          <span>RYUX</span>
+          <Image src="/images/auren/auren-logo.png" alt="Auren Agents" width={28} height={28} />
+          <span>AUREN AGENTS</span>
         </a>
         <div className="nav__links">
           <a href="/#platform">Build</a>
@@ -133,7 +150,7 @@ export function RyuxRoadmapPage() {
           <a href="/roadmap">Roadmap</a>
         </div>
         <div className="nav__actions">
-          <a className="social-link" href={ryuxConfig.xUrl} target="_blank" rel="noreferrer" aria-label="RYUX on X">
+          <a className="social-link" href={ryuxConfig.xUrl} target="_blank" rel="noreferrer" aria-label="AUREN on X">
             X
           </a>
           <a
@@ -142,14 +159,14 @@ export function RyuxRoadmapPage() {
             target={ryuxConfig.pumpFunUrl ? "_blank" : undefined}
             rel={ryuxConfig.pumpFunUrl ? "noreferrer" : undefined}
             aria-disabled={!ryuxConfig.pumpFunUrl}
-            aria-label="RYUX on Pump.fun"
+            aria-label="AUREN on Pump.fun"
           >
             <Image src="/images/ryux/pumplogo.png" alt="" width={15} height={15} />
           </a>
-          <button className="connect" onClick={connectWallet}>
+          <SpecularButton className="connect" onClick={connectWallet} size="sm" radius={15} shineSize={14} shineFade={46}>
             <Wallet size={13} />
             <span>{walletLabel}</span>
-          </button>
+          </SpecularButton>
         </div>
       </nav>
 
@@ -159,7 +176,7 @@ export function RyuxRoadmapPage() {
           Building the Future of
           <span>Autonomous Agents.</span>
         </h1>
-        <p>Each phase unlocks new RYUX capabilities. Track what shipped on 06/07/2026 and what comes next.</p>
+        <p>Each phase unlocks new AUREN capabilities. Track what shipped on 06/07/2026 and what comes next.</p>
         <div className="roadmap-progress">
           <div>
             <span>OVERALL PROGRESS</span>
@@ -171,7 +188,7 @@ export function RyuxRoadmapPage() {
         </div>
       </section>
 
-      <section className="roadmap-timeline" aria-label="RYUX roadmap phases">
+      <section className="roadmap-timeline" aria-label="AUREN roadmap phases">
         <div className="roadmap-line" />
         {phases.map((phase) => (
           <article className={`roadmap-card roadmap-card--${phase.status}`} key={phase.phase}>
@@ -195,7 +212,7 @@ export function RyuxRoadmapPage() {
       </section>
 
       <footer className="footer docs-footer">
-        <p>&copy; 2026 RYUX</p>
+        <p>&copy; 2026 Auren Agents</p>
         <div className="footer__links">
           <a href="/holder-voting">Holder Voting</a>
           <a href="/roadmap">Roadmap</a>

@@ -4,6 +4,8 @@ import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { Activity, CheckCircle2, Loader2, Search, Share2, Wallet } from "lucide-react";
 import { ryuxConfig } from "@/config/ryux";
+import { LightRays } from "@/components/LightRays";
+import { SpecularButton } from "@/components/SpecularButton";
 import { useRyuxMotion } from "@/components/useRyuxMotion";
 
 type WalletLike = {
@@ -111,7 +113,7 @@ const holderVoteOptions: HolderVoteOption[] = [
   {
     id: "partner-listings",
     label: "Partner project listings",
-    detail: "Add early external projects that fit the RYUX agent marketplace vision.",
+    detail: "Add early external projects that fit the AUREN agent marketplace vision.",
   },
   {
     id: "holder-dashboard",
@@ -131,7 +133,7 @@ const holderVoteOptions: HolderVoteOption[] = [
   {
     id: "buyback-transparency",
     label: "Buyback transparency",
-    detail: "A public log that tracks creator rewards used for RYUX buybacks and treasury actions.",
+    detail: "A public log that tracks creator rewards used for AUREN buybacks and treasury actions.",
   },
 ];
 
@@ -289,10 +291,27 @@ export function RyuxMarketplacePage({ holderVotingOnly = false }: { holderVoting
 
   return (
     <main className={`marketplace-demo-shell ${holderVotingOnly ? "holder-vote-page" : ""}`} ref={pageRef}>
+      {holderVotingOnly ? (
+        <div className="light-rays-bg" aria-hidden="true">
+          <LightRays
+            raysOrigin="top-center"
+            raysColor="#76f8ff"
+            raysSpeed={0.82}
+            lightSpread={1.12}
+            rayLength={2.25}
+            fadeDistance={1.42}
+            saturation={1}
+            followMouse
+            mouseInfluence={0.12}
+            noiseAmount={0.08}
+            distortion={0.24}
+          />
+        </div>
+      ) : null}
       <nav className={`nav ${scrolled ? "nav--scrolled" : ""}`} aria-label="Primary navigation">
         <a className="brand" href="/">
-          <Image src="/images/ryux/ryux-logo.png" alt="RYUX" width={28} height={28} />
-          <span>RYUX</span>
+          <Image src="/images/auren/auren-logo.png" alt="Auren Agents" width={28} height={28} />
+          <span>AUREN AGENTS</span>
         </a>
         <div className="nav__links">
           <a href="/#platform">Build</a>
@@ -301,35 +320,35 @@ export function RyuxMarketplacePage({ holderVotingOnly = false }: { holderVoting
           <a href="/roadmap">Roadmap</a>
         </div>
         <div className="nav__actions">
-          <a className="social-link" href={ryuxConfig.xUrl} target="_blank" rel="noreferrer" aria-label="RYUX on X">
+          <a className="social-link" href={ryuxConfig.xUrl} target="_blank" rel="noreferrer" aria-label="AUREN on X">
             X
           </a>
-          <button className="connect" onClick={connectWallet}>
+          <SpecularButton className="connect" onClick={connectWallet} size="sm" radius={15} shineSize={14} shineFade={46}>
             <Wallet size={13} />
             <span>{walletLabel}</span>
-          </button>
+          </SpecularButton>
         </div>
       </nav>
 
       {holderVotingOnly ? (
         <section className="holder-vote-hero">
           <div className="marketplace-demo-mark">
-            <Image src="/images/ryux/ryux-logo.png" alt="" width={42} height={42} />
+            <Image src="/images/auren/auren-logo.png" alt="" width={42} height={42} />
           </div>
-          <span className="docs-eyebrow">RYUX HOLDERS</span>
+          <span className="docs-eyebrow">AUREN HOLDERS</span>
           <h1>Holder Voting</h1>
-          <p>Verified RYUX holders decide which product surface gets priority next.</p>
+          <p>Verified AUREN holders decide which product surface gets priority next.</p>
         </section>
       ) : (
         <>
           <section className="marketplace-demo-hero">
             <div className="marketplace-demo-mark">
-              <Image src="/images/ryux/ryux-logo.png" alt="" width={42} height={42} />
+              <Image src="/images/auren/auren-logo.png" alt="" width={42} height={42} />
             </div>
-            <span className="docs-eyebrow">THE RYUX COLLECTION</span>
+            <span className="docs-eyebrow">THE AUREN COLLECTION</span>
             <h1>Agent Library</h1>
             <p>
-              Browse a demo catalog of autonomous AI agent projects for the RYUX ecosystem.
+              Browse a demo catalog of autonomous AI agent projects for the AUREN ecosystem.
               Each card is placeholder data for investor previews.
             </p>
 
@@ -348,7 +367,7 @@ export function RyuxMarketplacePage({ holderVotingOnly = false }: { holderVoting
             </label>
           </section>
 
-          <section className="marketplace-demo-library" aria-label="RYUX demo marketplace">
+          <section className="marketplace-demo-library" aria-label="AUREN demo marketplace">
             <div className="marketplace-demo-toolbar">
               <div className="marketplace-demo-tabs">
                 {["All Entries", "Trending", "Recently Added", "Top Valued"].map((tab, index) => (
@@ -406,12 +425,12 @@ export function RyuxMarketplacePage({ holderVotingOnly = false }: { holderVoting
       )}
 
       {holderVotingEnabled ? (
-        <section className="holder-vote-section" aria-label="RYUX holder voting">
+        <section className="holder-vote-section" aria-label="AUREN holder voting">
           <div className="holder-vote-head">
             <span className="docs-eyebrow">HOLDER VOTE</span>
             <h2>Choose what ships next</h2>
             <p>
-              Connect a wallet, sign a vote, and RYUX verifies holder status before saving it.
+              Connect a wallet, sign a vote, and AUREN verifies holder status before saving it.
               One wallet can keep one active vote.
             </p>
           </div>
@@ -462,7 +481,7 @@ export function RyuxMarketplacePage({ holderVotingOnly = false }: { holderVoting
       ) : null}
 
       <footer className="footer docs-footer">
-        <p>&copy; 2026 RYUX Demo</p>
+        <p>&copy; 2026 Auren Agents Demo</p>
         <div className="footer__links">
           <a href="/">Home</a>
           <a href="/holder-voting">Holder Voting</a>
@@ -479,7 +498,7 @@ export function RyuxMarketplacePage({ holderVotingOnly = false }: { holderVoting
 
 function createVoteMessage(walletAddress: string, optionId: string, optionLabel: string, timestamp: string) {
   return [
-    "RYUX Holder Vote",
+    "AUREN Holder Vote",
     `Wallet: ${walletAddress}`,
     `Option: ${optionLabel}`,
     `Option ID: ${optionId}`,

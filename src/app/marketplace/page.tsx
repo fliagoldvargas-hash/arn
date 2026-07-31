@@ -1,5 +1,5 @@
-import { redirect } from "next/navigation";
+import { RyuxMarketplacePage } from "@/components/RyuxMarketplacePage";
 
 export default function MarketplacePage() {
-  redirect("/holder-voting");
+  return <RyuxMarketplacePage />;
 }

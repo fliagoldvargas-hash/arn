@@ -14,6 +14,8 @@ import {
   WalletCards,
 } from "lucide-react";
 import { getContractLabel, ryuxConfig } from "@/config/ryux";
+import { LightRays } from "@/components/LightRays";
+import { SpecularButton } from "@/components/SpecularButton";
 import { useRyuxMotion } from "@/components/useRyuxMotion";
 import type { Metric, PlatformCard } from "@/types/ryux";
 
@@ -23,6 +25,22 @@ type SolanaWalletProvider = {
   publicKey?: { toString: () => string };
   connect: (options?: { onlyIfTrusted?: boolean }) => Promise<{ publicKey: { toString: () => string } }>;
   disconnect?: () => Promise<void>;
+};
+
+type TokenStats = {
+  change24h: string;
+  changeTone: "positive" | "negative" | "neutral";
+  marketCap: string;
+  volume24h: string;
+};
+
+type DexScreenerPair = {
+  url?: string;
+  volume?: { h24?: number };
+  priceChange?: { h24?: number };
+  marketCap?: number;
+  fdv?: number;
+  liquidity?: { usd?: number };
 };
 
 declare global {
@@ -37,7 +55,7 @@ const platformCards: PlatformCard[] = [
     number: "01",
     title: "Build Your Agent",
     body:
-      "Use the RYUX framework to create autonomous agents from scratch. Define behaviors, set strategies, connect to on-chain protocols. Your agent runs 24/7 on Solana infrastructure.",
+      "Use the AUREN framework to create autonomous agents from scratch. Define behaviors, set strategies, connect to on-chain protocols. Your agent runs 24/7 on Solana infrastructure.",
     icon: Star,
     cta: "View documentation",
     wide: true,
@@ -77,6 +95,13 @@ const labMetrics: Metric[] = [
   { value: "Growing", label: "AGENTS DEPLOYED", note: "And counting" },
 ];
 
+const defaultTokenStats: TokenStats = {
+  change24h: "SOON",
+  changeTone: "neutral",
+  marketCap: "SOON",
+  volume24h: "SOON",
+};
+
 export function RyuxLanding() {
   const pageRef = useRef<HTMLElement | null>(null);
   const [scrolled, setScrolled] = useState(false);
@@ -84,6 +109,7 @@ export function RyuxLanding() {
   const [walletAddress, setWalletAddress] = useState("");
   const [walletStatus, setWalletStatus] = useState<"idle" | "connecting" | "missing">("idle");
   const [activeModal, setActiveModal] = useState<"building" | "marketplace" | null>(null);
+  const [tokenStats, setTokenStats] = useState<TokenStats>(defaultTokenStats);
 
   useRyuxMotion(pageRef);
 
@@ -118,6 +144,45 @@ export function RyuxLanding() {
     };
   }, [activeModal]);
 
+  useEffect(() => {
+    let cancelled = false;
+    const ca = ryuxConfig.contractAddress.trim();
+
+    if (!ca || ca === "SOON") {
+      setTokenStats(defaultTokenStats);
+      return undefined;
+    }
+
+    const loadTokenStats = async () => {
+      try {
+        const response = await fetch(`https://api.dexscreener.com/tokens/v1/solana/${encodeURIComponent(ca)}`);
+        if (!response.ok) throw new Error("Token stats unavailable");
+
+        const pairs = (await response.json()) as DexScreenerPair[];
+        const pair = selectBestPair(pairs, ryuxConfig.pumpFunUrl);
+        if (!pair || cancelled) return;
+
+        const change = pair.priceChange?.h24;
+        setTokenStats({
+          change24h: formatPercent(change),
+          changeTone: getChangeTone(change),
+          marketCap: formatUsd(pair.marketCap ?? pair.fdv),
+          volume24h: formatUsd(pair.volume?.h24),
+        });
+      } catch {
+        if (!cancelled) setTokenStats(defaultTokenStats);
+      }
+    };
+
+    void loadTokenStats();
+    const interval = window.setInterval(loadTokenStats, 30_000);
+
+    return () => {
+      cancelled = true;
+      window.clearInterval(interval);
+    };
+  }, []);
+
   const copyAddress = async () => {
     await navigator.clipboard?.writeText(ryuxConfig.contractAddress);
     setCopied(true);
@@ -145,13 +210,34 @@ export function RyuxLanding() {
 
   return (
     <main className="site-shell" ref={pageRef}>
+      <div className="light-rays-bg" aria-hidden="true">
+        <LightRays
+          raysOrigin="top-center"
+          raysColor="#76f8ff"
+          raysSpeed={0.82}
+          lightSpread={1.12}
+          rayLength={2.25}
+          fadeDistance={1.42}
+          saturation={1}
+          followMouse
+          mouseInfluence={0.12}
+          noiseAmount={0.08}
+          distortion={0.24}
+        />
+      </div>
       <Navigation
         scrolled={scrolled}
         walletAddress={walletAddress}
         walletStatus={walletStatus}
         onConnectWallet={connectWallet}
+        onMarketplaceClick={() => setActiveModal("marketplace")}
       />
-      <Hero copied={copied} onCopy={copyAddress} onStartBuilding={() => setActiveModal("building")} />
+      <Hero
+        copied={copied}
+        onCopy={copyAddress}
+        onStartBuilding={() => setActiveModal("building")}
+        tokenStats={tokenStats}
+      />
       <Platform />
       <Marketplace />
       <Labs />
@@ -164,7 +250,7 @@ export function RyuxLanding() {
           message={
             activeModal === "building"
               ? "Wallet features are being updated. New updates and the dashboard will release soon."
-              : "The marketplace will be available from 15/07."
+              : "The marketplace is being finished and will launch to the public on 03/08."
           }
           onClose={() => setActiveModal(null)}
         />
@@ -182,16 +268,49 @@ function shortenAddress(address: string) {
   return `${address.slice(0, 4)}...${address.slice(-4)}`;
 }
 
+function selectBestPair(pairs: DexScreenerPair[], pumpFunUrl: string) {
+  const pumpPair = pairs.find((pair) => pumpFunUrl && pair.url === pumpFunUrl);
+  if (pumpPair) return pumpPair;
+
+  return [...pairs].sort((a, b) => (b.liquidity?.usd ?? 0) - (a.liquidity?.usd ?? 0))[0];
+}
+
+function formatUsd(value?: number) {
+  if (typeof value !== "number" || !Number.isFinite(value)) return "SOON";
+
+  return new Intl.NumberFormat("en-US", {
+    compactDisplay: "short",
+    currency: "USD",
+    maximumFractionDigits: value >= 1000 ? 1 : 2,
+    notation: "compact",
+    style: "currency",
+  }).format(value);
+}
+
+function formatPercent(value?: number) {
+  if (typeof value !== "number" || !Number.isFinite(value)) return "SOON";
+
+  const prefix = value > 0 ? "+" : "";
+  return `${prefix}${value.toFixed(1)}%`;
+}
+
+function getChangeTone(value?: number): TokenStats["changeTone"] {
+  if (typeof value !== "number" || !Number.isFinite(value) || value === 0) return "neutral";
+  return value > 0 ? "positive" : "negative";
+}
+
 function Navigation({
   scrolled,
   walletAddress,
   walletStatus,
   onConnectWallet,
+  onMarketplaceClick,
 }: {
   scrolled: boolean;
   walletAddress: string;
   walletStatus: "idle" | "connecting" | "missing";
   onConnectWallet: () => void;
+  onMarketplaceClick: () => void;
 }) {
   const walletLabel = walletAddress
     ? shortenAddress(walletAddress)
@@ -204,17 +323,20 @@ function Navigation({
   return (
     <nav className={`nav ${scrolled ? "nav--scrolled" : ""}`} aria-label="Primary navigation">
       <a className="brand" href="#">
-        <Image src="/images/ryux/ryux-logo.png" alt="RYUX" width={28} height={28} />
-        <span>RYUX</span>
+        <Image src="/images/auren/auren-logo.png" alt="Auren Agents" width={28} height={28} />
+        <span>AUREN AGENTS</span>
       </a>
       <div className="nav__links">
         <a href="#platform">Build</a>
         <a href="/holder-voting">Holder Voting</a>
+        <button className="nav__link-button" type="button" onClick={onMarketplaceClick}>
+          Marketplace
+        </button>
         <a href="/docs">Docs</a>
         <a href="/roadmap">Roadmap</a>
       </div>
       <div className="nav__actions">
-        <a className="social-link" href={ryuxConfig.xUrl} target="_blank" rel="noreferrer" aria-label="RYUX on X">
+        <a className="social-link" href={ryuxConfig.xUrl} target="_blank" rel="noreferrer" aria-label="AUREN on X">
           X
         </a>
         <a
@@ -223,14 +345,14 @@ function Navigation({
           target={ryuxConfig.pumpFunUrl ? "_blank" : undefined}
           rel={ryuxConfig.pumpFunUrl ? "noreferrer" : undefined}
           aria-disabled={!ryuxConfig.pumpFunUrl}
-          aria-label="RYUX on Pump.fun"
+          aria-label="AUREN on Pump.fun"
         >
           <Image src="/images/ryux/pumplogo.png" alt="" width={15} height={15} />
         </a>
-        <button className="connect" onClick={onConnectWallet}>
+        <SpecularButton className="connect" onClick={onConnectWallet} size="sm" radius={15} shineSize={14} shineFade={46}>
           <Wallet size={13} />
           <span>{walletLabel}</span>
-        </button>
+        </SpecularButton>
       </div>
     </nav>
   );
@@ -240,31 +362,74 @@ function Hero({
   copied,
   onCopy,
   onStartBuilding,
+  tokenStats,
 }: {
   copied: boolean;
   onCopy: () => void;
   onStartBuilding: () => void;
+  tokenStats: TokenStats;
 }) {
+  const liveTokenStats = [
+    { label: "24H CHANGE", value: tokenStats.change24h, tone: tokenStats.changeTone },
+    { label: "MARKET CAP", value: tokenStats.marketCap },
+    { label: "24H VOLUME", value: tokenStats.volume24h },
+  ];
+
   return (
     <section className="hero">
-      <div className="hero__ribbon hero__ribbon--left" />
-      <div className="hero__ribbon hero__ribbon--right" />
       <div className="hero__content">
         <h1>
           Software that thinks.
           <span>Agents that earn.</span>
         </h1>
         <p>
-          RYUX is the infrastructure for onchain intelligence. Create an autonomous agent, give it skills, and let it
+          AUREN is the infrastructure for onchain intelligence. Create an autonomous agent, give it skills, and let it
           work for you. Tokenize it on day one, or never. The choice is yours.
         </p>
-        <div className="hero__buttons">
-          <button className="button button--primary" onClick={onStartBuilding}>
+        <div className="hero__buttons hero__buttons--single">
+          <SpecularButton
+            className="hero-start-button"
+            onClick={onStartBuilding}
+            size="lg"
+            radius={2}
+            tint="#ffffff"
+            tintOpacity={0.06}
+            textColor="#ffffff"
+            baseColor="#4d4d4d"
+            intensity={1.2}
+            shineSize={13}
+            shineFade={42}
+            thickness={1.1}
+            proximity={280}
+          >
             Start Building
-          </button>
-          <a className="button button--ghost" href="/holder-voting">
-            Holder Voting
-          </a>
+          </SpecularButton>
+        </div>
+        <div className="hero-token-stats" aria-label="AUREN token stats">
+          {liveTokenStats.map((stat) => (
+            <div className="hero-token-stat" key={stat.label}>
+              <span
+                className={
+                  stat.tone === "positive"
+                    ? "hero-token-stat__label hero-token-stat__label--positive"
+                    : "hero-token-stat__label"
+                }
+              >
+                {stat.label}
+              </span>
+              <strong
+                className={
+                  stat.tone === "positive"
+                    ? "hero-token-stat__value hero-token-stat__value--positive"
+                    : stat.tone === "negative"
+                      ? "hero-token-stat__value hero-token-stat__value--negative"
+                      : "hero-token-stat__value"
+                }
+              >
+                {stat.value}
+              </strong>
+            </div>
+          ))}
         </div>
         <button className="hero-copy-ca" onClick={onCopy}>
           <Copy size={18} strokeWidth={1.6} />
@@ -290,7 +455,7 @@ function Platform() {
   return (
     <section className="section platform" id="platform">
       <SectionIntro eyebrow="THE PLATFORM" title="Your agent. Your rules.">
-        RYUX is the infrastructure layer for autonomous AI agents on Solana. Build an agent that trades, manages a
+        AUREN is the infrastructure layer for autonomous AI agents on Solana. Build an agent that trades, manages a
         treasury, interacts with protocols, or serves your community, all on-chain, all yours.
       </SectionIntro>
       <div className="platform-grid">
@@ -334,7 +499,7 @@ function Marketplace() {
     <section className="section marketplace" id="marketplace">
       <SectionIntro eyebrow="MARKETPLACE" title="Discover agents worth investing in.">
         Browse a curated marketplace of autonomous agents built by developers worldwide. Analyze performance metrics,
-        track revenue, and trade agent tokens, all within the RYUX ecosystem.
+        track revenue, and trade agent tokens, all within the AUREN ecosystem.
       </SectionIntro>
       <p className="market-note">
         Every agent on the marketplace is transparent. On-chain treasury, verified creator, real-time metrics. No black
@@ -351,7 +516,7 @@ function Labs() {
   return (
     <section className="section labs">
       <SectionIntro eyebrow="AGENT LABS" title="Pushing the boundary.">
-        RYUX Agent Labs is our dedicated research and development arm. We&apos;re building the next generation of agent
+        Auren Agents is our dedicated research and development arm. We&apos;re building the next generation of agent
         capabilities: smarter strategies, deeper protocol integration, and tools that don&apos;t exist yet.
       </SectionIntro>
       <div className="metric-row">
@@ -374,11 +539,25 @@ function Cta({
         <Sparkles size={22} />
       </div>
       <h2>The infrastructure for intelligent agents is here.</h2>
-      <p>Whether you&apos;re building, investing, or exploring, RYUX is where it starts.</p>
+      <p>Whether you&apos;re building, investing, or exploring, AUREN is where it starts.</p>
       <div className="hero__buttons">
-        <button className="button button--primary" onClick={onStartBuilding}>
+        <SpecularButton
+          className="hero-start-button"
+          onClick={onStartBuilding}
+          size="lg"
+          radius={2}
+          tint="#ffffff"
+          tintOpacity={0.06}
+          textColor="#ffffff"
+          baseColor="#4d4d4d"
+          intensity={1.2}
+          shineSize={13}
+          shineFade={42}
+          thickness={1.1}
+          proximity={280}
+        >
           Start Building
-        </button>
+        </SpecularButton>
         <a className="button button--ghost" href="/holder-voting">
           Holder Voting
         </a>
@@ -436,7 +615,7 @@ function Footer() {
         <span>Meteora</span>
         <span>Jupiter</span>
       </div>
-      <p>&copy; 2026 RYUX Agent Labs</p>
+      <p>&copy; 2026 Auren Agents</p>
     </footer>
   );
 }

@@ -14,6 +14,7 @@ import {
   WalletCards,
 } from "lucide-react";
 import { getContractLabel, ryuxConfig } from "@/config/ryux";
+import { BorderGlow } from "@/components/BorderGlow";
 import { LightRays } from "@/components/LightRays";
 import { SpecularButton } from "@/components/SpecularButton";
 import { useRyuxMotion } from "@/components/useRyuxMotion";
@@ -386,23 +387,23 @@ function Hero({
           work for you. Tokenize it on day one, or never. The choice is yours.
         </p>
         <div className="hero__buttons hero__buttons--single">
-          <SpecularButton
+          <BorderGlow
             className="hero-start-button"
-            onClick={onStartBuilding}
-            size="lg"
-            radius={2}
-            tint="#ffffff"
-            tintOpacity={0.06}
-            textColor="#ffffff"
-            baseColor="#4d4d4d"
-            intensity={1.2}
-            shineSize={13}
-            shineFade={42}
-            thickness={1.1}
-            proximity={280}
+            backgroundColor="rgba(255, 255, 255, 0.035)"
+            borderRadius={2}
+            colors={["#ffffff", "#76f8ff", "#b8fff7"]}
+            glowColor="185 100 78"
+            glowIntensity={0.9}
+            glowRadius={28}
+            edgeSensitivity={24}
+            coneSpread={24}
+            fillOpacity={0.28}
+            animated
           >
-            Start Building
-          </SpecularButton>
+            <button className="hero-start-button__control" onClick={onStartBuilding} type="button">
+              Start Building
+            </button>
+          </BorderGlow>
         </div>
         <div className="hero-token-stats" aria-label="AUREN token stats">
           {liveTokenStats.map((stat) => (
@@ -537,23 +538,23 @@ function Cta({
       <h2>The infrastructure for intelligent agents is here.</h2>
       <p>Whether you&apos;re building, investing, or exploring, AUREN is where it starts.</p>
       <div className="hero__buttons">
-        <SpecularButton
+        <BorderGlow
           className="hero-start-button"
-          onClick={onStartBuilding}
-          size="lg"
-          radius={2}
-          tint="#ffffff"
-          tintOpacity={0.06}
-          textColor="#ffffff"
-          baseColor="#4d4d4d"
-          intensity={1.2}
-          shineSize={13}
-          shineFade={42}
-          thickness={1.1}
-          proximity={280}
+          backgroundColor="rgba(255, 255, 255, 0.035)"
+          borderRadius={2}
+          colors={["#ffffff", "#76f8ff", "#b8fff7"]}
+          glowColor="185 100 78"
+          glowIntensity={0.9}
+          glowRadius={28}
+          edgeSensitivity={24}
+          coneSpread={24}
+          fillOpacity={0.28}
+          animated
         >
-          Start Building
-        </SpecularButton>
+          <button className="hero-start-button__control" onClick={onStartBuilding} type="button">
+            Start Building
+          </button>
+        </BorderGlow>
       </div>
     </section>
   );

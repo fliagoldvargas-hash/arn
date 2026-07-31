@@ -21,12 +21,12 @@ const lora = Lora({
 });
 
 export const metadata: Metadata = {
-  title: "Auren Agents - The Autonomous Agent Protocol",
+  title: "Nodus Agents - The Autonomous Agent Protocol",
   description:
     "Deploy, discover, and invest in autonomous AI agents on Solana. The platform for onchain intelligence.",
   icons: {
-    icon: "/images/auren/auren-logo.png",
-    apple: "/images/auren/auren-logo.png",
+    icon: "/images/nodus/nodus-logo.png",
+    apple: "/images/nodus/nodus-logo.png",
   },
 };
 

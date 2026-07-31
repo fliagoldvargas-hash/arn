@@ -55,7 +55,7 @@ const platformCards: PlatformCard[] = [
     number: "01",
     title: "Build Your Agent",
     body:
-      "Use the AUREN framework to create autonomous agents from scratch. Define behaviors, set strategies, connect to on-chain protocols. Your agent runs 24/7 on Solana infrastructure.",
+      "Use the NODUS framework to create autonomous agents from scratch. Define behaviors, set strategies, connect to on-chain protocols. Your agent runs 24/7 on Solana infrastructure.",
     icon: Star,
     cta: "View documentation",
     wide: true,
@@ -323,8 +323,8 @@ function Navigation({
   return (
     <nav className={`nav ${scrolled ? "nav--scrolled" : ""}`} aria-label="Primary navigation">
       <a className="brand" href="#">
-        <Image src="/images/auren/auren-logo.png" alt="Auren Agents" width={28} height={28} />
-        <span>AUREN AGENTS</span>
+        <Image src="/images/nodus/nodus-logo.png" alt="Nodus Agents" width={28} height={28} />
+        <span>NODUS AGENTS</span>
       </a>
       <div className="nav__links">
         <a href="#platform">Build</a>
@@ -335,7 +335,7 @@ function Navigation({
         <a href="/roadmap">Roadmap</a>
       </div>
       <div className="nav__actions">
-        <a className="social-link" href={ryuxConfig.xUrl} target="_blank" rel="noreferrer" aria-label="AUREN on X">
+        <a className="social-link" href={ryuxConfig.xUrl} target="_blank" rel="noreferrer" aria-label="NODUS on X">
           X
         </a>
         <a
@@ -344,7 +344,7 @@ function Navigation({
           target={ryuxConfig.pumpFunUrl ? "_blank" : undefined}
           rel={ryuxConfig.pumpFunUrl ? "noreferrer" : undefined}
           aria-disabled={!ryuxConfig.pumpFunUrl}
-          aria-label="AUREN on Pump.fun"
+          aria-label="NODUS on Pump.fun"
         >
           <Image src="/images/ryux/pumplogo.png" alt="" width={15} height={15} />
         </a>
@@ -382,7 +382,7 @@ function Hero({
           <span>Agents that earn.</span>
         </h1>
         <p>
-          AUREN is the infrastructure for onchain intelligence. Create an autonomous agent, give it skills, and let it
+          NODUS is the infrastructure for onchain intelligence. Create an autonomous agent, give it skills, and let it
           work for you. Tokenize it on day one, or never. The choice is yours.
         </p>
         <div className="hero__buttons hero__buttons--single">
@@ -404,7 +404,7 @@ function Hero({
             Start Building
           </SpecularButton>
         </div>
-        <div className="hero-token-stats" aria-label="AUREN token stats">
+        <div className="hero-token-stats" aria-label="NODUS token stats">
           {liveTokenStats.map((stat) => (
             <div className="hero-token-stat" key={stat.label}>
               <span
@@ -454,7 +454,7 @@ function Platform() {
   return (
     <section className="section platform" id="platform">
       <SectionIntro eyebrow="THE PLATFORM" title="Your agent. Your rules.">
-        AUREN is the infrastructure layer for autonomous AI agents on Solana. Build an agent that trades, manages a
+        NODUS is the infrastructure layer for autonomous AI agents on Solana. Build an agent that trades, manages a
         treasury, interacts with protocols, or serves your community, all on-chain, all yours.
       </SectionIntro>
       <div className="platform-grid">
@@ -498,7 +498,7 @@ function Marketplace() {
     <section className="section marketplace" id="marketplace">
       <SectionIntro eyebrow="MARKETPLACE" title="Discover agents worth investing in.">
         Browse a curated marketplace of autonomous agents built by developers worldwide. Analyze performance metrics,
-        track revenue, and trade agent tokens, all within the AUREN ecosystem.
+        track revenue, and trade agent tokens, all within the NODUS ecosystem.
       </SectionIntro>
       <p className="market-note">
         Every agent on the marketplace is transparent. On-chain treasury, verified creator, real-time metrics. No black
@@ -512,7 +512,7 @@ function Labs() {
   return (
     <section className="section labs">
       <SectionIntro eyebrow="AGENT LABS" title="Pushing the boundary.">
-        Auren Agents is our dedicated research and development arm. We&apos;re building the next generation of agent
+        Nodus Agents is our dedicated research and development arm. We&apos;re building the next generation of agent
         capabilities: smarter strategies, deeper protocol integration, and tools that don&apos;t exist yet.
       </SectionIntro>
       <div className="metric-row">
@@ -535,7 +535,7 @@ function Cta({
         <Sparkles size={22} />
       </div>
       <h2>The infrastructure for intelligent agents is here.</h2>
-      <p>Whether you&apos;re building, investing, or exploring, AUREN is where it starts.</p>
+      <p>Whether you&apos;re building, investing, or exploring, NODUS is where it starts.</p>
       <div className="hero__buttons">
         <SpecularButton
           className="hero-start-button"
@@ -607,7 +607,7 @@ function Footer() {
         <span>Meteora</span>
         <span>Jupiter</span>
       </div>
-      <p>&copy; 2026 Auren Agents</p>
+      <p>&copy; 2026 Nodus Agents</p>
     </footer>
   );
 }

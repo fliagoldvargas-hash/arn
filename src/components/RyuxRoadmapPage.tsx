@@ -31,8 +31,8 @@ const phases: RoadmapPhase[] = [
     phase: "PHASE 1",
     count: "4/4",
     title: "Genesis Launch",
-    body: "AUREN is live. The token launch, website, X presence, documentation, wallet connect, and launch-state modals are in place.",
-    milestones: ["Token Launch", "AUREN Website", "X / Twitter Live", "Docs and Roadmap Pages"],
+    body: "NODUS is live. The token launch, website, X presence, documentation, wallet connect, and launch-state modals are in place.",
+    milestones: ["Token Launch", "NODUS Website", "X / Twitter Live", "Docs and Roadmap Pages"],
   },
   {
     date: "03 AUG 2026",
@@ -58,7 +58,7 @@ const phases: RoadmapPhase[] = [
     phase: "PHASE 4",
     count: "0/5",
     title: "Agent Builder Layer",
-    body: "AUREN begins opening the infrastructure layer for creators to configure agents, connect skills, and prepare automated workflows.",
+    body: "NODUS begins opening the infrastructure layer for creators to configure agents, connect skills, and prepare automated workflows.",
     milestones: ["Agent Templates", "Skill Modules", "Creator Setup Flow", "Agent Metadata", "Cloud Deploy Prep"],
   },
   {
@@ -140,8 +140,8 @@ export function RyuxRoadmapPage() {
       </div>
       <nav className={`nav ${scrolled ? "nav--scrolled" : ""}`} aria-label="Primary navigation">
         <a className="brand" href="/">
-          <Image src="/images/auren/auren-logo.png" alt="Auren Agents" width={28} height={28} />
-          <span>AUREN AGENTS</span>
+          <Image src="/images/nodus/nodus-logo.png" alt="Nodus Agents" width={28} height={28} />
+          <span>NODUS AGENTS</span>
         </a>
         <div className="nav__links">
           <a href="/#platform">Build</a>
@@ -149,7 +149,7 @@ export function RyuxRoadmapPage() {
           <a href="/roadmap">Roadmap</a>
         </div>
         <div className="nav__actions">
-          <a className="social-link" href={ryuxConfig.xUrl} target="_blank" rel="noreferrer" aria-label="AUREN on X">
+          <a className="social-link" href={ryuxConfig.xUrl} target="_blank" rel="noreferrer" aria-label="NODUS on X">
             X
           </a>
           <a
@@ -158,7 +158,7 @@ export function RyuxRoadmapPage() {
             target={ryuxConfig.pumpFunUrl ? "_blank" : undefined}
             rel={ryuxConfig.pumpFunUrl ? "noreferrer" : undefined}
             aria-disabled={!ryuxConfig.pumpFunUrl}
-            aria-label="AUREN on Pump.fun"
+            aria-label="NODUS on Pump.fun"
           >
             <Image src="/images/ryux/pumplogo.png" alt="" width={15} height={15} />
           </a>
@@ -175,7 +175,7 @@ export function RyuxRoadmapPage() {
           Building the Future of
           <span>Autonomous Agents.</span>
         </h1>
-        <p>Each phase unlocks new AUREN capabilities. Track what shipped on 31/07/2026 and what comes next.</p>
+        <p>Each phase unlocks new NODUS capabilities. Track what shipped on 31/07/2026 and what comes next.</p>
         <div className="roadmap-progress">
           <div>
             <span>OVERALL PROGRESS</span>
@@ -187,7 +187,7 @@ export function RyuxRoadmapPage() {
         </div>
       </section>
 
-      <section className="roadmap-timeline" aria-label="AUREN roadmap phases">
+      <section className="roadmap-timeline" aria-label="NODUS roadmap phases">
         <div className="roadmap-line" />
         {phases.map((phase) => (
           <article className={`roadmap-card roadmap-card--${phase.status}`} key={phase.phase}>
@@ -211,7 +211,7 @@ export function RyuxRoadmapPage() {
       </section>
 
       <footer className="footer docs-footer">
-        <p>&copy; 2026 Auren Agents</p>
+        <p>&copy; 2026 Nodus Agents</p>
         <div className="footer__links">
           <a href="/roadmap">Roadmap</a>
           <a href="/docs">Docs</a>

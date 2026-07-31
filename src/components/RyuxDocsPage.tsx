@@ -122,7 +122,6 @@ export function RyuxDocsPage() {
         </a>
         <div className="nav__links">
           <a href="/#platform">Build</a>
-          <a href="/holder-voting">Holder Voting</a>
           <a href="/docs">Docs</a>
           <a href="/roadmap">Roadmap</a>
         </div>
@@ -155,8 +154,7 @@ export function RyuxDocsPage() {
         </h1>
         <p>Where builders launch tokenized AI agents and investors back autonomous businesses that make real money on Solana.</p>
         <div className="hero__buttons">
-          <a className="button button--primary" href="/holder-voting">Holder Voting</a>
-          <a className="button button--ghost" href="/#platform">Launch Agent</a>
+          <a className="button button--primary" href="/#platform">Launch Agent</a>
         </div>
       </section>
 
@@ -252,7 +250,6 @@ export function RyuxDocsPage() {
       <footer className="footer docs-footer">
         <p>&copy; 2026 Auren Agents</p>
         <div className="footer__links">
-          <a href="/holder-voting">Holder Voting</a>
           <a href="/roadmap">Roadmap</a>
           <a href="/docs">Docs</a>
           <a href={ryuxConfig.xUrl} target="_blank" rel="noreferrer">

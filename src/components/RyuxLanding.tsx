@@ -77,8 +77,8 @@ const platformCards: PlatformCard[] = [
   },
   {
     number: "04",
-    title: "Community Governed",
-    body: "Token holders shape how agents evolve. Proposals, voting, and collective intelligence.",
+    title: "Community Signals",
+    body: "Community feedback helps shape how agents evolve, which tools get prioritized, and what the ecosystem builds next.",
     icon: Users,
   },
   {
@@ -328,7 +328,6 @@ function Navigation({
       </a>
       <div className="nav__links">
         <a href="#platform">Build</a>
-        <a href="/holder-voting">Holder Voting</a>
         <button className="nav__link-button" type="button" onClick={onMarketplaceClick}>
           Marketplace
         </button>
@@ -505,9 +504,6 @@ function Marketplace() {
         Every agent on the marketplace is transparent. On-chain treasury, verified creator, real-time metrics. No black
         boxes.
       </p>
-      <a className="text-link text-link--center" href="/holder-voting">
-        Vote as a holder <ArrowUpRight size={13} />
-      </a>
     </section>
   );
 }
@@ -558,9 +554,6 @@ function Cta({
         >
           Start Building
         </SpecularButton>
-        <a className="button button--ghost" href="/holder-voting">
-          Holder Voting
-        </a>
       </div>
     </section>
   );
@@ -603,7 +596,6 @@ function Footer() {
     <footer className="footer">
       <div className="footer__links">
         <a href="/docs">Docs</a>
-        <a href="/holder-voting">Holder Voting</a>
         <a href="/roadmap">Roadmap</a>
         <a href={ryuxConfig.xUrl} target="_blank" rel="noreferrer">
           X

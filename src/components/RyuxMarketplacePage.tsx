@@ -58,6 +58,8 @@ type HolderVoteResponse = {
   } | null;
 };
 
+const HOLDER_VOTING_PUBLIC = false;
+
 const demoAgents: DemoAgent[] = [
   {
     name: "Signal",
@@ -149,7 +151,8 @@ export function RyuxMarketplacePage({ holderVotingOnly = false }: { holderVoting
   const [voteStatus, setVoteStatus] = useState<"idle" | "loading" | "submitting">("loading");
   const [voteMessage, setVoteMessage] = useState("");
   const holderVotingEnabled =
-    holderVotingOnly || process.env.NEXT_PUBLIC_ENABLE_HOLDER_VOTING === "true" || holderVotePreview;
+    HOLDER_VOTING_PUBLIC &&
+    (holderVotingOnly || process.env.NEXT_PUBLIC_ENABLE_HOLDER_VOTING === "true" || holderVotePreview);
 
   useRyuxMotion(pageRef);
 
@@ -315,7 +318,6 @@ export function RyuxMarketplacePage({ holderVotingOnly = false }: { holderVoting
         </a>
         <div className="nav__links">
           <a href="/#platform">Build</a>
-          <a href="/holder-voting">Holder Voting</a>
           <a href="/docs">Docs</a>
           <a href="/roadmap">Roadmap</a>
         </div>
@@ -484,7 +486,6 @@ export function RyuxMarketplacePage({ holderVotingOnly = false }: { holderVoting
         <p>&copy; 2026 Auren Agents Demo</p>
         <div className="footer__links">
           <a href="/">Home</a>
-          <a href="/holder-voting">Holder Voting</a>
           <a href="/#platform">Build</a>
           <a href="/docs">Docs</a>
           <a href={ryuxConfig.xUrl} target="_blank" rel="noreferrer">

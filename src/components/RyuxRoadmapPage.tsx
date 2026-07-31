@@ -26,7 +26,7 @@ type RoadmapPhase = {
 
 const phases: RoadmapPhase[] = [
   {
-    date: "06 JUL 2026",
+    date: "31 JUL 2026",
     status: "completed",
     phase: "PHASE 1",
     count: "4/4",
@@ -35,7 +35,7 @@ const phases: RoadmapPhase[] = [
     milestones: ["Token Launch", "AUREN Website", "X / Twitter Live", "Docs and Roadmap Pages"],
   },
   {
-    date: "15 JUL 2026",
+    date: "03 AUG 2026",
     status: "pending",
     phase: "PHASE 2",
     count: "0/4",
@@ -44,7 +44,7 @@ const phases: RoadmapPhase[] = [
     milestones: ["Marketplace Public Release", "Agent Listing Cards", "Project Discovery", "Trading Links"],
   },
   {
-    date: "LATE JUL 2026",
+    date: "MID AUG 2026",
     status: "pending",
     phase: "PHASE 3",
     count: "0/4",
@@ -53,7 +53,7 @@ const phases: RoadmapPhase[] = [
     milestones: ["Wallet Session Polish", "User Dashboard", "Portfolio Overview", "Dashboard Update Modal Removal"],
   },
   {
-    date: "AUG 2026",
+    date: "LATE AUG 2026",
     status: "pending",
     phase: "PHASE 4",
     count: "0/5",
@@ -176,7 +176,7 @@ export function RyuxRoadmapPage() {
           Building the Future of
           <span>Autonomous Agents.</span>
         </h1>
-        <p>Each phase unlocks new AUREN capabilities. Track what shipped on 06/07/2026 and what comes next.</p>
+        <p>Each phase unlocks new AUREN capabilities. Track what shipped on 31/07/2026 and what comes next.</p>
         <div className="roadmap-progress">
           <div>
             <span>OVERALL PROGRESS</span>

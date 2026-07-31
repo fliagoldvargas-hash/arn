@@ -880,7 +880,7 @@ button {
   width: 1px;
   height: 32px;
   margin: 0 auto 28px;
-  background: rgba(255, 255, 255, 0.28);
+  background: #fff;
 }
 
 .system-modal > span {

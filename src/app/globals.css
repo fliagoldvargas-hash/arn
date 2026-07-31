@@ -936,6 +936,53 @@ button {
   background: rgba(255, 255, 255, 0.9);
 }
 
+.coming-soon-shell {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+  background: #000;
+}
+
+.coming-soon-panel {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  width: min(520px, calc(100% - 48px));
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 118px 0 64px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.coming-soon-panel h1 {
+  margin: 36px 0 0;
+  color: #fff;
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: clamp(44px, 7vw, 72px);
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1;
+}
+
+.coming-soon-panel p {
+  width: min(430px, 100%);
+  margin: 36px auto 0;
+  color: rgba(255, 255, 255, 0.62);
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: clamp(20px, 3vw, 30px);
+  line-height: 1.45;
+}
+
+.coming-soon-panel .system-modal__button {
+  width: min(360px, 100%);
+  margin-top: 48px;
+  text-decoration: none;
+}
+
 .docs-shell {
   position: relative;
   min-height: 100vh;

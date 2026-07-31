@@ -58,40 +58,36 @@ export function useRyuxMotion(scope: RefObject<HTMLElement | null>) {
         duration: 0.55,
       });
 
-      gsap.from(heroTargets, {
-        y: 24,
-        autoAlpha: 0,
-        duration: 0.82,
-        stagger: 0.08,
-        delay: 0.08,
-      });
+      if (heroTargets.length > 0) {
+        gsap.from(heroTargets, {
+          y: 24,
+          autoAlpha: 0,
+          duration: 0.82,
+          stagger: 0.08,
+          delay: 0.08,
+        });
+      }
 
-      gsap.to(".hero__ribbon", {
-        yPercent: -8,
-        duration: 7,
-        repeat: -1,
-        yoyo: true,
-        ease: "sine.inOut",
-      });
-
-      ScrollTrigger.batch(revealTargets, {
-        start: "top 86%",
-        once: true,
-        onEnter: (elements) => {
-          gsap.fromTo(
-            elements,
-            { y: 34, autoAlpha: 0 },
-            {
-              y: 0,
-              autoAlpha: 1,
-              duration: 0.72,
-              stagger: 0.07,
-              overwrite: "auto",
-              clearProps: "transform,opacity,visibility",
-            },
-          );
-        },
-      });
+      if (revealTargets.length > 0) {
+        ScrollTrigger.batch(revealTargets, {
+          start: "top 86%",
+          once: true,
+          onEnter: (elements) => {
+            gsap.fromTo(
+              elements,
+              { y: 34, autoAlpha: 0 },
+              {
+                y: 0,
+                autoAlpha: 1,
+                duration: 0.72,
+                stagger: 0.07,
+                overwrite: "auto",
+                clearProps: "transform,opacity,visibility",
+              },
+            );
+          },
+        });
+      }
     },
     { scope },
   );

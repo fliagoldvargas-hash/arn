@@ -82,8 +82,8 @@ export function MarketplaceComingSoonPage() {
       </div>
       <nav className={`nav ${scrolled ? "nav--scrolled" : ""}`} aria-label="Primary navigation">
         <a className="brand" href="/">
-          <Image src="/images/nexa/nexa-logo.png" alt="Nexa Agents" width={28} height={28} />
-          <span>NEXA AGENTS</span>
+          <Image src="/images/orbis/orbis-logo.png" alt="Orbis Agents" width={28} height={28} />
+          <span>ORBIS AGENTS</span>
         </a>
         <div className="nav__links">
           <a href="/#platform">Build</a>
@@ -91,7 +91,7 @@ export function MarketplaceComingSoonPage() {
           <a href="/roadmap">Roadmap</a>
         </div>
         <div className="nav__actions">
-          <a className="social-link" href={ryuxConfig.xUrl} target="_blank" rel="noreferrer" aria-label="NEXA on X">
+          <a className="social-link" href={ryuxConfig.xUrl} target="_blank" rel="noreferrer" aria-label="ORBIS on X">
             X
           </a>
           <SpecularButton className="connect" onClick={connectWallet} size="sm" radius={15} shineSize={14} shineFade={46}>

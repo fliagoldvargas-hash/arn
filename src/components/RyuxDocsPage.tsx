@@ -12,12 +12,12 @@ const processSteps = [
   {
     number: "01",
     title: "Launch a Token",
-    body: "Drop a token on Solana through Pump.fun using the NEXA launchpad. Traders and community show up instantly.",
+    body: "Drop a token on Solana through Pump.fun using the ORBIS launchpad. Traders and community show up instantly.",
   },
   {
     number: "02",
     title: "Pair with AI Infrastructure",
-    body: "Connect the token to AI agent infrastructure. Bring your own setup or buy cloud deployment directly through NEXA.",
+    body: "Connect the token to AI agent infrastructure. Bring your own setup or buy cloud deployment directly through ORBIS.",
   },
   {
     number: "03",
@@ -117,8 +117,8 @@ export function RyuxDocsPage() {
       </div>
       <nav className={`nav ${scrolled ? "nav--scrolled" : ""}`} aria-label="Primary navigation">
         <a className="brand" href="/">
-          <Image src="/images/nexa/nexa-logo.png" alt="Nexa Agents" width={28} height={28} />
-          <span>NEXA AGENTS</span>
+          <Image src="/images/orbis/orbis-logo.png" alt="Orbis Agents" width={28} height={28} />
+          <span>ORBIS AGENTS</span>
         </a>
         <div className="nav__links">
           <a href="/#platform">Build</a>
@@ -126,7 +126,7 @@ export function RyuxDocsPage() {
           <a href="/roadmap">Roadmap</a>
         </div>
         <div className="nav__actions">
-          <a className="social-link" href={ryuxConfig.xUrl} target="_blank" rel="noreferrer" aria-label="NEXA on X">
+          <a className="social-link" href={ryuxConfig.xUrl} target="_blank" rel="noreferrer" aria-label="ORBIS on X">
             X
           </a>
           <a
@@ -135,7 +135,7 @@ export function RyuxDocsPage() {
             target={ryuxConfig.pumpFunUrl ? "_blank" : undefined}
             rel={ryuxConfig.pumpFunUrl ? "noreferrer" : undefined}
             aria-disabled={!ryuxConfig.pumpFunUrl}
-            aria-label="NEXA on Pump.fun"
+            aria-label="ORBIS on Pump.fun"
           >
             <Image src="/images/ryux/pumplogo.png" alt="" width={15} height={15} />
           </a>
@@ -158,14 +158,14 @@ export function RyuxDocsPage() {
         </div>
       </section>
 
-      <DocsSection eyebrow="THE PROBLEM & SOLUTION" title="What is Nexa Agents?">
+      <DocsSection eyebrow="THE PROBLEM & SOLUTION" title="What is Orbis Agents?">
         <div className="docs-two-grid">
           <DocCard label="THE PROBLEM">
             AI agents are going to run the internet. But right now there&apos;s nowhere to launch one as an actual investable
             business and nowhere for investors to find and fund them.
           </DocCard>
           <DocCard label="THE SOLUTION">
-            NEXA connects tokens to AI agent infrastructure, creating <strong>tokenized autonomous agents.</strong> Think
+            ORBIS connects tokens to AI agent infrastructure, creating <strong>tokenized autonomous agents.</strong> Think
             of each one as a digital company that does real work, makes real money, and grows on its own. The token is
             your ownership.
           </DocCard>
@@ -188,7 +188,7 @@ export function RyuxDocsPage() {
 
       <DocsSection eyebrow="CAPABILITIES" title="The Skill Market">
         <p className="docs-lede">
-          Agents buy skills from the NEXA marketplace. These are modular tools that give agents real capabilities and turn
+          Agents buy skills from the ORBIS marketplace. These are modular tools that give agents real capabilities and turn
           tokens into working businesses.
         </p>
         <div className="skill-grid">
@@ -212,7 +212,7 @@ export function RyuxDocsPage() {
         <span className="docs-eyebrow">THE VISION</span>
         <p>
           Software that doesn&apos;t just follow orders. It <strong>runs itself, earns money, and gets better over time.</strong>{" "}
-          NEXA is where these agents get built, funded, and turned into real businesses.
+          ORBIS is where these agents get built, funded, and turned into real businesses.
         </p>
         <div className="vision-metrics">
           <div><strong>Token - Agent</strong><span>EVERY TOKEN BECOMES A BUSINESS</span></div>
@@ -242,13 +242,13 @@ export function RyuxDocsPage() {
       <section className="disclaimer">
         <span className="docs-eyebrow">DISCLAIMER</span>
         <p>
-          NEXA is a platform for launching and discovering AI agent projects. Nothing here is financial advice. Always do
+          ORBIS is a platform for launching and discovering AI agent projects. Nothing here is financial advice. Always do
           your own research. We don&apos;t guarantee the performance or legitimacy of any token launched through the platform.
         </p>
       </section>
 
       <footer className="footer docs-footer">
-        <p>&copy; 2026 Nexa Agents</p>
+        <p>&copy; 2026 Orbis Agents</p>
         <div className="footer__links">
           <a href="/roadmap">Roadmap</a>
           <a href="/docs">Docs</a>

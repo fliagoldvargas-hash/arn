@@ -131,7 +131,7 @@ export async function POST(request: NextRequest) {
   const tokenBalanceRaw = await getRyuxTokenBalance(walletAddress);
 
   if (BigInt(tokenBalanceRaw) <= BigInt(0)) {
-    return NextResponse.json({ error: "$NODUS holder status not found for this wallet." }, { status: 403 });
+    return NextResponse.json({ error: "$NEXA holder status not found for this wallet." }, { status: 403 });
   }
 
   const voteRecord: HolderVoteRecord = {
@@ -177,7 +177,7 @@ async function getExistingHolderVote(walletAddress: string) {
 
 function createVoteMessage(walletAddress: string, optionId: string, optionLabel: string, timestamp: string) {
   return [
-    "NODUS Holder Vote",
+    "NEXA Holder Vote",
     `Wallet: ${walletAddress}`,
     `Option: ${optionLabel}`,
     `Option ID: ${optionId}`,

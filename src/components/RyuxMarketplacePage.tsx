@@ -115,7 +115,7 @@ const holderVoteOptions: HolderVoteOption[] = [
   {
     id: "partner-listings",
     label: "Partner project listings",
-    detail: "Add early external projects that fit the NODUS agent marketplace vision.",
+    detail: "Add early external projects that fit the NEXA agent marketplace vision.",
   },
   {
     id: "holder-dashboard",
@@ -135,7 +135,7 @@ const holderVoteOptions: HolderVoteOption[] = [
   {
     id: "buyback-transparency",
     label: "Buyback transparency",
-    detail: "A public log that tracks creator rewards used for NODUS buybacks and treasury actions.",
+    detail: "A public log that tracks creator rewards used for NEXA buybacks and treasury actions.",
   },
 ];
 
@@ -313,8 +313,8 @@ export function RyuxMarketplacePage({ holderVotingOnly = false }: { holderVoting
       ) : null}
       <nav className={`nav ${scrolled ? "nav--scrolled" : ""}`} aria-label="Primary navigation">
         <a className="brand" href="/">
-          <Image src="/images/nodus/nodus-logo.png" alt="Nodus Agents" width={28} height={28} />
-          <span>NODUS AGENTS</span>
+          <Image src="/images/nexa/nexa-logo.png" alt="Nexa Agents" width={28} height={28} />
+          <span>NEXA AGENTS</span>
         </a>
         <div className="nav__links">
           <a href="/#platform">Build</a>
@@ -322,7 +322,7 @@ export function RyuxMarketplacePage({ holderVotingOnly = false }: { holderVoting
           <a href="/roadmap">Roadmap</a>
         </div>
         <div className="nav__actions">
-          <a className="social-link" href={ryuxConfig.xUrl} target="_blank" rel="noreferrer" aria-label="NODUS on X">
+          <a className="social-link" href={ryuxConfig.xUrl} target="_blank" rel="noreferrer" aria-label="NEXA on X">
             X
           </a>
           <SpecularButton className="connect" onClick={connectWallet} size="sm" radius={15} shineSize={14} shineFade={46}>
@@ -335,22 +335,22 @@ export function RyuxMarketplacePage({ holderVotingOnly = false }: { holderVoting
       {holderVotingOnly ? (
         <section className="holder-vote-hero">
           <div className="marketplace-demo-mark">
-            <Image src="/images/nodus/nodus-logo.png" alt="" width={42} height={42} />
+            <Image src="/images/nexa/nexa-logo.png" alt="" width={42} height={42} />
           </div>
-          <span className="docs-eyebrow">NODUS HOLDERS</span>
+          <span className="docs-eyebrow">NEXA HOLDERS</span>
           <h1>Holder Voting</h1>
-          <p>Verified NODUS holders decide which product surface gets priority next.</p>
+          <p>Verified NEXA holders decide which product surface gets priority next.</p>
         </section>
       ) : (
         <>
           <section className="marketplace-demo-hero">
             <div className="marketplace-demo-mark">
-              <Image src="/images/nodus/nodus-logo.png" alt="" width={42} height={42} />
+              <Image src="/images/nexa/nexa-logo.png" alt="" width={42} height={42} />
             </div>
-            <span className="docs-eyebrow">THE NODUS COLLECTION</span>
+            <span className="docs-eyebrow">THE NEXA COLLECTION</span>
             <h1>Agent Library</h1>
             <p>
-              Browse a demo catalog of autonomous AI agent projects for the NODUS ecosystem.
+              Browse a demo catalog of autonomous AI agent projects for the NEXA ecosystem.
               Each card is placeholder data for investor previews.
             </p>
 
@@ -369,7 +369,7 @@ export function RyuxMarketplacePage({ holderVotingOnly = false }: { holderVoting
             </label>
           </section>
 
-          <section className="marketplace-demo-library" aria-label="NODUS demo marketplace">
+          <section className="marketplace-demo-library" aria-label="NEXA demo marketplace">
             <div className="marketplace-demo-toolbar">
               <div className="marketplace-demo-tabs">
                 {["All Entries", "Trending", "Recently Added", "Top Valued"].map((tab, index) => (
@@ -427,12 +427,12 @@ export function RyuxMarketplacePage({ holderVotingOnly = false }: { holderVoting
       )}
 
       {holderVotingEnabled ? (
-        <section className="holder-vote-section" aria-label="NODUS holder voting">
+        <section className="holder-vote-section" aria-label="NEXA holder voting">
           <div className="holder-vote-head">
             <span className="docs-eyebrow">HOLDER VOTE</span>
             <h2>Choose what ships next</h2>
             <p>
-              Connect a wallet, sign a vote, and NODUS verifies holder status before saving it.
+              Connect a wallet, sign a vote, and NEXA verifies holder status before saving it.
               One wallet can keep one active vote.
             </p>
           </div>
@@ -483,7 +483,7 @@ export function RyuxMarketplacePage({ holderVotingOnly = false }: { holderVoting
       ) : null}
 
       <footer className="footer docs-footer">
-        <p>&copy; 2026 Nodus Agents Demo</p>
+        <p>&copy; 2026 Nexa Agents Demo</p>
         <div className="footer__links">
           <a href="/">Home</a>
           <a href="/#platform">Build</a>
@@ -499,7 +499,7 @@ export function RyuxMarketplacePage({ holderVotingOnly = false }: { holderVoting
 
 function createVoteMessage(walletAddress: string, optionId: string, optionLabel: string, timestamp: string) {
   return [
-    "NODUS Holder Vote",
+    "NEXA Holder Vote",
     `Wallet: ${walletAddress}`,
     `Option: ${optionLabel}`,
     `Option ID: ${optionId}`,

@@ -393,7 +393,7 @@ export function RyuxMarketplacePage({ holderVotingOnly = false }: { holderVoting
                     </div>
                   </div>
                   <p>{agent.description}</p>
-                  <svg className="marketplace-demo-chart" viewBox="0 0 238 78" role="img" aria-label={`${agent.name} price chart`}>
+                  <svg className={`marketplace-demo-chart ${(live?.change24h ?? 0) >= 0 ? "is-positive" : "is-negative"}`} viewBox="0 0 238 78" role="img" aria-label={`${agent.name} price chart`}>
                     <path d={buildChartPath(live?.chart ?? [])} />
                   </svg>
                   <div className="marketplace-demo-price">

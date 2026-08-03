@@ -1754,33 +1754,54 @@ button {
 
 .marketplace-demo-chart path {
   fill: none;
-  stroke: #d13d36;
   stroke-width: 2;
   stroke-linecap: round;
   stroke-linejoin: round;
 }
 
+.marketplace-demo-chart.is-positive path {
+  stroke: #35d07f;
+}
+
+.marketplace-demo-chart.is-negative path {
+  stroke: #ff5b56;
+}
+
 .marketplace-demo-price {
   display: flex;
   align-items: baseline;
-  gap: 10px;
+  justify-content: space-between;
+  gap: 12px;
+  min-width: 0;
 }
 
 .marketplace-demo-price strong {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
   font-size: 18px;
 }
 
 .marketplace-demo-price span {
-  color: #ff5b56;
+  flex: 0 0 auto;
   font-family: var(--font-display), var(--font-sans), sans-serif;
   font-size: 11px;
+  white-space: nowrap;
+}
+
+.marketplace-demo-price span.is-positive {
+  color: #35d07f;
+}
+
+.marketplace-demo-price span.is-negative {
+  color: #ff5b56;
 }
 
 .marketplace-demo-metrics {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   gap: 30px;
-  margin-top: -16px;
+  margin-top: 18px;
   text-align: right;
 }
 

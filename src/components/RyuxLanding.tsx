@@ -15,7 +15,7 @@ import {
 } from "lucide-react";
 import { getContractLabel, ryuxConfig } from "@/config/ryux";
 import { LightRays } from "@/components/LightRays";
-import { GlareHover } from "@/components/GlareHover";
+import GlareHover from "@/components/GlareHover";
 import { PillNav } from "@/components/PillNav";
 import { SpecularButton } from "@/components/SpecularButton";
 import { useRyuxMotion } from "@/components/useRyuxMotion";
@@ -400,7 +400,7 @@ function Hero({
             className="hero-glare-button"
             width="176px"
             height="52px"
-            background="rgba(255, 255, 255, 0.02)"
+            background="rgba(255, 255, 255, 0.035)"
             borderColor="rgba(255, 255, 255, 0.12)"
             borderRadius="2px"
             glareOpacity={0.3}

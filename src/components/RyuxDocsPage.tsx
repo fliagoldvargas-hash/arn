@@ -4,18 +4,21 @@ import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { Wallet } from "lucide-react";
 import { ryuxConfig } from "@/config/ryux";
+import { LightRays } from "@/components/LightRays";
+import { PillNav } from "@/components/PillNav";
+import { SpecularButton } from "@/components/SpecularButton";
 import { useRyuxMotion } from "@/components/useRyuxMotion";
 
 const processSteps = [
   {
     number: "01",
     title: "Launch a Token",
-    body: "Drop a token on Solana through Pump.fun using the RYUX launchpad. Traders and community show up instantly.",
+    body: "Drop a token on Solana through Pump.fun using the ORBIS launchpad. Traders and community show up instantly.",
   },
   {
     number: "02",
     title: "Pair with AI Infrastructure",
-    body: "Connect the token to AI agent infrastructure. Bring your own setup or buy cloud deployment directly through RYUX.",
+    body: "Connect the token to AI agent infrastructure. Bring your own setup or buy cloud deployment directly through ORBIS.",
   },
   {
     number: "03",
@@ -98,19 +101,32 @@ export function RyuxDocsPage() {
 
   return (
     <main className="docs-shell" ref={pageRef}>
-      <nav className={`nav ${scrolled ? "nav--scrolled" : ""}`} aria-label="Primary navigation">
-        <a className="brand" href="/">
-          <Image src="/images/ryux/ryux-logo.png" alt="RYUX" width={28} height={28} />
-          <span>RYUX</span>
-        </a>
-        <div className="nav__links">
-          <a href="/#platform">Build</a>
-          <a href="/#marketplace">Marketplace</a>
-          <a href="/docs">Docs</a>
-          <a href="/roadmap">Roadmap</a>
-        </div>
-        <div className="nav__actions">
-          <a className="social-link" href={ryuxConfig.xUrl} target="_blank" rel="noreferrer" aria-label="RYUX on X">
+      <div className="light-rays-bg" aria-hidden="true">
+        <LightRays
+          raysOrigin="top-center"
+          raysColor="#00ffff"
+          raysSpeed={1.5}
+          lightSpread={1}
+          rayLength={1.2}
+          saturation={1}
+          followMouse
+          mouseInfluence={0}
+          noiseAmount={0.1}
+          distortion={0.05}
+        />
+      </div>
+      <PillNav
+        logo="/images/orbis/orbis-logo.png"
+        logoAlt="Orbis Agents"
+        activeHref="/docs"
+        items={[
+          { label: "Build", href: "/#platform" },
+          { label: "Marketplace", href: "/marketplace" },
+          { label: "Docs", href: "/docs" },
+          { label: "Roadmap", href: "/roadmap" },
+        ]}
+        rightContent={<div className="nav__actions">
+          <a className="social-link" href={ryuxConfig.xUrl} target="_blank" rel="noreferrer" aria-label="ORBIS on X">
             X
           </a>
           <a
@@ -119,16 +135,16 @@ export function RyuxDocsPage() {
             target={ryuxConfig.pumpFunUrl ? "_blank" : undefined}
             rel={ryuxConfig.pumpFunUrl ? "noreferrer" : undefined}
             aria-disabled={!ryuxConfig.pumpFunUrl}
-            aria-label="RYUX on Pump.fun"
+            aria-label="ORBIS on Pump.fun"
           >
             <Image src="/images/ryux/pumplogo.png" alt="" width={15} height={15} />
           </a>
-          <button className="connect" onClick={connectWallet}>
+          <SpecularButton className="connect" onClick={connectWallet} size="sm" radius={15} shineSize={14} shineFade={46}>
             <Wallet size={13} />
             <span>{walletLabel}</span>
-          </button>
-        </div>
-      </nav>
+          </SpecularButton>
+        </div>}
+      />
 
       <section className="docs-hero">
         <span className="docs-eyebrow">DOCUMENTATION - 2026</span>
@@ -138,19 +154,18 @@ export function RyuxDocsPage() {
         </h1>
         <p>Where builders launch tokenized AI agents and investors back autonomous businesses that make real money on Solana.</p>
         <div className="hero__buttons">
-          <a className="button button--primary" href="/#marketplace">Explore Market</a>
-          <a className="button button--ghost" href="/#platform">Launch Agent</a>
+          <a className="button button--primary" href="/#platform">Launch Agent</a>
         </div>
       </section>
 
-      <DocsSection eyebrow="THE PROBLEM & SOLUTION" title="What is RYUX?">
+      <DocsSection eyebrow="THE PROBLEM & SOLUTION" title="What is Orbis Agents?">
         <div className="docs-two-grid">
           <DocCard label="THE PROBLEM">
             AI agents are going to run the internet. But right now there&apos;s nowhere to launch one as an actual investable
             business and nowhere for investors to find and fund them.
           </DocCard>
           <DocCard label="THE SOLUTION">
-            RYUX connects tokens to AI agent infrastructure, creating <strong>tokenized autonomous agents.</strong> Think
+            ORBIS connects tokens to AI agent infrastructure, creating <strong>tokenized autonomous agents.</strong> Think
             of each one as a digital company that does real work, makes real money, and grows on its own. The token is
             your ownership.
           </DocCard>
@@ -173,7 +188,7 @@ export function RyuxDocsPage() {
 
       <DocsSection eyebrow="CAPABILITIES" title="The Skill Market">
         <p className="docs-lede">
-          Agents buy skills from the RYUX marketplace. These are modular tools that give agents real capabilities and turn
+          Agents buy skills from the ORBIS marketplace. These are modular tools that give agents real capabilities and turn
           tokens into working businesses.
         </p>
         <div className="skill-grid">
@@ -197,7 +212,7 @@ export function RyuxDocsPage() {
         <span className="docs-eyebrow">THE VISION</span>
         <p>
           Software that doesn&apos;t just follow orders. It <strong>runs itself, earns money, and gets better over time.</strong>{" "}
-          RYUX is where these agents get built, funded, and turned into real businesses.
+          ORBIS is where these agents get built, funded, and turned into real businesses.
         </p>
         <div className="vision-metrics">
           <div><strong>Token - Agent</strong><span>EVERY TOKEN BECOMES A BUSINESS</span></div>
@@ -227,15 +242,14 @@ export function RyuxDocsPage() {
       <section className="disclaimer">
         <span className="docs-eyebrow">DISCLAIMER</span>
         <p>
-          RYUX is a platform for launching and discovering AI agent projects. Nothing here is financial advice. Always do
+          ORBIS is a platform for launching and discovering AI agent projects. Nothing here is financial advice. Always do
           your own research. We don&apos;t guarantee the performance or legitimacy of any token launched through the platform.
         </p>
       </section>
 
       <footer className="footer docs-footer">
-        <p>&copy; 2026 RYUX</p>
+        <p>&copy; 2026 Orbis Agents</p>
         <div className="footer__links">
-          <a href="/#marketplace">Marketplace</a>
           <a href="/roadmap">Roadmap</a>
           <a href="/docs">Docs</a>
           <a href={ryuxConfig.xUrl} target="_blank" rel="noreferrer">

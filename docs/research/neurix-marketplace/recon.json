@@ -1,0 +1,1260 @@
+{
+  "title": "Neurix · The Autonomous Agent Protocol",
+  "url": "https://www.neurix.sh/marketplace",
+  "height": 1200,
+  "bodyText": "NEURIX\nBUILD\nMARKETPLACE\nDOCS\nCONNECT\n\nTHE NEURIX COLLECTION\n\nAgent Library\n\nBrowse the catalog of autonomous AI agents deployed on Solana.\nEach entry is a living, on-chain entity.\n\n3\nVOLUMES\n$154.5K\nECOSYSTEM VALUE\n$934\n24H ACTIVITY\n$49.4K\nTOTAL LIQUIDITY\nAll Entries\nTrending\nRecently Added\nTop Valued\nNewest First\nBy Market Cap\nBy Volume\nTop Gainers\nTop Losers\nThesis\n$THESIS\n\nCrypto research and token-thesis social network on Solana.\n\n$0.0000180\n↓ 3.2%\nMCAP\n$18.0K\nVOL\n$110\nBP9Sts…pump\nClawX\n$CLAWX\n\nAutonomous memecoin trading agent. Trades on autopilot, secures 1-5x profits, and redistri…\n\n$0.0000959\n↓ 3.4%\nMCAP\n$95.9K\nVOL\n$565\nBTZCK6…pump\nBlob\n$BLOB\n\nThe future isn't one AI agent. It's billions of them beyond the threshold of AGI. Every pe…\n\n$0.0000412\n↓ 4.0%\nMCAP\n$40.6K\nVOL\n$259\n3GGfDH…pump\nHOME\nLIBRARY\nBUILD\nDOCS\n𝕏\n\n© 2026 NEURIX · SOLANA MAINNET",
+  "elements": [
+    {
+      "tag": "nav",
+      "cls": "v2-nav ",
+      "text": "NeurixBuildMarketplaceDocsConnect",
+      "rect": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 60
+      },
+      "styles": {
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "fontFamily": "\"Plus Jakarta Sans\", sans-serif",
+        "lineHeight": "25.6px",
+        "color": "rgb(255, 255, 255)",
+        "background": "rgba(0, 0, 0, 0.7) none repeat scroll 0% 0% / auto padding-box border-box",
+        "backgroundColor": "rgba(0, 0, 0, 0.7)",
+        "borderRadius": "0px",
+        "padding": "0px 32px",
+        "margin": "0px",
+        "width": "1531.91px",
+        "height": "63.996px",
+        "display": "flex",
+        "position": "fixed",
+        "top": "0px",
+        "left": "0px",
+        "right": "0px",
+        "bottom": "1212.6px",
+        "opacity": "1",
+        "transition": "0.4s cubic-bezier(0.4, 0, 0.2, 1)"
+      }
+    },
+    {
+      "tag": "a",
+      "cls": "",
+      "text": "Neurix",
+      "rect": {
+        "x": 30,
+        "y": 16,
+        "width": 86,
+        "height": 26
+      },
+      "styles": {
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "fontFamily": "\"Plus Jakarta Sans\", sans-serif",
+        "lineHeight": "25.6px",
+        "color": "rgb(255, 255, 255)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "border": "0px none rgb(255, 255, 255)",
+        "borderRadius": "0px",
+        "padding": "0px",
+        "margin": "0px",
+        "width": "91.2234px",
+        "height": "27.992px",
+        "display": "flex",
+        "gap": "12px",
+        "position": "static",
+        "opacity": "1",
+        "transition": "all"
+      }
+    },
+    {
+      "tag": "a",
+      "cls": "v2-nav-link",
+      "text": "Build",
+      "rect": {
+        "x": 581,
+        "y": 13,
+        "width": 39,
+        "height": 33
+      },
+      "styles": {
+        "fontSize": "12px",
+        "fontWeight": "400",
+        "fontFamily": "Lora, Georgia, serif",
+        "lineHeight": "19.2px",
+        "letterSpacing": "1.2px",
+        "color": "rgba(255, 255, 255, 0.8)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "border": "0px none rgba(255, 255, 255, 0.8)",
+        "borderRadius": "0px",
+        "padding": "8px 0px",
+        "margin": "0px",
+        "width": "41.107px",
+        "height": "35.1895px",
+        "display": "block",
+        "position": "relative",
+        "top": "0px",
+        "left": "0px",
+        "right": "0px",
+        "bottom": "0px",
+        "opacity": "1",
+        "transition": "color 0.3s"
+      }
+    },
+    {
+      "tag": "a",
+      "cls": "v2-nav-link",
+      "text": "Marketplace",
+      "rect": {
+        "x": 650,
+        "y": 13,
+        "width": 93,
+        "height": 33
+      },
+      "styles": {
+        "fontSize": "12px",
+        "fontWeight": "400",
+        "fontFamily": "Lora, Georgia, serif",
+        "lineHeight": "19.2px",
+        "letterSpacing": "1.2px",
+        "color": "rgba(255, 255, 255, 0.8)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "border": "0px none rgba(255, 255, 255, 0.8)",
+        "borderRadius": "0px",
+        "padding": "8px 0px",
+        "margin": "0px",
+        "width": "99.385px",
+        "height": "35.1895px",
+        "display": "block",
+        "position": "relative",
+        "top": "0px",
+        "left": "0px",
+        "right": "0px",
+        "bottom": "0px",
+        "opacity": "1",
+        "transition": "color 0.3s"
+      }
+    },
+    {
+      "tag": "a",
+      "cls": "v2-nav-link",
+      "text": "Docs",
+      "rect": {
+        "x": 773,
+        "y": 13,
+        "width": 36,
+        "height": 33
+      },
+      "styles": {
+        "fontSize": "12px",
+        "fontWeight": "400",
+        "fontFamily": "Lora, Georgia, serif",
+        "lineHeight": "19.2px",
+        "letterSpacing": "1.2px",
+        "color": "rgba(255, 255, 255, 0.8)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "border": "0px none rgba(255, 255, 255, 0.8)",
+        "borderRadius": "0px",
+        "padding": "8px 0px",
+        "margin": "0px",
+        "width": "37.7826px",
+        "height": "35.1895px",
+        "display": "block",
+        "position": "relative",
+        "top": "0px",
+        "left": "0px",
+        "right": "0px",
+        "bottom": "0px",
+        "opacity": "1",
+        "transition": "color 0.3s"
+      }
+    },
+    {
+      "tag": "button",
+      "cls": "",
+      "text": "",
+      "rect": {
+        "x": 1274,
+        "y": 15,
+        "width": 28,
+        "height": 28
+      },
+      "styles": {
+        "fontSize": "13.3333px",
+        "fontWeight": "400",
+        "fontFamily": "Arial",
+        "color": "rgba(255, 255, 255, 0.6)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "border": "1.06383px solid rgba(255, 255, 255, 0.12)",
+        "borderRadius": "0px",
+        "padding": "0px",
+        "margin": "0px",
+        "width": "29.9867px",
+        "height": "29.9867px",
+        "display": "flex",
+        "position": "static",
+        "opacity": "1",
+        "transition": "0.3s"
+      }
+    },
+    {
+      "tag": "button",
+      "cls": "v2-nav-links-desktop",
+      "text": "Connect",
+      "rect": {
+        "x": 1317,
+        "y": 15,
+        "width": 93,
+        "height": 29
+      },
+      "styles": {
+        "fontSize": "10px",
+        "fontWeight": "400",
+        "fontFamily": "Lora, Georgia, serif",
+        "letterSpacing": "1.2px",
+        "color": "rgba(255, 255, 255, 0.75)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "border": "1.06383px solid rgba(255, 255, 255, 0.15)",
+        "borderRadius": "0px",
+        "padding": "8px 20px",
+        "margin": "0px",
+        "width": "98.4043px",
+        "height": "30.8843px",
+        "display": "flex",
+        "gap": "32px",
+        "position": "static",
+        "opacity": "1",
+        "transition": "0.3s"
+      }
+    },
+    {
+      "tag": "main",
+      "cls": "jsx-90a073f451d411bc lib-main",
+      "text": "The Neurix CollectionAgent LibraryBrowse the catalog of autonomous AI agents deployed on Solana.Each entry is a living, on-chain entity.3Volumes$154.5KEcosystem Value$93424h Activity$49.4KTotal LiquidityAll EntriesTrendingRecently AddedTop ValuedNewest FirstBy Market CapBy VolumeTop GainersTop LosersThesis$THESISCrypto research and token-thesis social network on Solana.$0.0000180↓ 3.2%MCap$18.0KVol$110BP9Sts…pumpClawX$CLAWXAutonomous memecoin trading agent. Trades on autopilot, secures 1-5x profits, and redistri…$0.0000959↓ 3.4%MCap$95.9KVol$565BTZCK6…pumpBlob$BLOBThe future isn't one AI agent. It's billions of them beyond the threshold of AGI. Every pe…$0.0000412↓ 4.0%MCap$40.6KVol$2593GGfD",
+      "rect": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 1183
+      },
+      "styles": {
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "fontFamily": "\"Plus Jakarta Sans\", sans-serif",
+        "lineHeight": "25.6px",
+        "color": "rgb(255, 255, 255)",
+        "background": "rgb(0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "backgroundColor": "rgb(0, 0, 0)",
+        "border": "0px none rgb(255, 255, 255)",
+        "borderRadius": "0px",
+        "padding": "0px",
+        "margin": "0px",
+        "width": "1531.91px",
+        "height": "1258.26px",
+        "display": "block",
+        "position": "static",
+        "opacity": "1",
+        "transition": "all"
+      }
+    },
+    {
+      "tag": "header",
+      "cls": "jsx-90a073f451d411bc lib-header",
+      "text": "The Neurix CollectionAgent LibraryBrowse the catalog of autonomous AI agents deployed on Solana.Each entry is a living, on-chain entity.3Volumes$154.5KEcosystem Value$93424h Activity$49.4KTotal Liquidity",
+      "rect": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 492
+      },
+      "styles": {
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "fontFamily": "\"Plus Jakarta Sans\", sans-serif",
+        "lineHeight": "25.6px",
+        "color": "rgb(255, 255, 255)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "border": "0px none rgb(255, 255, 255)",
+        "borderRadius": "0px",
+        "padding": "160px 32px 0px",
+        "margin": "0px",
+        "width": "1531.91px",
+        "height": "523.587px",
+        "display": "block",
+        "position": "static",
+        "opacity": "1",
+        "transition": "all"
+      }
+    },
+    {
+      "tag": "p",
+      "cls": "jsx-90a073f451d411bc lib-overline",
+      "text": "The Neurix Collection",
+      "rect": {
+        "x": 400,
+        "y": 178,
+        "width": 639,
+        "height": 15
+      },
+      "styles": {
+        "fontSize": "10px",
+        "fontWeight": "600",
+        "fontFamily": "\"Space Grotesk\", sans-serif",
+        "lineHeight": "16px",
+        "letterSpacing": "2.5px",
+        "color": "rgba(255, 255, 255, 0.4)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "border": "0px none rgba(255, 255, 255, 0.4)",
+        "borderRadius": "0px",
+        "padding": "0px",
+        "margin": "0px 0px 16px",
+        "width": "679.987px",
+        "height": "16.0073px",
+        "display": "block",
+        "position": "static",
+        "opacity": "1",
+        "transition": "all"
+      }
+    },
+    {
+      "tag": "h1",
+      "cls": "jsx-90a073f451d411bc lib-title",
+      "text": "Agent Library",
+      "rect": {
+        "x": 400,
+        "y": 208,
+        "width": 639,
+        "height": 66
+      },
+      "styles": {
+        "fontSize": "64px",
+        "fontWeight": "400",
+        "fontFamily": "Lora, Georgia, serif",
+        "lineHeight": "70.4px",
+        "letterSpacing": "-1.28px",
+        "color": "rgba(255, 255, 255, 0.95)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "border": "0px none rgba(255, 255, 255, 0.95)",
+        "borderRadius": "0px",
+        "padding": "0px",
+        "margin": "0px 0px 20px",
+        "width": "679.987px",
+        "height": "70.3956px",
+        "display": "block",
+        "position": "static",
+        "opacity": "1",
+        "transition": "all"
+      }
+    },
+    {
+      "tag": "p",
+      "cls": "jsx-90a073f451d411bc lib-subtitle",
+      "text": "Browse the catalog of autonomous AI agents deployed on Solana.Each entry is a living, on-chain entity.",
+      "rect": {
+        "x": 400,
+        "y": 293,
+        "width": 639,
+        "height": 51
+      },
+      "styles": {
+        "fontSize": "15px",
+        "fontWeight": "400",
+        "fontFamily": "Lora, Georgia, serif",
+        "lineHeight": "27px",
+        "color": "rgba(255, 255, 255, 0.45)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "border": "0px none rgba(255, 255, 255, 0.45)",
+        "borderRadius": "0px",
+        "padding": "0px",
+        "margin": "0px 0px 28px",
+        "width": "679.987px",
+        "height": "53.9561px",
+        "display": "block",
+        "position": "static",
+        "opacity": "1",
+        "transition": "all"
+      }
+    },
+    {
+      "tag": "section",
+      "cls": "jsx-90a073f451d411bc lib-controls",
+      "text": "All EntriesTrendingRecently AddedTop ValuedNewest FirstBy Market CapBy VolumeTop GainersTop Losers",
+      "rect": {
+        "x": 0,
+        "y": 492,
+        "width": 1440,
+        "height": 159
+      },
+      "styles": {
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "fontFamily": "\"Plus Jakarta Sans\", sans-serif",
+        "lineHeight": "25.6px",
+        "color": "rgb(255, 255, 255)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "border": "0px none rgb(255, 255, 255)",
+        "borderRadius": "0px",
+        "padding": "48px 32px 0px",
+        "margin": "0px",
+        "width": "1531.91px",
+        "height": "169.182px",
+        "display": "block",
+        "position": "static",
+        "opacity": "1",
+        "transition": "all"
+      }
+    },
+    {
+      "tag": "button",
+      "cls": "jsx-90a073f451d411bc lib-tab active",
+      "text": "All Entries",
+      "rect": {
+        "x": 203,
+        "y": 614,
+        "width": 98,
+        "height": 38
+      },
+      "styles": {
+        "fontSize": "12px",
+        "fontWeight": "400",
+        "fontFamily": "Lora, Georgia, serif",
+        "letterSpacing": "0.72px",
+        "color": "rgba(255, 255, 255, 0.95)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0px 0px / auto padding-box border-box",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "borderRadius": "0px",
+        "padding": "12px 20px",
+        "margin": "0px",
+        "width": "104.305px",
+        "height": "39.9269px",
+        "display": "block",
+        "position": "relative",
+        "top": "1px",
+        "left": "0px",
+        "right": "0px",
+        "bottom": "-1px",
+        "opacity": "1",
+        "transition": "0.3s"
+      }
+    },
+    {
+      "tag": "button",
+      "cls": "jsx-90a073f451d411bc lib-tab ",
+      "text": "Trending",
+      "rect": {
+        "x": 301,
+        "y": 614,
+        "width": 91,
+        "height": 38
+      },
+      "styles": {
+        "fontSize": "12px",
+        "fontWeight": "400",
+        "fontFamily": "Lora, Georgia, serif",
+        "letterSpacing": "0.72px",
+        "color": "rgba(255, 255, 255, 0.35)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0px 0px / auto padding-box border-box",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "borderRadius": "0px",
+        "padding": "12px 20px",
+        "margin": "0px",
+        "width": "96.8251px",
+        "height": "39.9269px",
+        "display": "block",
+        "position": "relative",
+        "top": "1px",
+        "left": "0px",
+        "right": "0px",
+        "bottom": "-1px",
+        "opacity": "1",
+        "transition": "0.3s"
+      }
+    },
+    {
+      "tag": "button",
+      "cls": "jsx-90a073f451d411bc lib-tab ",
+      "text": "Recently Added",
+      "rect": {
+        "x": 392,
+        "y": 614,
+        "width": 129,
+        "height": 38
+      },
+      "styles": {
+        "fontSize": "12px",
+        "fontWeight": "400",
+        "fontFamily": "Lora, Georgia, serif",
+        "letterSpacing": "0.72px",
+        "color": "rgba(255, 255, 255, 0.35)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0px 0px / auto padding-box border-box",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "borderRadius": "0px",
+        "padding": "12px 20px",
+        "margin": "0px",
+        "width": "137.317px",
+        "height": "39.9269px",
+        "display": "block",
+        "position": "relative",
+        "top": "1px",
+        "left": "0px",
+        "right": "0px",
+        "bottom": "-1px",
+        "opacity": "1",
+        "transition": "0.3s"
+      }
+    },
+    {
+      "tag": "button",
+      "cls": "jsx-90a073f451d411bc lib-tab ",
+      "text": "Top Valued",
+      "rect": {
+        "x": 521,
+        "y": 614,
+        "width": 102,
+        "height": 38
+      },
+      "styles": {
+        "fontSize": "12px",
+        "fontWeight": "400",
+        "fontFamily": "Lora, Georgia, serif",
+        "letterSpacing": "0.72px",
+        "color": "rgba(255, 255, 255, 0.35)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0px 0px / auto padding-box border-box",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "borderRadius": "0px",
+        "padding": "12px 20px",
+        "margin": "0px",
+        "width": "108.91px",
+        "height": "39.9269px",
+        "display": "block",
+        "position": "relative",
+        "top": "1px",
+        "left": "0px",
+        "right": "0px",
+        "bottom": "-1px",
+        "opacity": "1",
+        "transition": "0.3s"
+      }
+    },
+    {
+      "tag": "section",
+      "cls": "jsx-90a073f451d411bc lib-shelf",
+      "text": "Thesis$THESISCrypto research and token-thesis social network on Solana.$0.0000180↓ 3.2%MCap$18.0KVol$110BP9Sts…pumpClawX$CLAWXAutonomous memecoin trading agent. Trades on autopilot, secures 1-5x profits, and redistri…$0.0000959↓ 3.4%MCap$95.9KVol$565BTZCK6…pumpBlob$BLOBThe future isn't one AI agent. It's billions of them beyond the threshold of AGI. Every pe…$0.0000412↓ 4.0%MCap$40.6KVol$2593GGfDH…pump",
+      "rect": {
+        "x": 0,
+        "y": 651,
+        "width": 1440,
+        "height": 349
+      },
+      "styles": {
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "fontFamily": "\"Plus Jakarta Sans\", sans-serif",
+        "lineHeight": "25.6px",
+        "color": "rgb(255, 255, 255)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "border": "0px none rgb(255, 255, 255)",
+        "borderRadius": "0px",
+        "padding": "48px 32px 0px",
+        "margin": "0px",
+        "width": "1531.91px",
+        "height": "370.844px",
+        "display": "block",
+        "position": "static",
+        "opacity": "1",
+        "transition": "all"
+      }
+    },
+    {
+      "tag": "h3",
+      "cls": "jsx-90a073f451d411bc lib-volume-name",
+      "text": "Thesis",
+      "rect": {
+        "x": 292,
+        "y": 724,
+        "width": 213,
+        "height": 20
+      },
+      "styles": {
+        "fontSize": "18px",
+        "fontWeight": "500",
+        "fontFamily": "Lora, Georgia, serif",
+        "lineHeight": "21.6px",
+        "letterSpacing": "-0.18px",
+        "color": "rgba(255, 255, 255, 0.95)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "border": "0px none rgba(255, 255, 255, 0.95)",
+        "borderRadius": "0px",
+        "padding": "0px",
+        "margin": "0px",
+        "width": "226.562px",
+        "height": "21.5924px",
+        "display": "block",
+        "position": "static",
+        "opacity": "1",
+        "transition": "all"
+      }
+    },
+    {
+      "tag": "p",
+      "cls": "jsx-90a073f451d411bc lib-volume-desc",
+      "text": "Crypto research and token-thesis social network on Solana.",
+      "rect": {
+        "x": 238,
+        "y": 781,
+        "width": 267,
+        "height": 42
+      },
+      "styles": {
+        "fontSize": "13px",
+        "fontWeight": "400",
+        "fontFamily": "Lora, Georgia, serif",
+        "lineHeight": "22.1px",
+        "color": "rgba(255, 255, 255, 0.35)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "border": "0px none rgba(255, 255, 255, 0.35)",
+        "borderRadius": "0px",
+        "padding": "0px",
+        "margin": "0px 0px 16px",
+        "width": "284.558px",
+        "height": "44.1822px",
+        "display": "block",
+        "position": "static",
+        "opacity": "1",
+        "transition": "all"
+      }
+    },
+    {
+      "tag": "button",
+      "cls": "jsx-90a073f451d411bc lib-volume-ca",
+      "text": "BP9Sts…pump",
+      "rect": {
+        "x": 238,
+        "y": 965,
+        "width": 67,
+        "height": 12
+      },
+      "styles": {
+        "fontSize": "10px",
+        "fontWeight": "400",
+        "fontFamily": "\"Space Grotesk\", monospace",
+        "letterSpacing": "0.3px",
+        "color": "rgba(255, 255, 255, 0.2)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0px 0px / auto padding-box border-box",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "border": "0px none rgba(255, 255, 255, 0.2)",
+        "borderRadius": "0px",
+        "padding": "0px",
+        "margin": "0px",
+        "width": "71.393px",
+        "height": "12.766px",
+        "display": "block",
+        "position": "static",
+        "opacity": "1",
+        "transition": "color 0.2s"
+      }
+    },
+    {
+      "tag": "button",
+      "cls": "jsx-90a073f451d411bc lib-volume-share",
+      "text": "",
+      "rect": {
+        "x": 487,
+        "y": 961,
+        "width": 19,
+        "height": 19
+      },
+      "styles": {
+        "fontSize": "13.3333px",
+        "fontWeight": "400",
+        "fontFamily": "Arial",
+        "color": "rgba(255, 255, 255, 0.15)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0px 0px / auto padding-box border-box",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "border": "0px none rgba(255, 255, 255, 0.15)",
+        "borderRadius": "0px",
+        "padding": "4px",
+        "margin": "0px",
+        "width": "19.9634px",
+        "height": "19.9634px",
+        "display": "flex",
+        "position": "static",
+        "opacity": "1",
+        "transition": "color 0.2s"
+      }
+    },
+    {
+      "tag": "h3",
+      "cls": "jsx-90a073f451d411bc lib-volume-name",
+      "text": "ClawX",
+      "rect": {
+        "x": 645,
+        "y": 724,
+        "width": 213,
+        "height": 20
+      },
+      "styles": {
+        "fontSize": "18px",
+        "fontWeight": "500",
+        "fontFamily": "Lora, Georgia, serif",
+        "lineHeight": "21.6px",
+        "letterSpacing": "-0.18px",
+        "color": "rgba(255, 255, 255, 0.95)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "border": "0px none rgba(255, 255, 255, 0.95)",
+        "borderRadius": "0px",
+        "padding": "0px",
+        "margin": "0px",
+        "width": "226.579px",
+        "height": "21.5924px",
+        "display": "block",
+        "position": "static",
+        "opacity": "1",
+        "transition": "all"
+      }
+    },
+    {
+      "tag": "p",
+      "cls": "jsx-90a073f451d411bc lib-volume-desc",
+      "text": "Autonomous memecoin trading agent. Trades on autopilot, secures 1-5x profits, and redistri…",
+      "rect": {
+        "x": 590,
+        "y": 781,
+        "width": 268,
+        "height": 42
+      },
+      "styles": {
+        "fontSize": "13px",
+        "fontWeight": "400",
+        "fontFamily": "Lora, Georgia, serif",
+        "lineHeight": "22.1px",
+        "color": "rgba(255, 255, 255, 0.35)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "border": "0px none rgba(255, 255, 255, 0.35)",
+        "borderRadius": "0px",
+        "padding": "0px",
+        "margin": "0px 0px 16px",
+        "width": "284.574px",
+        "height": "44.1822px",
+        "display": "block",
+        "position": "static",
+        "opacity": "1",
+        "transition": "all"
+      }
+    },
+    {
+      "tag": "button",
+      "cls": "jsx-90a073f451d411bc lib-volume-ca",
+      "text": "BTZCK6…pump",
+      "rect": {
+        "x": 590,
+        "y": 965,
+        "width": 68,
+        "height": 12
+      },
+      "styles": {
+        "fontSize": "10px",
+        "fontWeight": "400",
+        "fontFamily": "\"Space Grotesk\", monospace",
+        "letterSpacing": "0.3px",
+        "color": "rgba(255, 255, 255, 0.2)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0px 0px / auto padding-box border-box",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "border": "0px none rgba(255, 255, 255, 0.2)",
+        "borderRadius": "0px",
+        "padding": "0px",
+        "margin": "0px",
+        "width": "72.4568px",
+        "height": "12.766px",
+        "display": "block",
+        "position": "static",
+        "opacity": "1",
+        "transition": "color 0.2s"
+      }
+    },
+    {
+      "tag": "button",
+      "cls": "jsx-90a073f451d411bc lib-volume-share",
+      "text": "",
+      "rect": {
+        "x": 839,
+        "y": 961,
+        "width": 19,
+        "height": 19
+      },
+      "styles": {
+        "fontSize": "13.3333px",
+        "fontWeight": "400",
+        "fontFamily": "Arial",
+        "color": "rgba(255, 255, 255, 0.15)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0px 0px / auto padding-box border-box",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "border": "0px none rgba(255, 255, 255, 0.15)",
+        "borderRadius": "0px",
+        "padding": "4px",
+        "margin": "0px",
+        "width": "19.9634px",
+        "height": "19.9634px",
+        "display": "flex",
+        "position": "static",
+        "opacity": "1",
+        "transition": "color 0.2s"
+      }
+    },
+    {
+      "tag": "h3",
+      "cls": "jsx-90a073f451d411bc lib-volume-name",
+      "text": "Blob",
+      "rect": {
+        "x": 997,
+        "y": 724,
+        "width": 213,
+        "height": 20
+      },
+      "styles": {
+        "fontSize": "18px",
+        "fontWeight": "500",
+        "fontFamily": "Lora, Georgia, serif",
+        "lineHeight": "21.6px",
+        "letterSpacing": "-0.18px",
+        "color": "rgba(255, 255, 255, 0.95)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "border": "0px none rgba(255, 255, 255, 0.95)",
+        "borderRadius": "0px",
+        "padding": "0px",
+        "margin": "0px",
+        "width": "226.562px",
+        "height": "21.5924px",
+        "display": "block",
+        "position": "static",
+        "opacity": "1",
+        "transition": "all"
+      }
+    },
+    {
+      "tag": "p",
+      "cls": "jsx-90a073f451d411bc lib-volume-desc",
+      "text": "The future isn't one AI agent. It's billions of them beyond the threshold of AGI. Every pe…",
+      "rect": {
+        "x": 942,
+        "y": 781,
+        "width": 267,
+        "height": 42
+      },
+      "styles": {
+        "fontSize": "13px",
+        "fontWeight": "400",
+        "fontFamily": "Lora, Georgia, serif",
+        "lineHeight": "22.1px",
+        "color": "rgba(255, 255, 255, 0.35)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "border": "0px none rgba(255, 255, 255, 0.35)",
+        "borderRadius": "0px",
+        "padding": "0px",
+        "margin": "0px 0px 16px",
+        "width": "284.558px",
+        "height": "44.1822px",
+        "display": "block",
+        "position": "static",
+        "opacity": "1",
+        "transition": "all"
+      }
+    },
+    {
+      "tag": "button",
+      "cls": "jsx-90a073f451d411bc lib-volume-ca",
+      "text": "3GGfDH…pump",
+      "rect": {
+        "x": 942,
+        "y": 965,
+        "width": 68,
+        "height": 12
+      },
+      "styles": {
+        "fontSize": "10px",
+        "fontWeight": "400",
+        "fontFamily": "\"Space Grotesk\", monospace",
+        "letterSpacing": "0.3px",
+        "color": "rgba(255, 255, 255, 0.2)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0px 0px / auto padding-box border-box",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "border": "0px none rgba(255, 255, 255, 0.2)",
+        "borderRadius": "0px",
+        "padding": "0px",
+        "margin": "0px",
+        "width": "72.4568px",
+        "height": "12.766px",
+        "display": "block",
+        "position": "static",
+        "opacity": "1",
+        "transition": "color 0.2s"
+      }
+    },
+    {
+      "tag": "button",
+      "cls": "jsx-90a073f451d411bc lib-volume-share",
+      "text": "",
+      "rect": {
+        "x": 1191,
+        "y": 961,
+        "width": 19,
+        "height": 19
+      },
+      "styles": {
+        "fontSize": "13.3333px",
+        "fontWeight": "400",
+        "fontFamily": "Arial",
+        "color": "rgba(255, 255, 255, 0.15)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0px 0px / auto padding-box border-box",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "border": "0px none rgba(255, 255, 255, 0.15)",
+        "borderRadius": "0px",
+        "padding": "4px",
+        "margin": "0px",
+        "width": "19.9634px",
+        "height": "19.9634px",
+        "display": "flex",
+        "position": "static",
+        "opacity": "1",
+        "transition": "color 0.2s"
+      }
+    },
+    {
+      "tag": "footer",
+      "cls": "jsx-90a073f451d411bc v2-footer",
+      "text": "HomeLibraryBuildDocs𝕏© 2026 Neurix · Solana Mainnet",
+      "rect": {
+        "x": 0,
+        "y": 1075,
+        "width": 1440,
+        "height": 108
+      },
+      "styles": {
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "fontFamily": "\"Plus Jakarta Sans\", sans-serif",
+        "lineHeight": "25.6px",
+        "color": "rgb(255, 255, 255)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "borderRadius": "0px",
+        "padding": "32px 0px",
+        "margin": "80px 0px 0px",
+        "width": "1531.91px",
+        "height": "114.661px",
+        "display": "block",
+        "position": "static",
+        "opacity": "1",
+        "transition": "all"
+      }
+    },
+    {
+      "tag": "a",
+      "cls": "v2-footer-link",
+      "text": "Home",
+      "rect": {
+        "x": 596,
+        "y": 1106,
+        "width": 35,
+        "height": 17
+      },
+      "styles": {
+        "fontSize": "11px",
+        "fontWeight": "400",
+        "fontFamily": "Lora, Georgia, serif",
+        "lineHeight": "17.6px",
+        "letterSpacing": "1.1px",
+        "color": "rgba(255, 255, 255, 0.5)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "border": "0px none rgba(255, 255, 255, 0.5)",
+        "borderRadius": "0px",
+        "padding": "0px",
+        "margin": "0px",
+        "width": "37.3836px",
+        "height": "17.6031px",
+        "display": "block",
+        "position": "static",
+        "opacity": "1",
+        "transition": "color 0.3s"
+      }
+    },
+    {
+      "tag": "a",
+      "cls": "v2-footer-link",
+      "text": "Library",
+      "rect": {
+        "x": 654,
+        "y": 1106,
+        "width": 47,
+        "height": 17
+      },
+      "styles": {
+        "fontSize": "11px",
+        "fontWeight": "400",
+        "fontFamily": "Lora, Georgia, serif",
+        "lineHeight": "17.6px",
+        "letterSpacing": "1.1px",
+        "color": "rgba(255, 255, 255, 0.5)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "border": "0px none rgba(255, 255, 255, 0.5)",
+        "borderRadius": "0px",
+        "padding": "0px",
+        "margin": "0px",
+        "width": "50.266px",
+        "height": "17.6031px",
+        "display": "block",
+        "position": "static",
+        "opacity": "1",
+        "transition": "color 0.3s"
+      }
+    },
+    {
+      "tag": "a",
+      "cls": "v2-footer-link",
+      "text": "Build",
+      "rect": {
+        "x": 724,
+        "y": 1106,
+        "width": 35,
+        "height": 17
+      },
+      "styles": {
+        "fontSize": "11px",
+        "fontWeight": "400",
+        "fontFamily": "Lora, Georgia, serif",
+        "lineHeight": "17.6px",
+        "letterSpacing": "1.1px",
+        "color": "rgba(255, 255, 255, 0.5)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "border": "0px none rgba(255, 255, 255, 0.5)",
+        "borderRadius": "0px",
+        "padding": "0px",
+        "margin": "0px",
+        "width": "37.4169px",
+        "height": "17.6031px",
+        "display": "block",
+        "position": "static",
+        "opacity": "1",
+        "transition": "color 0.3s"
+      }
+    },
+    {
+      "tag": "a",
+      "cls": "v2-footer-link",
+      "text": "Docs",
+      "rect": {
+        "x": 781,
+        "y": 1106,
+        "width": 32,
+        "height": 17
+      },
+      "styles": {
+        "fontSize": "11px",
+        "fontWeight": "400",
+        "fontFamily": "Lora, Georgia, serif",
+        "lineHeight": "17.6px",
+        "letterSpacing": "1.1px",
+        "color": "rgba(255, 255, 255, 0.5)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "border": "0px none rgba(255, 255, 255, 0.5)",
+        "borderRadius": "0px",
+        "padding": "0px",
+        "margin": "0px",
+        "width": "34.1922px",
+        "height": "17.6031px",
+        "display": "block",
+        "position": "static",
+        "opacity": "1",
+        "transition": "color 0.3s"
+      }
+    },
+    {
+      "tag": "a",
+      "cls": "jsx-90a073f451d411bc v2-footer-link",
+      "text": "𝕏",
+      "rect": {
+        "x": 836,
+        "y": 1106,
+        "width": 8,
+        "height": 17
+      },
+      "styles": {
+        "fontSize": "11px",
+        "fontWeight": "400",
+        "fontFamily": "Lora, Georgia, serif",
+        "lineHeight": "17.6px",
+        "letterSpacing": "1.1px",
+        "color": "rgba(255, 255, 255, 0.5)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "border": "0px none rgba(255, 255, 255, 0.5)",
+        "borderRadius": "0px",
+        "padding": "0px",
+        "margin": "0px",
+        "width": "8.5605px",
+        "height": "17.6031px",
+        "display": "block",
+        "position": "static",
+        "opacity": "1",
+        "transition": "color 0.3s"
+      }
+    },
+    {
+      "tag": "p",
+      "cls": "jsx-90a073f451d411bc",
+      "text": "© 2026 Neurix · Solana Mainnet",
+      "rect": {
+        "x": 0,
+        "y": 1138,
+        "width": 1440,
+        "height": 15
+      },
+      "styles": {
+        "fontSize": "10px",
+        "fontWeight": "400",
+        "fontFamily": "Lora, Georgia, serif",
+        "lineHeight": "16px",
+        "letterSpacing": "1.2px",
+        "color": "rgba(255, 255, 255, 0.12)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "border": "0px none rgba(255, 255, 255, 0.12)",
+        "borderRadius": "0px",
+        "padding": "0px",
+        "margin": "16px 0px 0px",
+        "width": "1531.91px",
+        "height": "16.0073px",
+        "display": "block",
+        "position": "static",
+        "opacity": "1",
+        "transition": "all"
+      }
+    }
+  ],
+  "images": [
+    {
+      "src": "https://www.neurix.sh/logo.png",
+      "alt": "",
+      "width": 546,
+      "height": 338
+    },
+    {
+      "src": "https://www.neurix.sh/neurix-new-logo.jpg",
+      "alt": "Neurix",
+      "width": 1024,
+      "height": 1024
+    },
+    {
+      "src": "https://cdn.dexscreener.com/cms/images/hlcOvu83G6kFi1Hw?width=800&height=800&quality=95&format=auto",
+      "alt": "",
+      "width": 800,
+      "height": 800
+    },
+    {
+      "src": "https://www.neurix.sh/clawx-logo.png",
+      "alt": "",
+      "width": 500,
+      "height": 500
+    },
+    {
+      "src": "https://cdn.dexscreener.com/cms/images/DIX3YiWV1KUDL8p_?width=800&height=800&quality=95&format=auto",
+      "alt": "",
+      "width": 800,
+      "height": 800
+    }
+  ],
+  "svgs": [
+    {
+      "text": "<svg width=\"13\" height=\"13\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"4\"></circle><path d=\"M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41\"></path></svg>",
+      "parentText": ""
+    },
+    {
+      "text": "<svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" class=\"jsx-90a073f451d411bc lib-search-icon\"><circle cx=\"11\" cy=\"11\" r=\"8\" class=\"jsx-90a073f451d411bc\"></circle><line x1=\"21\" y1=\"21\" x2=\"16.65\" y2=\"16.65\" class=\"jsx-90a073f451d411bc\"></line></svg>",
+      "parentText": ""
+    },
+    {
+      "text": "<svg width=\"240\" height=\"48\" viewBox=\"0 0 240 48\" style=\"display: block;\"><defs><linearGradient id=\"rsl-eqlfas-area\" x1=\"0\" y1=\"0\" x2=\"0\" y2=\"1\"><stop offset=\"0%\" stop-color=\"#ef4444\" stop-opacity=\"0.18\"></stop><stop offset=\"50%\" stop-color=\"#ef4444\" stop-opacity=\"0.06\"></stop><stop offset=\"100%\" stop-color=\"#ef4444\" stop-opacity=\"0\"></stop></linearGradient></defs><path d=\"M0,7.4254569185802755 C0.3380281690140845,6.882911226722248 2.704225352112676,1.6617237302272183 3.380281690140845,2 C4.056338028169014,2.3382762697727815 6.084507042253521,9.851541852715409 6.76056338028169,10.808219616308092 C7.436619718309859,11.764897379900775 9.464788732394368,10.878184332505338 10.140845070422536,11.566777635926826 C10.816901408450704,12.255370939348314 12.84507042253521,17.17635206234619 13.52112676056338,17.694152650522966 C14.19718309859155,18.211953238699742 16.22535211267606,16.62776981217462 16.901408450704228,16.744783517694593 C17.577464788732396,16.861797223214566 19.605633802816904,18.71185424072916 20.281690140845072,18.864289705722697 C20.95774647887324,19.016725170716235 22.985915492957744,18.573452816845684 23.661971830985912,18.26913816762998 C24.33802816901408,17.96482351841",
+      "parentText": ""
+    },
+    {
+      "text": "<svg width=\"12\" height=\"12\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" class=\"jsx-90a073f451d411bc\"><circle cx=\"18\" cy=\"5\" r=\"3\" class=\"jsx-90a073f451d411bc\"></circle><circle cx=\"6\" cy=\"12\" r=\"3\" class=\"jsx-90a073f451d411bc\"></circle><circle cx=\"18\" cy=\"19\" r=\"3\" class=\"jsx-90a073f451d411bc\"></circle><line x1=\"8.59\" y1=\"13.51\" x2=\"15.42\" y2=\"17.49\" class=\"jsx-90a073f451d411bc\"></line><line x1=\"15.41\" y1=\"6.51\" x2=\"8.59\" y2=\"10.49\" class=\"jsx-90a073f451d411bc\"></line></svg>",
+      "parentText": ""
+    },
+    {
+      "text": "<svg width=\"240\" height=\"48\" viewBox=\"0 0 240 48\" style=\"display: block;\"><defs><linearGradient id=\"rsl-41yhip-area\" x1=\"0\" y1=\"0\" x2=\"0\" y2=\"1\"><stop offset=\"0%\" stop-color=\"#ef4444\" stop-opacity=\"0.18\"></stop><stop offset=\"50%\" stop-color=\"#ef4444\" stop-opacity=\"0.06\"></stop><stop offset=\"100%\" stop-color=\"#ef4444\" stop-opacity=\"0\"></stop></linearGradient></defs><path d=\"M0,28.499893256405734 C0.3380281690140845,28.28880933700808 2.704225352112676,26.31432121644608 3.380281690140845,26.38905406242917 C4.056338028169014,26.463786908412263 6.084507042253521,28.53866833460895 6.76056338028169,29.247221716236666 C7.436619718309859,29.955775097864382 9.464788732394368,33.29799435388771 10.140845070422536,33.474587878706316 C10.816901408450704,33.65118140352492 12.84507042253521,30.97149562362103 13.52112676056338,31.013156964422734 C14.19718309859155,31.054818305224437 16.22535211267606,33.65690956922617 16.901408450704228,33.891201286723344 C17.577464788732396,34.125493004220516 19.605633802816904,33.88739090583266 20.281690140845072,33.356074139394465 C20.95774647887324,32.82475737295627 22.985915492957744,29.151498512308162 23.661971830985912,28.57803362234139 C24.33802816901408,28",
+      "parentText": ""
+    },
+    {
+      "text": "<svg width=\"12\" height=\"12\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" class=\"jsx-90a073f451d411bc\"><circle cx=\"18\" cy=\"5\" r=\"3\" class=\"jsx-90a073f451d411bc\"></circle><circle cx=\"6\" cy=\"12\" r=\"3\" class=\"jsx-90a073f451d411bc\"></circle><circle cx=\"18\" cy=\"19\" r=\"3\" class=\"jsx-90a073f451d411bc\"></circle><line x1=\"8.59\" y1=\"13.51\" x2=\"15.42\" y2=\"17.49\" class=\"jsx-90a073f451d411bc\"></line><line x1=\"15.41\" y1=\"6.51\" x2=\"8.59\" y2=\"10.49\" class=\"jsx-90a073f451d411bc\"></line></svg>",
+      "parentText": ""
+    },
+    {
+      "text": "<svg width=\"240\" height=\"48\" viewBox=\"0 0 240 48\" style=\"display: block;\"><defs><linearGradient id=\"rsl-t7dmu2-area\" x1=\"0\" y1=\"0\" x2=\"0\" y2=\"1\"><stop offset=\"0%\" stop-color=\"#ef4444\" stop-opacity=\"0.18\"></stop><stop offset=\"50%\" stop-color=\"#ef4444\" stop-opacity=\"0.06\"></stop><stop offset=\"100%\" stop-color=\"#ef4444\" stop-opacity=\"0\"></stop></linearGradient></defs><path d=\"M0,28.499893256405734 C0.3380281690140845,28.28880933700808 2.704225352112676,26.31432121644608 3.380281690140845,26.38905406242917 C4.056338028169014,26.463786908412263 6.084507042253521,28.53866833460895 6.76056338028169,29.247221716236666 C7.436619718309859,29.955775097864382 9.464788732394368,33.29799435388771 10.140845070422536,33.474587878706316 C10.816901408450704,33.65118140352492 12.84507042253521,30.97149562362103 13.52112676056338,31.013156964422734 C14.19718309859155,31.054818305224437 16.22535211267606,33.65690956922617 16.901408450704228,33.891201286723344 C17.577464788732396,34.125493004220516 19.605633802816904,33.88739090583266 20.281690140845072,33.356074139394465 C20.95774647887324,32.82475737295627 22.985915492957744,29.151498512308162 23.661971830985912,28.57803362234139 C24.33802816901408,28",
+      "parentText": ""
+    },
+    {
+      "text": "<svg width=\"12\" height=\"12\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" class=\"jsx-90a073f451d411bc\"><circle cx=\"18\" cy=\"5\" r=\"3\" class=\"jsx-90a073f451d411bc\"></circle><circle cx=\"6\" cy=\"12\" r=\"3\" class=\"jsx-90a073f451d411bc\"></circle><circle cx=\"18\" cy=\"19\" r=\"3\" class=\"jsx-90a073f451d411bc\"></circle><line x1=\"8.59\" y1=\"13.51\" x2=\"15.42\" y2=\"17.49\" class=\"jsx-90a073f451d411bc\"></line><line x1=\"15.41\" y1=\"6.51\" x2=\"8.59\" y2=\"10.49\" class=\"jsx-90a073f451d411bc\"></line></svg>",
+      "parentText": ""
+    }
+  ],
+  "links": [
+    {
+      "text": "Neurix",
+      "href": "https://www.neurix.sh/"
+    },
+    {
+      "text": "Build",
+      "href": "https://www.neurix.sh/launch"
+    },
+    {
+      "text": "Marketplace",
+      "href": "https://www.neurix.sh/marketplace"
+    },
+    {
+      "text": "Docs",
+      "href": "https://www.neurix.sh/docs"
+    },
+    {
+      "text": "Home",
+      "href": "https://www.neurix.sh/"
+    },
+    {
+      "text": "Library",
+      "href": "https://www.neurix.sh/marketplace"
+    },
+    {
+      "text": "Build",
+      "href": "https://www.neurix.sh/launch"
+    },
+    {
+      "text": "Docs",
+      "href": "https://www.neurix.sh/docs"
+    },
+    {
+      "text": "𝕏",
+      "href": "https://x.com/Neurixsh"
+    }
+  ]
+}

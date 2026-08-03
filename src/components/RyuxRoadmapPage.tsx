@@ -4,6 +4,9 @@ import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { Wallet } from "lucide-react";
 import { ryuxConfig } from "@/config/ryux";
+import { LightRays } from "@/components/LightRays";
+import { PillNav } from "@/components/PillNav";
+import { SpecularButton } from "@/components/SpecularButton";
 import { useRyuxMotion } from "@/components/useRyuxMotion";
 
 type WalletLike = {
@@ -24,16 +27,16 @@ type RoadmapPhase = {
 
 const phases: RoadmapPhase[] = [
   {
-    date: "06 JUL 2026",
+    date: "31 JUL 2026",
     status: "completed",
     phase: "PHASE 1",
     count: "4/4",
     title: "Genesis Launch",
-    body: "RYUX is live. The token launch, website, X presence, documentation, wallet connect, and launch-state modals are in place.",
-    milestones: ["Token Launch", "RYUX Website", "X / Twitter Live", "Docs and Roadmap Pages"],
+    body: "ORBIS is live. The token launch, website, X presence, documentation, wallet connect, and launch-state modals are in place.",
+    milestones: ["Token Launch", "ORBIS Website", "X / Twitter Live", "Docs and Roadmap Pages"],
   },
   {
-    date: "15 JUL 2026",
+    date: "03 AUG 2026",
     status: "pending",
     phase: "PHASE 2",
     count: "0/4",
@@ -42,7 +45,7 @@ const phases: RoadmapPhase[] = [
     milestones: ["Marketplace Public Release", "Agent Listing Cards", "Project Discovery", "Trading Links"],
   },
   {
-    date: "LATE JUL 2026",
+    date: "MID AUG 2026",
     status: "pending",
     phase: "PHASE 3",
     count: "0/4",
@@ -51,12 +54,12 @@ const phases: RoadmapPhase[] = [
     milestones: ["Wallet Session Polish", "User Dashboard", "Portfolio Overview", "Dashboard Update Modal Removal"],
   },
   {
-    date: "AUG 2026",
+    date: "LATE AUG 2026",
     status: "pending",
     phase: "PHASE 4",
     count: "0/5",
     title: "Agent Builder Layer",
-    body: "RYUX begins opening the infrastructure layer for creators to configure agents, connect skills, and prepare automated workflows.",
+    body: "ORBIS begins opening the infrastructure layer for creators to configure agents, connect skills, and prepare automated workflows.",
     milestones: ["Agent Templates", "Skill Modules", "Creator Setup Flow", "Agent Metadata", "Cloud Deploy Prep"],
   },
   {
@@ -121,19 +124,32 @@ export function RyuxRoadmapPage() {
 
   return (
     <main className="roadmap-shell" ref={pageRef}>
-      <nav className={`nav ${scrolled ? "nav--scrolled" : ""}`} aria-label="Primary navigation">
-        <a className="brand" href="/">
-          <Image src="/images/ryux/ryux-logo.png" alt="RYUX" width={28} height={28} />
-          <span>RYUX</span>
-        </a>
-        <div className="nav__links">
-          <a href="/#platform">Build</a>
-          <a href="/#marketplace">Marketplace</a>
-          <a href="/docs">Docs</a>
-          <a href="/roadmap">Roadmap</a>
-        </div>
-        <div className="nav__actions">
-          <a className="social-link" href={ryuxConfig.xUrl} target="_blank" rel="noreferrer" aria-label="RYUX on X">
+      <div className="light-rays-bg" aria-hidden="true">
+        <LightRays
+          raysOrigin="top-center"
+          raysColor="#00ffff"
+          raysSpeed={1.5}
+          lightSpread={1}
+          rayLength={1.2}
+          saturation={1}
+          followMouse
+          mouseInfluence={0}
+          noiseAmount={0.1}
+          distortion={0.05}
+        />
+      </div>
+      <PillNav
+        logo="/images/orbis/orbis-logo.png"
+        logoAlt="Orbis Agents"
+        activeHref="/roadmap"
+        items={[
+          { label: "Build", href: "/#platform" },
+          { label: "Marketplace", href: "/marketplace" },
+          { label: "Docs", href: "/docs" },
+          { label: "Roadmap", href: "/roadmap" },
+        ]}
+        rightContent={<div className="nav__actions">
+          <a className="social-link" href={ryuxConfig.xUrl} target="_blank" rel="noreferrer" aria-label="ORBIS on X">
             X
           </a>
           <a
@@ -142,16 +158,16 @@ export function RyuxRoadmapPage() {
             target={ryuxConfig.pumpFunUrl ? "_blank" : undefined}
             rel={ryuxConfig.pumpFunUrl ? "noreferrer" : undefined}
             aria-disabled={!ryuxConfig.pumpFunUrl}
-            aria-label="RYUX on Pump.fun"
+            aria-label="ORBIS on Pump.fun"
           >
             <Image src="/images/ryux/pumplogo.png" alt="" width={15} height={15} />
           </a>
-          <button className="connect" onClick={connectWallet}>
+          <SpecularButton className="connect" onClick={connectWallet} size="sm" radius={15} shineSize={14} shineFade={46}>
             <Wallet size={13} />
             <span>{walletLabel}</span>
-          </button>
-        </div>
-      </nav>
+          </SpecularButton>
+        </div>}
+      />
 
       <section className="roadmap-hero">
         <span className="docs-eyebrow">DEVELOPMENT ROADMAP</span>
@@ -159,7 +175,7 @@ export function RyuxRoadmapPage() {
           Building the Future of
           <span>Autonomous Agents.</span>
         </h1>
-        <p>Each phase unlocks new RYUX capabilities. Track what shipped on 06/07/2026 and what comes next.</p>
+        <p>Each phase unlocks new ORBIS capabilities. Track what shipped on 31/07/2026 and what comes next.</p>
         <div className="roadmap-progress">
           <div>
             <span>OVERALL PROGRESS</span>
@@ -171,7 +187,7 @@ export function RyuxRoadmapPage() {
         </div>
       </section>
 
-      <section className="roadmap-timeline" aria-label="RYUX roadmap phases">
+      <section className="roadmap-timeline" aria-label="ORBIS roadmap phases">
         <div className="roadmap-line" />
         {phases.map((phase) => (
           <article className={`roadmap-card roadmap-card--${phase.status}`} key={phase.phase}>
@@ -195,9 +211,8 @@ export function RyuxRoadmapPage() {
       </section>
 
       <footer className="footer docs-footer">
-        <p>&copy; 2026 RYUX</p>
+        <p>&copy; 2026 Orbis Agents</p>
         <div className="footer__links">
-          <a href="/#marketplace">Marketplace</a>
           <a href="/roadmap">Roadmap</a>
           <a href="/docs">Docs</a>
           <a href={ryuxConfig.xUrl} target="_blank" rel="noreferrer">

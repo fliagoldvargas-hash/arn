@@ -21,12 +21,12 @@ const lora = Lora({
 });
 
 export const metadata: Metadata = {
-  title: "RYUX · The Autonomous Agent Protocol",
+  title: "Orbis Agents - The Autonomous Agent Protocol",
   description:
     "Deploy, discover, and invest in autonomous AI agents on Solana. The platform for onchain intelligence.",
   icons: {
-    icon: "/images/ryux/ryux-logo.png",
-    apple: "/images/ryux/ryux-logo.png",
+    icon: "/images/orbis/orbis-logo.png",
+    apple: "/images/orbis/orbis-logo.png",
   },
 };
 

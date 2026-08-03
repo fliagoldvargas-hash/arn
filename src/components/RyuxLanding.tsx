@@ -230,7 +230,6 @@ export function RyuxLanding() {
         walletAddress={walletAddress}
         walletStatus={walletStatus}
         onConnectWallet={connectWallet}
-        onMarketplaceClick={() => setActiveModal("marketplace")}
       />
       <Hero
         copied={copied}
@@ -304,13 +303,11 @@ function Navigation({
   walletAddress,
   walletStatus,
   onConnectWallet,
-  onMarketplaceClick,
 }: {
   scrolled: boolean;
   walletAddress: string;
   walletStatus: "idle" | "connecting" | "missing";
   onConnectWallet: () => void;
-  onMarketplaceClick: () => void;
 }) {
   const walletLabel = walletAddress
     ? shortenAddress(walletAddress)
@@ -326,7 +323,7 @@ function Navigation({
       logoAlt="Auren Agents"
       items={[
         { label: "Build", href: "#platform" },
-        { label: "Marketplace", href: "/marketplace", onClick: onMarketplaceClick },
+        { label: "Marketplace", href: "/marketplace" },
         { label: "Docs", href: "/docs" },
         { label: "Roadmap", href: "/roadmap" },
       ]}

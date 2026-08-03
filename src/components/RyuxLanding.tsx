@@ -378,7 +378,7 @@ function Hero({
           AUREN is the infrastructure for onchain intelligence. Create an autonomous agent, give it skills, and let it
           work for you. Tokenize it on day one, or never. The choice is yours.
         </p>
-        <div className="hero__buttons hero__buttons--single">
+        <div className="hero__buttons">
           <SpecularButton
             className="hero-start-button"
             onClick={onStartBuilding}
@@ -396,6 +396,9 @@ function Hero({
           >
             Start Building
           </SpecularButton>
+          <a className="button button--ghost hero-marketplace-button" href="/marketplace">
+            Marketplace
+          </a>
         </div>
         <div className="hero-token-stats" aria-label="AUREN token stats">
           {liveTokenStats.map((stat) => (

@@ -432,6 +432,11 @@ button {
   will-change: transform;
 }
 
+.hero-marketplace-button {
+  min-width: 176px;
+  height: 52px;
+}
+
 .hero-start-button:hover {
   transform: translateY(-2px);
   border-color: rgba(255, 255, 255, 0.38);

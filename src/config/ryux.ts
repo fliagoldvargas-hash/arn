@@ -1,9 +1,9 @@
 export const ryuxConfig = {
   xUrl: "https://x.com/Aurenagents",
 
-  pumpFunUrl: "https://pump.fun/coin/J84UT3MfBRUXXosxxQnXqnMRLVkohhSY5vLsTW4Ypump",
+  pumpFunUrl: "https://pump.fun/coin/AWPK1fVZnTg4ias1FShZHTgZcAokA1kKBsHXhDyFpump",
 
-  contractAddress: "J84UT3MfBRUXXosxxQnXqnMRLVkohhSY5vLsTW4Ypump",
+  contractAddress: "AWPK1fVZnTg4ias1FShZHTgZcAokA1kKBsHXhDyFpump",
 };
 
 export function getContractLabel() {

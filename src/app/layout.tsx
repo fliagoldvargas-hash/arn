@@ -25,8 +25,8 @@ export const metadata: Metadata = {
   description:
     "Deploy, discover, and invest in autonomous AI agents on Solana. The platform for onchain intelligence.",
   icons: {
-    icon: "/images/auren/auren-logo.png",
-    apple: "/images/auren/auren-logo.png",
+    icon: "/images/auren/auren-logo-v2.png",
+    apple: "/images/auren/auren-logo-v2.png",
   },
 };
 

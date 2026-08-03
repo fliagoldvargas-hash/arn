@@ -319,7 +319,7 @@ function Navigation({
 
   return (
     <PillNav
-      logo="/images/auren/auren-logo.png"
+      logo="/images/auren/auren-logo-v2.png"
       logoAlt="Auren Agents"
       items={[
         { label: "Build", href: "#platform" },

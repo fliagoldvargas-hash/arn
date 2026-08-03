@@ -309,7 +309,7 @@ export function RyuxMarketplacePage({ holderVotingOnly = false }: { holderVoting
         />
       </div>
       <PillNav
-        logo="/images/auren/auren-logo.png"
+        logo="/images/auren/auren-logo-v2.png"
         logoAlt="Auren Agents"
         activeHref="/marketplace"
         items={[
@@ -332,7 +332,7 @@ export function RyuxMarketplacePage({ holderVotingOnly = false }: { holderVoting
       {holderVotingOnly ? (
         <section className="holder-vote-hero">
           <div className="marketplace-demo-mark">
-            <Image src="/images/auren/auren-logo.png" alt="" width={42} height={42} />
+            <Image src="/images/auren/auren-logo-v2.png" alt="" width={42} height={42} />
           </div>
           <span className="docs-eyebrow">AUREN HOLDERS</span>
           <h1>Holder Voting</h1>
@@ -342,7 +342,7 @@ export function RyuxMarketplacePage({ holderVotingOnly = false }: { holderVoting
         <>
           <section className="marketplace-demo-hero">
             <div className="marketplace-demo-mark">
-              <Image src="/images/auren/auren-logo.png" alt="" width={42} height={42} />
+              <Image src="/images/auren/auren-logo-v2.png" alt="" width={42} height={42} />
             </div>
             <span className="docs-eyebrow">THE AUREN COLLECTION</span>
             <h1>Agent Library</h1>
@@ -385,7 +385,7 @@ export function RyuxMarketplacePage({ holderVotingOnly = false }: { holderVoting
                 <article className={`marketplace-demo-card marketplace-demo-card--${agent.tone}`} key={agent.name}>
                   <div className="marketplace-demo-card__head">
                     <div className="marketplace-demo-orb">
-                      <img className="marketplace-token-image" src={live?.imageUrl ?? "/images/auren/auren-logo.png"} alt="" />
+                      <img className="marketplace-token-image" src={live?.imageUrl ?? "/images/auren/auren-logo-v2.png"} alt="" />
                     </div>
                     <div>
                       <h2>{live?.name ?? agent.name}</h2>

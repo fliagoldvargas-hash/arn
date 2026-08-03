@@ -116,7 +116,7 @@ export function RyuxDocsPage() {
         />
       </div>
       <PillNav
-        logo="/images/auren/auren-logo.png"
+        logo="/images/auren/auren-logo-v2.png"
         logoAlt="Auren Agents"
         activeHref="/docs"
         items={[

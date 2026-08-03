@@ -139,7 +139,7 @@ export function RyuxRoadmapPage() {
         />
       </div>
       <PillNav
-        logo="/images/auren/auren-logo.png"
+        logo="/images/auren/auren-logo-v2.png"
         logoAlt="Auren Agents"
         activeHref="/roadmap"
         items={[

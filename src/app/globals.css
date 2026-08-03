@@ -457,6 +457,24 @@ button {
   z-index: 2;
 }
 
+/* The source effect is subtle at hero-button scale; this keeps its integration visible. */
+.hero-glare-button::before {
+  z-index: 3;
+  background: linear-gradient(
+    115deg,
+    transparent 34%,
+    rgba(255, 255, 255, 0.68) 49%,
+    transparent 64%
+  );
+  background-position: -140% 0;
+  background-size: 240% 100%;
+  transition: background-position 800ms ease;
+}
+
+.hero-glare-button:hover::before {
+  background-position: 140% 0;
+}
+
 .hero-start-button:hover {
   transform: translateY(-2px);
   border-color: rgba(255, 255, 255, 0.38);

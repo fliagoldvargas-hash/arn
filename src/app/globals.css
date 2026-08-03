@@ -460,19 +460,22 @@ button {
 /* The source effect is subtle at hero-button scale; this keeps its integration visible. */
 .hero-glare-button::before {
   z-index: 3;
-  background: linear-gradient(
-    115deg,
-    transparent 34%,
-    rgba(255, 255, 255, 0.68) 49%,
-    transparent 64%
-  );
-  background-position: -140% 0;
-  background-size: 240% 100%;
-  transition: background-position 800ms ease;
+  top: -70%;
+  right: auto;
+  bottom: auto;
+  left: -55%;
+  width: 28%;
+  height: 240%;
+  background: rgba(255, 255, 255, 0.62);
+  transform: rotate(25deg) translateX(-240%);
+  filter: blur(6px);
+  opacity: 0;
+  transition: transform 800ms ease, opacity 160ms ease;
 }
 
 .hero-glare-button:hover::before {
-  background-position: 140% 0;
+  transform: rotate(25deg) translateX(620%);
+  opacity: 1;
 }
 
 .hero-start-button:hover {

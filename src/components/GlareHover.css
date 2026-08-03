@@ -51,3 +51,23 @@
     100% 100%,
     0 0;
 }
+
+.hero-glare-button::before {
+  z-index: 3;
+  top: -70%;
+  right: auto;
+  bottom: auto;
+  left: -55%;
+  width: 28%;
+  height: 240%;
+  background: rgba(255, 255, 255, 0.62);
+  transform: rotate(25deg) translateX(-240%);
+  filter: blur(6px);
+  opacity: 0;
+  transition: transform 800ms ease, opacity 160ms ease;
+}
+
+.hero-glare-button:hover::before {
+  transform: rotate(25deg) translateX(620%);
+  opacity: 1;
+}

@@ -31,6 +31,7 @@ type LiveToken = {
   symbol: string | null;
   imageUrl: string | null;
   pairCreatedAt: number | null;
+  chart: number[];
   pairUrl: string | null;
   priceUsd: number | null;
   change24h: number | null;
@@ -393,7 +394,7 @@ export function RyuxMarketplacePage({ holderVotingOnly = false }: { holderVoting
                   </div>
                   <p>{agent.description}</p>
                   <svg className="marketplace-demo-chart" viewBox="0 0 238 78" role="img" aria-label={`${agent.name} price chart`}>
-                    <path d="M0 48 C30 60 52 28 78 42 C106 58 122 20 150 30 C180 40 204 14 238 26" />
+                    <path d={buildChartPath(live?.chart ?? [])} />
                   </svg>
                   <div className="marketplace-demo-price">
                     <strong>{formatPrice(live?.priceUsd)}</strong>
@@ -570,4 +571,18 @@ function formatPercent(value: number | null | undefined) {
 
 function shortAddress(address: string) {
   return `${address.slice(0, 6)}...${address.slice(-6)}`;
+}
+
+function buildChartPath(values: number[]) {
+  if (values.length < 2) return "";
+  const min = Math.min(...values);
+  const max = Math.max(...values);
+  const range = max - min || 1;
+  return values
+    .map((value, index) => {
+      const x = (index / (values.length - 1)) * 238;
+      const y = 68 - ((value - min) / range) * 58;
+      return `${index === 0 ? "M" : "L"}${x.toFixed(1)} ${y.toFixed(1)}`;
+    })
+    .join(" ");
 }

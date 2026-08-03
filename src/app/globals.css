@@ -1805,6 +1805,13 @@ button {
   height: 14px;
 }
 
+.marketplace-demo-card__foot img {
+  display: block;
+  width: 18px;
+  height: 15px;
+  object-fit: contain;
+}
+
 .holder-vote-section {
   position: relative;
   z-index: 1;

@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect, useRef, useState, type FC, type ReactNode } from "react";
-import { motion, useSpring } from "motion/react";
+import { useEffect, useRef, useState } from "react";
+import { useSpring } from "motion/react";
 
 interface Position {
   x: number;
@@ -9,7 +9,6 @@ interface Position {
 }
 
 export interface SmoothCursorProps {
-  cursor?: ReactNode;
   springConfig?: {
     damping: number;
     stiffness: number;
@@ -24,14 +23,7 @@ function isTrackablePointer(pointerType: string) {
   return pointerType !== "touch";
 }
 
-const DefaultCursorSVG: FC = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" width={24} height={30} viewBox="0 0 24 30" fill="none" style={{ scale: 0.85 }}>
-    <path d="M3 2.5V23.7L8.7 18.1L13.3 28L17.7 26L13.2 16.4H21.2L3 2.5Z" fill="white" stroke="black" strokeWidth="1.5" strokeLinejoin="round" />
-  </svg>
-);
-
 export function SmoothCursor({
-  cursor = <DefaultCursorSVG />,
   springConfig = { damping: 45, stiffness: 400, mass: 1, restDelta: 0.001 },
 }: SmoothCursorProps) {
   const lastMousePos = useRef<Position>({ x: 0, y: 0 });
@@ -109,40 +101,14 @@ export function SmoothCursor({
       });
     };
 
-    document.body.style.cursor = "none";
     window.addEventListener("pointermove", throttledPointerMove, { passive: true });
 
     return () => {
       window.removeEventListener("pointermove", throttledPointerMove);
-      document.body.style.cursor = "auto";
       if (rafId) cancelAnimationFrame(rafId);
       if (timeout !== null) clearTimeout(timeout);
     };
   }, [cursorX, cursorY, rotation, scale, isEnabled]);
 
-  if (!isEnabled) return null;
-
-  return (
-    <motion.div
-      style={{
-        position: "fixed",
-        left: cursorX,
-        top: cursorY,
-        translateX: "-50%",
-        translateY: "-50%",
-        rotate: rotation,
-        scale,
-        zIndex: 100,
-        pointerEvents: "none",
-        willChange: "transform",
-        opacity: isVisible ? 1 : 0,
-      }}
-      initial={false}
-      animate={{ opacity: isVisible ? 1 : 0 }}
-      transition={{ duration: 0.15 }}
-      aria-hidden="true"
-    >
-      {cursor}
-    </motion.div>
-  );
+  return null;
 }

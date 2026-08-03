@@ -295,22 +295,20 @@ export function RyuxMarketplacePage({ holderVotingOnly = false }: { holderVoting
 
   return (
     <main className={`marketplace-demo-shell ${holderVotingOnly ? "holder-vote-page" : ""}`} ref={pageRef}>
-      {holderVotingOnly ? (
-        <div className="light-rays-bg" aria-hidden="true">
-          <LightRays
-            raysOrigin="top-center"
-            raysColor="#00ffff"
-            raysSpeed={1.5}
-            lightSpread={1}
-            rayLength={1.2}
-            saturation={1}
-            followMouse
-            mouseInfluence={0}
-            noiseAmount={0.1}
-            distortion={0.05}
-          />
-        </div>
-      ) : null}
+      <div className="light-rays-bg" aria-hidden="true">
+        <LightRays
+          raysOrigin="top-center"
+          raysColor="#00ffff"
+          raysSpeed={1.5}
+          lightSpread={1}
+          rayLength={1.2}
+          saturation={1}
+          followMouse
+          mouseInfluence={0}
+          noiseAmount={0.1}
+          distortion={0.05}
+        />
+      </div>
       <PillNav
         logo="/images/orbis/orbis-logo.png"
         logoAlt="Orbis Agents"

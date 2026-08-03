@@ -1,5 +1,5 @@
-import { MarketplaceComingSoonPage } from "@/components/MarketplaceComingSoonPage";
+import { RyuxMarketplacePage } from "@/components/RyuxMarketplacePage";
 
 export default function MarketplacePage() {
-  return <MarketplaceComingSoonPage />;
+  return <RyuxMarketplacePage />;
 }

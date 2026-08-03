@@ -15,6 +15,7 @@ import {
 } from "lucide-react";
 import { getContractLabel, ryuxConfig } from "@/config/ryux";
 import { LightRays } from "@/components/LightRays";
+import { GlareHover } from "@/components/GlareHover";
 import { PillNav } from "@/components/PillNav";
 import { SpecularButton } from "@/components/SpecularButton";
 import { useRyuxMotion } from "@/components/useRyuxMotion";
@@ -379,26 +380,38 @@ function Hero({
           work for you. Tokenize it on day one, or never. The choice is yours.
         </p>
         <div className="hero__buttons">
-          <SpecularButton
-            className="hero-start-button"
-            onClick={onStartBuilding}
-            size="lg"
-            radius={2}
-            tint="#ffffff"
-            tintOpacity={0.06}
-            textColor="#ffffff"
-            baseColor="#4d4d4d"
-            intensity={1.2}
-            shineSize={13}
-            shineFade={42}
-            thickness={1.1}
-            proximity={280}
+          <GlareHover
+            className="hero-glare-button"
+            width="176px"
+            height="52px"
+            background="rgba(255, 255, 255, 0.035)"
+            borderColor="rgba(255, 255, 255, 0.12)"
+            borderRadius="2px"
+            glareOpacity={0.3}
+            glareAngle={-30}
+            glareSize={300}
+            transitionDuration={800}
           >
-            Start Building
-          </SpecularButton>
-          <a className="button button--ghost hero-marketplace-button" href="/marketplace">
-            Marketplace
-          </a>
+            <button className="hero-start-button" onClick={onStartBuilding} type="button">
+              Start Building
+            </button>
+          </GlareHover>
+          <GlareHover
+            className="hero-glare-button"
+            width="176px"
+            height="52px"
+            background="rgba(255, 255, 255, 0.02)"
+            borderColor="rgba(255, 255, 255, 0.12)"
+            borderRadius="2px"
+            glareOpacity={0.3}
+            glareAngle={-30}
+            glareSize={300}
+            transitionDuration={800}
+          >
+            <a className="hero-marketplace-button" href="/marketplace">
+              Marketplace
+            </a>
+          </GlareHover>
         </div>
         <div className="hero-token-stats" aria-label="AUREN token stats">
           {liveTokenStats.map((stat) => (

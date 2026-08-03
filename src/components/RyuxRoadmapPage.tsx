@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import { Wallet } from "lucide-react";
 import { ryuxConfig } from "@/config/ryux";
 import { LightRays } from "@/components/LightRays";
+import { PillNav } from "@/components/PillNav";
 import { SpecularButton } from "@/components/SpecularButton";
 import { useRyuxMotion } from "@/components/useRyuxMotion";
 
@@ -137,17 +138,17 @@ export function RyuxRoadmapPage() {
           distortion={0.05}
         />
       </div>
-      <nav className={`nav ${scrolled ? "nav--scrolled" : ""}`} aria-label="Primary navigation">
-        <a className="brand" href="/">
-          <Image src="/images/orbis/orbis-logo.png" alt="Orbis Agents" width={28} height={28} />
-          <span>ORBIS AGENTS</span>
-        </a>
-        <div className="nav__links">
-          <a href="/#platform">Build</a>
-          <a href="/docs">Docs</a>
-          <a href="/roadmap">Roadmap</a>
-        </div>
-        <div className="nav__actions">
+      <PillNav
+        logo="/images/orbis/orbis-logo.png"
+        logoAlt="Orbis Agents"
+        activeHref="/roadmap"
+        items={[
+          { label: "Build", href: "/#platform" },
+          { label: "Marketplace", href: "/marketplace" },
+          { label: "Docs", href: "/docs" },
+          { label: "Roadmap", href: "/roadmap" },
+        ]}
+        rightContent={<div className="nav__actions">
           <a className="social-link" href={ryuxConfig.xUrl} target="_blank" rel="noreferrer" aria-label="ORBIS on X">
             X
           </a>
@@ -165,8 +166,8 @@ export function RyuxRoadmapPage() {
             <Wallet size={13} />
             <span>{walletLabel}</span>
           </SpecularButton>
-        </div>
-      </nav>
+        </div>}
+      />
 
       <section className="roadmap-hero">
         <span className="docs-eyebrow">DEVELOPMENT ROADMAP</span>

@@ -15,6 +15,7 @@ import {
 } from "lucide-react";
 import { getContractLabel, ryuxConfig } from "@/config/ryux";
 import { LightRays } from "@/components/LightRays";
+import { PillNav } from "@/components/PillNav";
 import { SpecularButton } from "@/components/SpecularButton";
 import { useRyuxMotion } from "@/components/useRyuxMotion";
 import type { Metric, PlatformCard } from "@/types/ryux";
@@ -320,20 +321,16 @@ function Navigation({
         : "Connect Wallet";
 
   return (
-    <nav className={`nav ${scrolled ? "nav--scrolled" : ""}`} aria-label="Primary navigation">
-      <a className="brand" href="#">
-        <Image src="/images/orbis/orbis-logo.png" alt="Orbis Agents" width={28} height={28} />
-        <span>ORBIS AGENTS</span>
-      </a>
-      <div className="nav__links">
-        <a href="#platform">Build</a>
-        <button className="nav__link-button" type="button" onClick={onMarketplaceClick}>
-          Marketplace
-        </button>
-        <a href="/docs">Docs</a>
-        <a href="/roadmap">Roadmap</a>
-      </div>
-      <div className="nav__actions">
+    <PillNav
+      logo="/images/orbis/orbis-logo.png"
+      logoAlt="Orbis Agents"
+      items={[
+        { label: "Build", href: "#platform" },
+        { label: "Marketplace", href: "/marketplace", onClick: onMarketplaceClick },
+        { label: "Docs", href: "/docs" },
+        { label: "Roadmap", href: "/roadmap" },
+      ]}
+      rightContent={<div className="nav__actions">
         <a className="social-link" href={ryuxConfig.xUrl} target="_blank" rel="noreferrer" aria-label="ORBIS on X">
           X
         </a>
@@ -351,8 +348,8 @@ function Navigation({
           <Wallet size={13} />
           <span>{walletLabel}</span>
         </SpecularButton>
-      </div>
-    </nav>
+      </div>}
+    />
   );
 }
 

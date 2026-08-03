@@ -359,20 +359,6 @@ button {
   font-style: italic;
 }
 
-.hero h1 .hero__shiny-line {
-  display: block;
-}
-
-.hero h1 .hero__shiny-line--primary {
-  color: #fff;
-  font-style: normal;
-}
-
-.hero h1 .hero__shiny-line--secondary {
-  color: rgba(255, 255, 255, 0.62);
-  font-style: italic;
-}
-
 .hero p {
   width: min(455px, 100%);
   margin: 46px auto 0;

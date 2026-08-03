@@ -15,7 +15,6 @@ import {
 } from "lucide-react";
 import { getContractLabel, ryuxConfig } from "@/config/ryux";
 import { LightRays } from "@/components/LightRays";
-import { ShinyText } from "@/components/ShinyText";
 import { SpecularButton } from "@/components/SpecularButton";
 import { useRyuxMotion } from "@/components/useRyuxMotion";
 import type { Metric, PlatformCard } from "@/types/ryux";
@@ -378,20 +377,8 @@ function Hero({
     <section className="hero">
       <div className="hero__content">
         <h1>
-          <ShinyText
-            text="Software that thinks."
-            className="hero__shiny-line hero__shiny-line--primary"
-            speed={3.5}
-            color="#ffffff"
-            shineColor="#ffffff"
-          />
-          <ShinyText
-            text="Agents that earn."
-            className="hero__shiny-line hero__shiny-line--secondary"
-            speed={3.5}
-            color="rgba(255, 255, 255, 0.62)"
-            shineColor="#ffffff"
-          />
+          Software that thinks.
+          <span>Agents that earn.</span>
         </h1>
         <p>
           ORBIS is the infrastructure for onchain intelligence. Create an autonomous agent, give it skills, and let it

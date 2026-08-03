@@ -36,9 +36,8 @@
   flex: 0 0 auto;
   justify-content: center;
   overflow: hidden;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.94);
-  padding: 7px;
+  background: transparent;
+  padding: 0;
 }
 
 .pill-logo img {
@@ -136,6 +135,7 @@
 
 .pill-nav-actions {
   flex: 0 0 auto;
+  margin-left: auto;
   gap: 12px;
 }
 

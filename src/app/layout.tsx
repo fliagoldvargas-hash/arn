@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Lora, Plus_Jakarta_Sans, Space_Grotesk } from "next/font/google";
-import { SmoothCursor } from "@/components/SmoothCursor";
 import "./globals.css";
 
 const plusJakarta = Plus_Jakarta_Sans({
@@ -39,7 +38,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${plusJakarta.variable} ${spaceGrotesk.variable} ${lora.variable}`}>
-        <SmoothCursor />
         {children}
       </body>
     </html>

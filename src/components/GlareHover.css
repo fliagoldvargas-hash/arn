@@ -52,6 +52,26 @@
     0 0;
 }
 
+.glare-hover__shine {
+  position: absolute;
+  top: -70%;
+  left: -40%;
+  z-index: 4;
+  width: 28%;
+  height: 240%;
+  background: rgba(255, 255, 255, 0.72);
+  transform: rotate(25deg);
+  filter: blur(5px);
+  opacity: 0;
+  pointer-events: none;
+  transition: left 900ms ease, opacity 160ms ease;
+}
+
+.glare-hover:hover .glare-hover__shine {
+  left: 55%;
+  opacity: 1;
+}
+
 .hero-glare-button::before {
   z-index: 3;
   top: -70%;

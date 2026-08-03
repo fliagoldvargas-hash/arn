@@ -11,6 +11,7 @@
   --pill-pad-x: 15px;
   --pill-gap: 3px;
   display: flex;
+  position: relative;
   width: 100%;
   height: 60px;
   align-items: center;
@@ -49,7 +50,10 @@
 .pill-nav-items {
   position: relative;
   height: var(--nav-h);
-  margin: 0 auto;
+  position: absolute;
+  left: 50%;
+  margin: 0;
+  transform: translateX(-50%);
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 9999px;

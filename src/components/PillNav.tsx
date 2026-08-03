@@ -38,7 +38,6 @@ export function PillNav({
   const activeTweenRefs = useRef<gsap.core.Tween[]>([]);
   const navItemsRef = useRef<HTMLDivElement | null>(null);
   const logoRef = useRef<HTMLAnchorElement | null>(null);
-  const logoImageRef = useRef<HTMLImageElement | null>(null);
   const mobileMenuRef = useRef<HTMLDivElement | null>(null);
   const hamburgerRef = useRef<HTMLButtonElement | null>(null);
 
@@ -87,7 +86,7 @@ export function PillNav({
       timelineRefs.current.forEach((timeline) => timeline.kill());
       activeTweenRefs.current.forEach((tween) => tween.kill());
     };
-  }, [ease, initialLoadAnimation, items]);
+  }, [ease, initialLoadAnimation]);
 
   const toggleMobileMenu = () => {
     const nextOpen = !isMobileMenuOpen;
@@ -135,11 +134,8 @@ export function PillNav({
           href="/"
           aria-label="Home"
           ref={logoRef}
-          onMouseEnter={() => {
-            if (logoImageRef.current) gsap.to(logoImageRef.current, { rotate: 360, duration: 0.2, ease, overwrite: "auto" });
-          }}
         >
-          <img src={logo} alt={logoAlt} ref={logoImageRef} />
+          <img src={logo} alt={logoAlt} />
         </a>
 
         <div className="pill-nav-items desktop-only" ref={navItemsRef}>

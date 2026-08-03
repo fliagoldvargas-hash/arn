@@ -8,6 +8,7 @@ import { LightRays } from "@/components/LightRays";
 import { PillNav } from "@/components/PillNav";
 import { SpecularButton } from "@/components/SpecularButton";
 import { useRyuxMotion } from "@/components/useRyuxMotion";
+import { marketplaceTokens } from "@/config/marketplace";
 
 type WalletLike = {
   isPhantom?: boolean;
@@ -24,17 +25,14 @@ type SignedMessageResult =
       publicKey?: { toString: () => string };
     };
 
-type DemoAgent = {
-  name: string;
-  ticker: string;
-  description: string;
-  price: string;
-  change: string;
-  mcap: string;
-  volume: string;
-  ca: string;
-  tone: "blue" | "green" | "violet";
-  chart: string;
+type LiveToken = {
+  address: string;
+  pairUrl: string | null;
+  priceUsd: number | null;
+  change24h: number | null;
+  marketCap: number | null;
+  volume24h: number | null;
+  liquidity: number | null;
 };
 
 type HolderVoteOption = {
@@ -60,52 +58,6 @@ type HolderVoteResponse = {
 };
 
 const HOLDER_VOTING_PUBLIC = false;
-
-const demoAgents: DemoAgent[] = [
-  {
-    name: "Signal",
-    ticker: "$SIGNAL",
-    description: "Market-intel agent that monitors narratives, liquidity shifts, and early Solana opportunities.",
-    price: "$0.0000824",
-    change: "4.8%",
-    mcap: "$82.4K",
-    volume: "$1.2K",
-    ca: "8sGNq2...pump",
-    tone: "blue",
-    chart: "M0 58 C30 48 48 64 74 42 C102 18 126 34 150 24 C180 10 206 32 238 18",
-  },
-  {
-    name: "Vector",
-    ticker: "$VECTOR",
-    description: "Execution agent for automated treasury actions, DCA strategies, and portfolio routing.",
-    price: "$0.000137",
-    change: "2.1%",
-    mcap: "$137.0K",
-    volume: "$3.8K",
-    ca: "4vCTR9...pump",
-    tone: "green",
-    chart: "M0 54 C28 58 48 44 70 48 C96 54 106 20 134 28 C162 36 184 16 238 24",
-  },
-  {
-    name: "Relay",
-    ticker: "$RELAY",
-    description: "Community ops agent that publishes updates, answers holders, and turns signals into content.",
-    price: "$0.0000591",
-    change: "6.3%",
-    mcap: "$59.1K",
-    volume: "$860",
-    ca: "7rLYk4...pump",
-    tone: "violet",
-    chart: "M0 44 C24 22 42 50 68 36 C92 22 112 60 138 42 C170 18 202 46 238 30",
-  },
-];
-
-const stats = [
-  ["3", "Demo Agents"],
-  ["$278.5K", "Demo Value"],
-  ["$5.8K", "24h Activity"],
-  ["$91.2K", "Total Liquidity"],
-];
 
 const holderVoteOptions: HolderVoteOption[] = [
   {
@@ -151,11 +103,37 @@ export function RyuxMarketplacePage({ holderVotingOnly = false }: { holderVoting
   const [userVote, setUserVote] = useState<HolderVoteResponse["userVote"]>(null);
   const [voteStatus, setVoteStatus] = useState<"idle" | "loading" | "submitting">("loading");
   const [voteMessage, setVoteMessage] = useState("");
+  const [liveTokens, setLiveTokens] = useState<Record<string, LiveToken>>({});
+  const [marketDataStatus, setMarketDataStatus] = useState<"loading" | "ready" | "unavailable">("loading");
   const holderVotingEnabled =
     HOLDER_VOTING_PUBLIC &&
     (holderVotingOnly || process.env.NEXT_PUBLIC_ENABLE_HOLDER_VOTING === "true" || holderVotePreview);
 
   useRyuxMotion(pageRef);
+
+  useEffect(() => {
+    let cancelled = false;
+    const loadMarketData = async () => {
+      try {
+        const addresses = marketplaceTokens.map((token) => token.contractAddress).join(",");
+        const response = await fetch(`/api/marketplace?addresses=${encodeURIComponent(addresses)}`, { cache: "no-store" });
+        if (!response.ok) throw new Error("Market data unavailable");
+        const data = (await response.json()) as { tokens?: LiveToken[] };
+        if (cancelled) return;
+        setLiveTokens(Object.fromEntries((data.tokens ?? []).map((token) => [token.address, token])));
+        setMarketDataStatus("ready");
+      } catch {
+        if (!cancelled) setMarketDataStatus("unavailable");
+      }
+    };
+
+    void loadMarketData();
+    const interval = window.setInterval(loadMarketData, 30_000);
+    return () => {
+      cancelled = true;
+      window.clearInterval(interval);
+    };
+  }, []);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 80);
@@ -348,17 +326,14 @@ export function RyuxMarketplacePage({ holderVotingOnly = false }: { holderVoting
             <span className="docs-eyebrow">THE ORBIS COLLECTION</span>
             <h1>Agent Library</h1>
             <p>
-              Browse a demo catalog of autonomous AI agent projects for the ORBIS ecosystem.
-              Each card is placeholder data for investor previews.
+              Browse autonomous AI agent projects for the ORBIS ecosystem with live market data.
             </p>
 
             <div className="marketplace-demo-stats">
-              {stats.map(([value, label]) => (
-                <div key={label}>
-                  <strong>{value}</strong>
-                  <span>{label}</span>
-                </div>
-              ))}
+              <MarketStat value={formatCompactUsd(sumMarketData(liveTokens, "marketCap"))} label="Total Market Cap" />
+              <MarketStat value={formatCompactUsd(sumMarketData(liveTokens, "liquidity"))} label="Total Liquidity" />
+              <MarketStat value={formatCompactUsd(sumMarketData(liveTokens, "volume24h"))} label="24h Volume" />
+              <MarketStat value={String(marketplaceTokens.length)} label="Listed Agents" />
             </div>
 
             <label className="marketplace-demo-search">
@@ -367,7 +342,7 @@ export function RyuxMarketplacePage({ holderVotingOnly = false }: { holderVoting
             </label>
           </section>
 
-          <section className="marketplace-demo-library" aria-label="ORBIS demo marketplace">
+          <section className="marketplace-demo-library" aria-label="ORBIS marketplace">
             <div className="marketplace-demo-toolbar">
               <div className="marketplace-demo-tabs">
                 {["All Entries", "Trending", "Recently Added", "Top Valued"].map((tab, index) => (
@@ -376,7 +351,7 @@ export function RyuxMarketplacePage({ holderVotingOnly = false }: { holderVoting
                   </button>
                 ))}
               </div>
-              <select aria-label="Sort demo agents">
+              <select aria-label="Sort marketplace agents">
                 <option>Newest First</option>
                 <option>By Market Cap</option>
                 <option>By Volume</option>
@@ -384,7 +359,9 @@ export function RyuxMarketplacePage({ holderVotingOnly = false }: { holderVoting
             </div>
 
             <div className="marketplace-demo-grid">
-              {demoAgents.map((agent) => (
+              {marketplaceTokens.map((agent) => {
+                const live = liveTokens[agent.contractAddress];
+                return (
                 <article className={`marketplace-demo-card marketplace-demo-card--${agent.tone}`} key={agent.name}>
                   <div className="marketplace-demo-card__head">
                     <div className="marketplace-demo-orb">
@@ -396,30 +373,36 @@ export function RyuxMarketplacePage({ holderVotingOnly = false }: { holderVoting
                     </div>
                   </div>
                   <p>{agent.description}</p>
-                  <svg className="marketplace-demo-chart" viewBox="0 0 238 78" role="img" aria-label={`${agent.name} demo price chart`}>
-                    <path d={agent.chart} />
+                  <svg className="marketplace-demo-chart" viewBox="0 0 238 78" role="img" aria-label={`${agent.name} price chart`}>
+                    <path d="M0 48 C30 60 52 28 78 42 C106 58 122 20 150 30 C180 40 204 14 238 26" />
                   </svg>
                   <div className="marketplace-demo-price">
-                    <strong>{agent.price}</strong>
-                    <span>{agent.change}</span>
+                    <strong>{formatPrice(live?.priceUsd)}</strong>
+                    <span className={(live?.change24h ?? 0) >= 0 ? "is-positive" : "is-negative"}>{formatPercent(live?.change24h)}</span>
                   </div>
                   <div className="marketplace-demo-metrics">
                     <div>
                       <span>MCAP</span>
-                      <strong>{agent.mcap}</strong>
+                      <strong>{formatCompactUsd(live?.marketCap)}</strong>
                     </div>
                     <div>
                       <span>VOL</span>
-                      <strong>{agent.volume}</strong>
+                      <strong>{formatCompactUsd(live?.volume24h)}</strong>
                     </div>
                   </div>
                   <div className="marketplace-demo-card__foot">
-                    <span>{agent.ca}</span>
+                    <a href={live?.pairUrl ?? agent.pumpFunUrl} target="_blank" rel="noreferrer" title="Open token market">
+                      {shortAddress(agent.contractAddress)}
+                    </a>
                     <Share2 size={14} />
                   </div>
                 </article>
-              ))}
+                );
+              })}
             </div>
+            <p className="marketplace-data-status" role="status">
+              {marketDataStatus === "loading" ? "Loading live market data..." : marketDataStatus === "unavailable" ? "Live market data is temporarily unavailable." : "Market data updates every 30 seconds."}
+            </p>
           </section>
         </>
       )}
@@ -481,7 +464,7 @@ export function RyuxMarketplacePage({ holderVotingOnly = false }: { holderVoting
       ) : null}
 
       <footer className="footer docs-footer">
-        <p>&copy; 2026 Orbis Agents Demo</p>
+        <p>&copy; 2026 Orbis Agents</p>
         <div className="footer__links">
           <a href="/">Home</a>
           <a href="/#platform">Build</a>
@@ -537,4 +520,37 @@ function getSolanaProvider() {
   if (typeof window === "undefined") return undefined;
   const walletWindow = window as typeof window & { solana?: WalletLike; solflare?: WalletLike };
   return walletWindow.solana?.isPhantom ? walletWindow.solana : walletWindow.solflare ?? walletWindow.solana;
+}
+
+function MarketStat({ value, label }: { value: string; label: string }) {
+  return (
+    <div>
+      <strong>{value}</strong>
+      <span>{label}</span>
+    </div>
+  );
+}
+
+function sumMarketData(tokens: Record<string, LiveToken>, key: "marketCap" | "liquidity" | "volume24h") {
+  return Object.values(tokens).reduce((total, token) => total + (token[key] ?? 0), 0);
+}
+
+function formatCompactUsd(value: number | null | undefined) {
+  if (value == null) return "--";
+  return new Intl.NumberFormat("en-US", { style: "currency", currency: "USD", notation: "compact", maximumFractionDigits: 1 }).format(value);
+}
+
+function formatPrice(value: number | null | undefined) {
+  if (value == null) return "--";
+  if (value >= 1) return formatCompactUsd(value);
+  return `$${value.toPrecision(4)}`;
+}
+
+function formatPercent(value: number | null | undefined) {
+  if (value == null) return "--";
+  return `${value >= 0 ? "+" : ""}${value.toFixed(2)}%`;
+}
+
+function shortAddress(address: string) {
+  return `${address.slice(0, 6)}...${address.slice(-6)}`;
 }

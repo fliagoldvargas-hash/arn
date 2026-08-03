@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
-import { CheckCircle2, Loader2, Search, Share2, Wallet } from "lucide-react";
+import { CheckCircle2, Loader2, Search, Wallet } from "lucide-react";
 import { ryuxConfig } from "@/config/ryux";
 import { LightRays } from "@/components/LightRays";
 import { PillNav } from "@/components/PillNav";
@@ -108,7 +108,6 @@ export function RyuxMarketplacePage({ holderVotingOnly = false }: { holderVoting
   const [voteStatus, setVoteStatus] = useState<"idle" | "loading" | "submitting">("loading");
   const [voteMessage, setVoteMessage] = useState("");
   const [liveTokens, setLiveTokens] = useState<Record<string, LiveToken>>({});
-  const [marketDataStatus, setMarketDataStatus] = useState<"loading" | "ready" | "unavailable">("loading");
   const [activeTab, setActiveTab] = useState<"all" | "recent" | "valued">("all");
   const [searchQuery, setSearchQuery] = useState("");
   const holderVotingEnabled =
@@ -127,9 +126,8 @@ export function RyuxMarketplacePage({ holderVotingOnly = false }: { holderVoting
         const data = (await response.json()) as { tokens?: LiveToken[] };
         if (cancelled) return;
         setLiveTokens(Object.fromEntries((data.tokens ?? []).map((token) => [token.address, token])));
-        setMarketDataStatus("ready");
       } catch {
-        if (!cancelled) setMarketDataStatus("unavailable");
+        // The cards keep their configured identity while live metrics retry.
       }
     };
 
@@ -412,19 +410,16 @@ export function RyuxMarketplacePage({ holderVotingOnly = false }: { holderVoting
                     </div>
                   </div>
                   <div className="marketplace-demo-card__foot">
-                    <a href={live?.pairUrl ?? agent.pumpFunUrl} target="_blank" rel="noreferrer" title="Open token market">
+                    <a href={agent.pumpFunUrl} target="_blank" rel="noreferrer" title="Open on Pump.fun">
                       {shortAddress(agent.contractAddress)}
                     </a>
-                    <Share2 size={14} />
+                    <Image src="/images/ryux/pumplogo.png" alt="Pump.fun" width={15} height={15} />
                   </div>
                 </article>
                 );
               })}
             </div>
             {!visibleTokens.length ? <p className="marketplace-data-status">No matching tokens found.</p> : null}
-            <p className="marketplace-data-status" role="status">
-              {marketDataStatus === "loading" ? "Loading live market data..." : marketDataStatus === "unavailable" ? "Live market data is temporarily unavailable." : "Market data updates every 30 seconds."}
-            </p>
           </section>
         </>
       )}

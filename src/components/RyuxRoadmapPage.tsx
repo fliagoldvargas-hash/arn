@@ -126,16 +126,15 @@ export function RyuxRoadmapPage() {
       <div className="light-rays-bg" aria-hidden="true">
         <LightRays
           raysOrigin="top-center"
-          raysColor="#76f8ff"
-          raysSpeed={0.82}
-          lightSpread={1.12}
-          rayLength={2.25}
-          fadeDistance={1.42}
+          raysColor="#00ffff"
+          raysSpeed={1.5}
+          lightSpread={1}
+          rayLength={1.2}
           saturation={1}
           followMouse
-          mouseInfluence={0.12}
-          noiseAmount={0.08}
-          distortion={0.24}
+          mouseInfluence={0}
+          noiseAmount={0.1}
+          distortion={0.05}
         />
       </div>
       <nav className={`nav ${scrolled ? "nav--scrolled" : ""}`} aria-label="Primary navigation">

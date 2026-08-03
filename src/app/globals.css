@@ -1721,6 +1721,13 @@ button {
   height: 18px;
 }
 
+.marketplace-token-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 .marketplace-demo-card h2 {
   margin: 0 0 5px;
   font-family: var(--font-serif), Georgia, serif;

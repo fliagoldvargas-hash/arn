@@ -6,13 +6,15 @@ type DexPair = {
   chainId?: string;
   dexId?: string;
   url?: string;
-  baseToken?: { address?: string };
+  baseToken?: { address?: string; name?: string; symbol?: string };
   priceUsd?: string;
   priceChange?: { h24?: number };
   marketCap?: number;
   fdv?: number;
   volume?: { h24?: number };
   liquidity?: { usd?: number };
+  info?: { imageUrl?: string };
+  pairCreatedAt?: number;
 };
 
 export async function GET(request: Request) {
@@ -45,6 +47,10 @@ export async function GET(request: Request) {
 
       return {
         address,
+        name: pair?.baseToken?.name ?? null,
+        symbol: pair?.baseToken?.symbol ?? null,
+        imageUrl: pair?.info?.imageUrl ?? null,
+        pairCreatedAt: pair?.pairCreatedAt ?? null,
         pairUrl: pair?.url ?? null,
         priceUsd: numberOrNull(pair?.priceUsd),
         change24h: pair?.priceChange?.h24 ?? null,

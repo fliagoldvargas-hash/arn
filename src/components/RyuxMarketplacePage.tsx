@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
-import { Activity, CheckCircle2, Loader2, Search, Share2, Wallet } from "lucide-react";
+import { CheckCircle2, Loader2, Search, Share2, Wallet } from "lucide-react";
 import { ryuxConfig } from "@/config/ryux";
 import { LightRays } from "@/components/LightRays";
 import { PillNav } from "@/components/PillNav";
@@ -27,6 +27,10 @@ type SignedMessageResult =
 
 type LiveToken = {
   address: string;
+  name: string | null;
+  symbol: string | null;
+  imageUrl: string | null;
+  pairCreatedAt: number | null;
   pairUrl: string | null;
   priceUsd: number | null;
   change24h: number | null;
@@ -105,6 +109,8 @@ export function RyuxMarketplacePage({ holderVotingOnly = false }: { holderVoting
   const [voteMessage, setVoteMessage] = useState("");
   const [liveTokens, setLiveTokens] = useState<Record<string, LiveToken>>({});
   const [marketDataStatus, setMarketDataStatus] = useState<"loading" | "ready" | "unavailable">("loading");
+  const [activeTab, setActiveTab] = useState<"all" | "recent" | "valued">("all");
+  const [searchQuery, setSearchQuery] = useState("");
   const holderVotingEnabled =
     HOLDER_VOTING_PUBLIC &&
     (holderVotingOnly || process.env.NEXT_PUBLIC_ENABLE_HOLDER_VOTING === "true" || holderVotePreview);
@@ -270,6 +276,22 @@ export function RyuxMarketplacePage({ holderVotingOnly = false }: { holderVoting
   const lockedVoteLabel = userVote
     ? holderVoteOptions.find((option) => option.id === userVote.vote_option)?.label ?? userVote.vote_label
     : "";
+  const visibleTokens = marketplaceTokens
+    .filter((token) => {
+      const live = liveTokens[token.contractAddress];
+      const query = searchQuery.trim().toLowerCase();
+      if (!query) return true;
+      return [token.name, token.ticker, live?.name, live?.symbol, token.contractAddress]
+        .filter(Boolean)
+        .some((value) => value!.toLowerCase().includes(query));
+    })
+    .sort((a, b) => {
+      const aLive = liveTokens[a.contractAddress];
+      const bLive = liveTokens[b.contractAddress];
+      if (activeTab === "valued") return (bLive?.marketCap ?? -1) - (aLive?.marketCap ?? -1);
+      if (activeTab === "recent") return (bLive?.pairCreatedAt ?? 0) - (aLive?.pairCreatedAt ?? 0);
+      return 0;
+    });
 
   return (
     <main className={`marketplace-demo-shell ${holderVotingOnly ? "holder-vote-page" : ""}`} ref={pageRef}>
@@ -338,38 +360,37 @@ export function RyuxMarketplacePage({ holderVotingOnly = false }: { holderVoting
 
             <label className="marketplace-demo-search">
               <Search size={15} />
-              <input placeholder="Search the catalog..." />
+              <input value={searchQuery} onChange={(event) => setSearchQuery(event.target.value)} placeholder="Search the marketplace..." />
             </label>
           </section>
 
           <section className="marketplace-demo-library" aria-label="ORBIS marketplace">
             <div className="marketplace-demo-toolbar">
               <div className="marketplace-demo-tabs">
-                {["All Entries", "Trending", "Recently Added", "Top Valued"].map((tab, index) => (
-                  <button className={index === 0 ? "is-active" : ""} key={tab}>
-                    {tab}
+                {[
+                  ["all", "All Entries"],
+                  ["recent", "Recently Added"],
+                  ["valued", "Top Valued"],
+                ].map(([tab, label]) => (
+                  <button className={activeTab === tab ? "is-active" : ""} key={tab} onClick={() => setActiveTab(tab as typeof activeTab)} type="button">
+                    {label}
                   </button>
                 ))}
               </div>
-              <select aria-label="Sort marketplace agents">
-                <option>Newest First</option>
-                <option>By Market Cap</option>
-                <option>By Volume</option>
-              </select>
             </div>
 
             <div className="marketplace-demo-grid">
-              {marketplaceTokens.map((agent) => {
+              {visibleTokens.map((agent) => {
                 const live = liveTokens[agent.contractAddress];
                 return (
                 <article className={`marketplace-demo-card marketplace-demo-card--${agent.tone}`} key={agent.name}>
                   <div className="marketplace-demo-card__head">
                     <div className="marketplace-demo-orb">
-                      <Activity size={18} />
+                      <img className="marketplace-token-image" src={live?.imageUrl ?? "/images/orbis/orbis-logo.png"} alt="" />
                     </div>
                     <div>
-                      <h2>{agent.name}</h2>
-                      <span>{agent.ticker}</span>
+                      <h2>{live?.name ?? agent.name}</h2>
+                      <span>{live?.symbol ? `$${live.symbol.replace(/^\$/, "")}` : agent.ticker}</span>
                     </div>
                   </div>
                   <p>{agent.description}</p>
@@ -400,6 +421,7 @@ export function RyuxMarketplacePage({ holderVotingOnly = false }: { holderVoting
                 );
               })}
             </div>
+            {!visibleTokens.length ? <p className="marketplace-data-status">No matching tokens found.</p> : null}
             <p className="marketplace-data-status" role="status">
               {marketDataStatus === "loading" ? "Loading live market data..." : marketDataStatus === "unavailable" ? "Live market data is temporarily unavailable." : "Market data updates every 30 seconds."}
             </p>

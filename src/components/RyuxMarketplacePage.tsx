@@ -73,7 +73,7 @@ const holderVoteOptions: HolderVoteOption[] = [
   {
     id: "partner-listings",
     label: "Partner project listings",
-    detail: "Add early external projects that fit the ORBIS agent marketplace vision.",
+    detail: "Add early external projects that fit the AUREN agent marketplace vision.",
   },
   {
     id: "holder-dashboard",
@@ -93,7 +93,7 @@ const holderVoteOptions: HolderVoteOption[] = [
   {
     id: "buyback-transparency",
     label: "Buyback transparency",
-    detail: "A public log that tracks creator rewards used for ORBIS buybacks and treasury actions.",
+    detail: "A public log that tracks creator rewards used for AUREN buybacks and treasury actions.",
   },
 ];
 
@@ -309,8 +309,8 @@ export function RyuxMarketplacePage({ holderVotingOnly = false }: { holderVoting
         />
       </div>
       <PillNav
-        logo="/images/orbis/orbis-logo.png"
-        logoAlt="Orbis Agents"
+        logo="/images/auren/auren-logo.png"
+        logoAlt="Auren Agents"
         activeHref="/marketplace"
         items={[
           { label: "Build", href: "/#platform" },
@@ -319,7 +319,7 @@ export function RyuxMarketplacePage({ holderVotingOnly = false }: { holderVoting
           { label: "Roadmap", href: "/roadmap" },
         ]}
         rightContent={<div className="nav__actions">
-          <a className="social-link" href={ryuxConfig.xUrl} target="_blank" rel="noreferrer" aria-label="ORBIS on X">
+          <a className="social-link" href={ryuxConfig.xUrl} target="_blank" rel="noreferrer" aria-label="AUREN on X">
             X
           </a>
           <SpecularButton className="connect" onClick={connectWallet} size="sm" radius={15} shineSize={14} shineFade={46}>
@@ -332,22 +332,22 @@ export function RyuxMarketplacePage({ holderVotingOnly = false }: { holderVoting
       {holderVotingOnly ? (
         <section className="holder-vote-hero">
           <div className="marketplace-demo-mark">
-            <Image src="/images/orbis/orbis-logo.png" alt="" width={42} height={42} />
+            <Image src="/images/auren/auren-logo.png" alt="" width={42} height={42} />
           </div>
-          <span className="docs-eyebrow">ORBIS HOLDERS</span>
+          <span className="docs-eyebrow">AUREN HOLDERS</span>
           <h1>Holder Voting</h1>
-          <p>Verified ORBIS holders decide which product surface gets priority next.</p>
+          <p>Verified AUREN holders decide which product surface gets priority next.</p>
         </section>
       ) : (
         <>
           <section className="marketplace-demo-hero">
             <div className="marketplace-demo-mark">
-              <Image src="/images/orbis/orbis-logo.png" alt="" width={42} height={42} />
+              <Image src="/images/auren/auren-logo.png" alt="" width={42} height={42} />
             </div>
-            <span className="docs-eyebrow">THE ORBIS COLLECTION</span>
+            <span className="docs-eyebrow">THE AUREN COLLECTION</span>
             <h1>Agent Library</h1>
             <p>
-              Browse autonomous AI agent projects for the ORBIS ecosystem with live market data.
+              Browse autonomous AI agent projects for the AUREN ecosystem with live market data.
             </p>
 
             <div className="marketplace-demo-stats">
@@ -363,7 +363,7 @@ export function RyuxMarketplacePage({ holderVotingOnly = false }: { holderVoting
             </label>
           </section>
 
-          <section className="marketplace-demo-library" aria-label="ORBIS marketplace">
+          <section className="marketplace-demo-library" aria-label="AUREN marketplace">
             <div className="marketplace-demo-toolbar">
               <div className="marketplace-demo-tabs">
                 {[
@@ -385,7 +385,7 @@ export function RyuxMarketplacePage({ holderVotingOnly = false }: { holderVoting
                 <article className={`marketplace-demo-card marketplace-demo-card--${agent.tone}`} key={agent.name}>
                   <div className="marketplace-demo-card__head">
                     <div className="marketplace-demo-orb">
-                      <img className="marketplace-token-image" src={live?.imageUrl ?? "/images/orbis/orbis-logo.png"} alt="" />
+                      <img className="marketplace-token-image" src={live?.imageUrl ?? "/images/auren/auren-logo.png"} alt="" />
                     </div>
                     <div>
                       <h2>{live?.name ?? agent.name}</h2>
@@ -426,12 +426,12 @@ export function RyuxMarketplacePage({ holderVotingOnly = false }: { holderVoting
       )}
 
       {holderVotingEnabled ? (
-        <section className="holder-vote-section" aria-label="ORBIS holder voting">
+        <section className="holder-vote-section" aria-label="AUREN holder voting">
           <div className="holder-vote-head">
             <span className="docs-eyebrow">HOLDER VOTE</span>
             <h2>Choose what ships next</h2>
             <p>
-              Connect a wallet, sign a vote, and ORBIS verifies holder status before saving it.
+              Connect a wallet, sign a vote, and AUREN verifies holder status before saving it.
               One wallet can keep one active vote.
             </p>
           </div>
@@ -482,7 +482,7 @@ export function RyuxMarketplacePage({ holderVotingOnly = false }: { holderVoting
       ) : null}
 
       <footer className="footer docs-footer">
-        <p>&copy; 2026 Orbis Agents</p>
+        <p>&copy; 2026 Auren Agents</p>
         <div className="footer__links">
           <a href="/">Home</a>
           <a href="/#platform">Build</a>
@@ -498,7 +498,7 @@ export function RyuxMarketplacePage({ holderVotingOnly = false }: { holderVoting
 
 function createVoteMessage(walletAddress: string, optionId: string, optionLabel: string, timestamp: string) {
   return [
-    "ORBIS Holder Vote",
+    "AUREN Holder Vote",
     `Wallet: ${walletAddress}`,
     `Option: ${optionLabel}`,
     `Option ID: ${optionId}`,

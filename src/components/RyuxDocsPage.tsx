@@ -13,12 +13,12 @@ const processSteps = [
   {
     number: "01",
     title: "Launch a Token",
-    body: "Drop a token on Solana through Pump.fun using the ORBIS launchpad. Traders and community show up instantly.",
+    body: "Drop a token on Solana through Pump.fun using the AUREN launchpad. Traders and community show up instantly.",
   },
   {
     number: "02",
     title: "Pair with AI Infrastructure",
-    body: "Connect the token to AI agent infrastructure. Bring your own setup or buy cloud deployment directly through ORBIS.",
+    body: "Connect the token to AI agent infrastructure. Bring your own setup or buy cloud deployment directly through AUREN.",
   },
   {
     number: "03",
@@ -116,8 +116,8 @@ export function RyuxDocsPage() {
         />
       </div>
       <PillNav
-        logo="/images/orbis/orbis-logo.png"
-        logoAlt="Orbis Agents"
+        logo="/images/auren/auren-logo.png"
+        logoAlt="Auren Agents"
         activeHref="/docs"
         items={[
           { label: "Build", href: "/#platform" },
@@ -126,7 +126,7 @@ export function RyuxDocsPage() {
           { label: "Roadmap", href: "/roadmap" },
         ]}
         rightContent={<div className="nav__actions">
-          <a className="social-link" href={ryuxConfig.xUrl} target="_blank" rel="noreferrer" aria-label="ORBIS on X">
+          <a className="social-link" href={ryuxConfig.xUrl} target="_blank" rel="noreferrer" aria-label="AUREN on X">
             X
           </a>
           <a
@@ -135,7 +135,7 @@ export function RyuxDocsPage() {
             target={ryuxConfig.pumpFunUrl ? "_blank" : undefined}
             rel={ryuxConfig.pumpFunUrl ? "noreferrer" : undefined}
             aria-disabled={!ryuxConfig.pumpFunUrl}
-            aria-label="ORBIS on Pump.fun"
+            aria-label="AUREN on Pump.fun"
           >
             <Image src="/images/ryux/pumplogo.png" alt="" width={15} height={15} />
           </a>
@@ -158,14 +158,14 @@ export function RyuxDocsPage() {
         </div>
       </section>
 
-      <DocsSection eyebrow="THE PROBLEM & SOLUTION" title="What is Orbis Agents?">
+      <DocsSection eyebrow="THE PROBLEM & SOLUTION" title="What is Auren Agents?">
         <div className="docs-two-grid">
           <DocCard label="THE PROBLEM">
             AI agents are going to run the internet. But right now there&apos;s nowhere to launch one as an actual investable
             business and nowhere for investors to find and fund them.
           </DocCard>
           <DocCard label="THE SOLUTION">
-            ORBIS connects tokens to AI agent infrastructure, creating <strong>tokenized autonomous agents.</strong> Think
+            AUREN connects tokens to AI agent infrastructure, creating <strong>tokenized autonomous agents.</strong> Think
             of each one as a digital company that does real work, makes real money, and grows on its own. The token is
             your ownership.
           </DocCard>
@@ -188,7 +188,7 @@ export function RyuxDocsPage() {
 
       <DocsSection eyebrow="CAPABILITIES" title="The Skill Market">
         <p className="docs-lede">
-          Agents buy skills from the ORBIS marketplace. These are modular tools that give agents real capabilities and turn
+          Agents buy skills from the AUREN marketplace. These are modular tools that give agents real capabilities and turn
           tokens into working businesses.
         </p>
         <div className="skill-grid">
@@ -212,7 +212,7 @@ export function RyuxDocsPage() {
         <span className="docs-eyebrow">THE VISION</span>
         <p>
           Software that doesn&apos;t just follow orders. It <strong>runs itself, earns money, and gets better over time.</strong>{" "}
-          ORBIS is where these agents get built, funded, and turned into real businesses.
+          AUREN is where these agents get built, funded, and turned into real businesses.
         </p>
         <div className="vision-metrics">
           <div><strong>Token - Agent</strong><span>EVERY TOKEN BECOMES A BUSINESS</span></div>
@@ -242,13 +242,13 @@ export function RyuxDocsPage() {
       <section className="disclaimer">
         <span className="docs-eyebrow">DISCLAIMER</span>
         <p>
-          ORBIS is a platform for launching and discovering AI agent projects. Nothing here is financial advice. Always do
+          AUREN is a platform for launching and discovering AI agent projects. Nothing here is financial advice. Always do
           your own research. We don&apos;t guarantee the performance or legitimacy of any token launched through the platform.
         </p>
       </section>
 
       <footer className="footer docs-footer">
-        <p>&copy; 2026 Orbis Agents</p>
+        <p>&copy; 2026 Auren Agents</p>
         <div className="footer__links">
           <a href="/roadmap">Roadmap</a>
           <a href="/docs">Docs</a>

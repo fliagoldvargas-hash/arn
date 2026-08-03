@@ -12,8 +12,8 @@ export type MarketplaceToken = {
 // Add new marketplace tokens here. Changes go live with the next Vercel deploy.
 export const marketplaceTokens: MarketplaceToken[] = [
   {
-    name: "Orbis",
-    ticker: "$ORBIS",
+    name: "Auren",
+    ticker: "$AUREN",
     contractAddress: ryuxConfig.contractAddress,
     pumpFunUrl: ryuxConfig.pumpFunUrl,
     description: "Autonomous agent infrastructure for on-chain intelligence and execution.",
@@ -24,7 +24,7 @@ export const marketplaceTokens: MarketplaceToken[] = [
     ticker: "$TICKER",
     contractAddress: "8rWNVQoFyhWgKfBQGo1o7va5imP9rYT9jNroDqN4pump",
     pumpFunUrl: "https://pump.fun/coin/8rWNVQoFyhWgKfBQGo1o7va5imP9rYT9jNroDqN4pump",
-    description: "Token listed on the Orbis marketplace.",
+    description: "Token listed on the Auren marketplace.",
     tone: "blue",
   },
 ];

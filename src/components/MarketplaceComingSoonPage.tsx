@@ -81,8 +81,8 @@ export function MarketplaceComingSoonPage() {
         />
       </div>
       <PillNav
-        logo="/images/orbis/orbis-logo.png"
-        logoAlt="Orbis Agents"
+        logo="/images/auren/auren-logo.png"
+        logoAlt="Auren Agents"
         activeHref="/marketplace"
         items={[
           { label: "Build", href: "/#platform" },
@@ -91,7 +91,7 @@ export function MarketplaceComingSoonPage() {
           { label: "Roadmap", href: "/roadmap" },
         ]}
         rightContent={<div className="nav__actions">
-          <a className="social-link" href={ryuxConfig.xUrl} target="_blank" rel="noreferrer" aria-label="ORBIS on X">
+          <a className="social-link" href={ryuxConfig.xUrl} target="_blank" rel="noreferrer" aria-label="AUREN on X">
             X
           </a>
           <SpecularButton className="connect" onClick={connectWallet} size="sm" radius={15} shineSize={14} shineFade={46}>

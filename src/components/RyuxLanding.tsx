@@ -56,7 +56,7 @@ const platformCards: PlatformCard[] = [
     number: "01",
     title: "Build Your Agent",
     body:
-      "Use the ORBIS framework to create autonomous agents from scratch. Define behaviors, set strategies, connect to on-chain protocols. Your agent runs 24/7 on Solana infrastructure.",
+      "Use the AUREN framework to create autonomous agents from scratch. Define behaviors, set strategies, connect to on-chain protocols. Your agent runs 24/7 on Solana infrastructure.",
     icon: Star,
     cta: "View documentation",
     wide: true,
@@ -322,8 +322,8 @@ function Navigation({
 
   return (
     <PillNav
-      logo="/images/orbis/orbis-logo.png"
-      logoAlt="Orbis Agents"
+      logo="/images/auren/auren-logo.png"
+      logoAlt="Auren Agents"
       items={[
         { label: "Build", href: "#platform" },
         { label: "Marketplace", href: "/marketplace", onClick: onMarketplaceClick },
@@ -331,7 +331,7 @@ function Navigation({
         { label: "Roadmap", href: "/roadmap" },
       ]}
       rightContent={<div className="nav__actions">
-        <a className="social-link" href={ryuxConfig.xUrl} target="_blank" rel="noreferrer" aria-label="ORBIS on X">
+        <a className="social-link" href={ryuxConfig.xUrl} target="_blank" rel="noreferrer" aria-label="AUREN on X">
           X
         </a>
         <a
@@ -340,7 +340,7 @@ function Navigation({
           target={ryuxConfig.pumpFunUrl ? "_blank" : undefined}
           rel={ryuxConfig.pumpFunUrl ? "noreferrer" : undefined}
           aria-disabled={!ryuxConfig.pumpFunUrl}
-          aria-label="ORBIS on Pump.fun"
+          aria-label="AUREN on Pump.fun"
         >
           <Image src="/images/ryux/pumplogo.png" alt="" width={15} height={15} />
         </a>
@@ -378,7 +378,7 @@ function Hero({
           <span>Agents that earn.</span>
         </h1>
         <p>
-          ORBIS is the infrastructure for onchain intelligence. Create an autonomous agent, give it skills, and let it
+          AUREN is the infrastructure for onchain intelligence. Create an autonomous agent, give it skills, and let it
           work for you. Tokenize it on day one, or never. The choice is yours.
         </p>
         <div className="hero__buttons hero__buttons--single">
@@ -400,7 +400,7 @@ function Hero({
             Start Building
           </SpecularButton>
         </div>
-        <div className="hero-token-stats" aria-label="ORBIS token stats">
+        <div className="hero-token-stats" aria-label="AUREN token stats">
           {liveTokenStats.map((stat) => (
             <div className="hero-token-stat" key={stat.label}>
               <span
@@ -450,7 +450,7 @@ function Platform() {
   return (
     <section className="section platform" id="platform">
       <SectionIntro eyebrow="THE PLATFORM" title="Your agent. Your rules.">
-        ORBIS is the infrastructure layer for autonomous AI agents on Solana. Build an agent that trades, manages a
+        AUREN is the infrastructure layer for autonomous AI agents on Solana. Build an agent that trades, manages a
         treasury, interacts with protocols, or serves your community, all on-chain, all yours.
       </SectionIntro>
       <div className="platform-grid">
@@ -494,7 +494,7 @@ function Marketplace() {
     <section className="section marketplace" id="marketplace">
       <SectionIntro eyebrow="MARKETPLACE" title="Discover agents worth investing in.">
         Browse a curated marketplace of autonomous agents built by developers worldwide. Analyze performance metrics,
-        track revenue, and trade agent tokens, all within the ORBIS ecosystem.
+        track revenue, and trade agent tokens, all within the AUREN ecosystem.
       </SectionIntro>
       <p className="market-note">
         Every agent on the marketplace is transparent. On-chain treasury, verified creator, real-time metrics. No black
@@ -508,7 +508,7 @@ function Labs() {
   return (
     <section className="section labs">
       <SectionIntro eyebrow="AGENT LABS" title="Pushing the boundary.">
-        Orbis Agents is our dedicated research and development arm. We&apos;re building the next generation of agent
+        Auren Agents is our dedicated research and development arm. We&apos;re building the next generation of agent
         capabilities: smarter strategies, deeper protocol integration, and tools that don&apos;t exist yet.
       </SectionIntro>
       <div className="metric-row">
@@ -531,7 +531,7 @@ function Cta({
         <Sparkles size={22} />
       </div>
       <h2>The infrastructure for intelligent agents is here.</h2>
-      <p>Whether you&apos;re building, investing, or exploring, ORBIS is where it starts.</p>
+      <p>Whether you&apos;re building, investing, or exploring, AUREN is where it starts.</p>
       <div className="hero__buttons">
         <SpecularButton
           className="hero-start-button"
@@ -603,7 +603,7 @@ function Footer() {
         <span>Meteora</span>
         <span>Jupiter</span>
       </div>
-      <p>&copy; 2026 Orbis Agents</p>
+      <p>&copy; 2026 Auren Agents</p>
     </footer>
   );
 }

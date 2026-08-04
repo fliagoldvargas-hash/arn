@@ -457,6 +457,114 @@ button {
   z-index: 2;
 }
 
+.builder-access-page {
+  min-height: 100vh;
+  background: #050505;
+  color: #fff;
+}
+
+.builder-access-panel {
+  position: relative;
+  z-index: 1;
+  width: min(520px, calc(100% - 40px));
+  margin: 0 auto;
+  padding: 220px 0 120px;
+  text-align: center;
+}
+
+.builder-access-panel h1 {
+  margin: 22px 0 0;
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: clamp(42px, 6vw, 72px);
+  font-weight: 400;
+}
+
+.builder-access-panel > p {
+  margin: 28px auto 34px;
+  color: rgba(255, 255, 255, 0.62);
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.builder-join-glare {
+  width: 100%;
+}
+
+.builder-join-button {
+  position: relative;
+  z-index: 2;
+  display: inline-flex;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border: 0;
+  background: transparent;
+  color: #fff;
+  font-family: var(--font-display), var(--font-sans), sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.builder-join-button:disabled {
+  cursor: wait;
+  opacity: 0.7;
+}
+
+.builder-access-status {
+  min-height: 24px;
+  margin-top: 22px;
+  color: rgba(255, 255, 255, 0.52);
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.builder-access-confirmation {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 28px 20px;
+  border: 1px solid rgba(53, 208, 127, 0.35);
+  background: rgba(53, 208, 127, 0.06);
+  color: #35d07f;
+}
+
+.builder-access-confirmation span {
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: 25px;
+  color: #fff;
+}
+
+.builder-access-confirmation strong {
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 13px;
+  font-weight: 400;
+}
+
+.builder-access-confirmation small {
+  color: rgba(255, 255, 255, 0.42);
+  font-family: var(--font-display), var(--font-sans), sans-serif;
+  letter-spacing: 0.12em;
+}
+
+.builder-nav-wallet {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: transparent;
+  color: rgba(255, 255, 255, 0.8);
+  font-family: var(--font-display), var(--font-sans), sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
 /* The source effect is subtle at hero-button scale; this keeps its integration visible. */
 
 .hero-start-button:hover {

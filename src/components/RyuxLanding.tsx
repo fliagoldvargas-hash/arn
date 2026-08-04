@@ -235,13 +235,13 @@ export function RyuxLanding() {
       <Hero
         copied={copied}
         onCopy={copyAddress}
-        onStartBuilding={() => setActiveModal("building")}
+        onStartBuilding={() => window.location.assign("/builder")}
         tokenStats={tokenStats}
       />
       <Platform />
       <Marketplace />
       <Labs />
-      <Cta onStartBuilding={() => setActiveModal("building")} />
+      <Cta onStartBuilding={() => window.location.assign("/builder")} />
       <Footer />
       {activeModal ? (
         <SystemUpdateModal

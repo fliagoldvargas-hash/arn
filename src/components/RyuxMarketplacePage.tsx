@@ -411,10 +411,10 @@ export function RyuxMarketplacePage({ holderVotingOnly = false }: { holderVoting
                     </div>
                   </div>
                   <div className="marketplace-demo-card__foot">
-                    <a href={agent.pumpFunUrl} target="_blank" rel="noreferrer" title="Open on Pump.fun">
-                      {shortAddress(agent.contractAddress)}
+                    <span>{shortAddress(agent.contractAddress)}</span>
+                    <a className="marketplace-pump-link" href={agent.pumpFunUrl} target="_blank" rel="noreferrer" title="Open on Pump.fun" aria-label={`Open ${agent.name} on Pump.fun`}>
+                      <Image src="/images/ryux/pumplogo.png" alt="Pump.fun" width={15} height={15} />
                     </a>
-                    <Image src="/images/ryux/pumplogo.png" alt="Pump.fun" width={15} height={15} />
                   </div>
                 </article>
                 );

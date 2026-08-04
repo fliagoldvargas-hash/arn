@@ -15,7 +15,7 @@ import {
 } from "lucide-react";
 import { getContractLabel, ryuxConfig } from "@/config/ryux";
 import { LightRays } from "@/components/LightRays";
-import GlareHover from "@/components/GlareHover";
+import ElectricBorder from "@/components/ElectricBorder";
 import { PillNav } from "@/components/PillNav";
 import { SpecularButton } from "@/components/SpecularButton";
 import { useRyuxMotion } from "@/components/useRyuxMotion";
@@ -387,38 +387,16 @@ function Hero({
           work for you. Tokenize it on day one, or never. The choice is yours.
         </p>
         <div className="hero__buttons">
-          <GlareHover
-            className="hero-glare-button"
-            width="176px"
-            height="52px"
-            background="rgba(255, 255, 255, 0.035)"
-            borderColor="rgba(255, 255, 255, 0.12)"
-            borderRadius="2px"
-            glareOpacity={0.3}
-            glareAngle={-30}
-            glareSize={300}
-            transitionDuration={800}
-          >
+          <ElectricBorder className="hero-electric-button" color="#06B6D4" speed={0.7} chaos={0.01} borderRadius={2}>
             <button className="hero-start-button" onClick={onStartBuilding} type="button">
               Start Building
             </button>
-          </GlareHover>
-          <GlareHover
-            className="hero-glare-button"
-            width="176px"
-            height="52px"
-            background="rgba(255, 255, 255, 0.035)"
-            borderColor="rgba(255, 255, 255, 0.12)"
-            borderRadius="2px"
-            glareOpacity={0.3}
-            glareAngle={-30}
-            glareSize={300}
-            transitionDuration={800}
-          >
+          </ElectricBorder>
+          <ElectricBorder className="hero-electric-button" color="#06B6D4" speed={0.7} chaos={0.01} borderRadius={2}>
             <a className="hero-marketplace-button" href="/marketplace">
               Marketplace
             </a>
-          </GlareHover>
+          </ElectricBorder>
         </div>
         <div className="hero-token-stats" aria-label="AUREN token stats">
           {liveTokenStats.map((stat) => (

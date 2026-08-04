@@ -448,11 +448,18 @@ button {
   text-transform: uppercase;
 }
 
-.hero-glare-button {
+.hero-electric-button {
   flex: 0 0 176px;
+  height: 52px;
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid rgba(255, 255, 255, 0.12);
 }
 
-.hero-glare-button > * {
+.hero-electric-button > .eb-content {
+  width: 100%;
+}
+
+.hero-electric-button > .eb-content > * {
   position: relative;
   z-index: 2;
 }

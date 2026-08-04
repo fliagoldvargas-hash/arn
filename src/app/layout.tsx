@@ -21,12 +21,12 @@ const lora = Lora({
 });
 
 export const metadata: Metadata = {
-  title: "Auren Agents - The Autonomous Agent Protocol",
+  title: "Vanta Agents - The Autonomous Agent Protocol",
   description:
     "Deploy, discover, and invest in autonomous AI agents on Solana. The platform for onchain intelligence.",
   icons: {
-    icon: "/images/auren/auren-logo-v2.png",
-    apple: "/images/auren/auren-logo-v2.png",
+    icon: "/images/vanta/vanta-logo.png",
+    apple: "/images/vanta/vanta-logo.png",
   },
 };
 

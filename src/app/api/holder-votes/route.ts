@@ -131,7 +131,7 @@ export async function POST(request: NextRequest) {
   const tokenBalanceRaw = await getRyuxTokenBalance(walletAddress);
 
   if (BigInt(tokenBalanceRaw) <= BigInt(0)) {
-    return NextResponse.json({ error: "$AUREN holder status not found for this wallet." }, { status: 403 });
+    return NextResponse.json({ error: "$VANTA holder status not found for this wallet." }, { status: 403 });
   }
 
   const voteRecord: HolderVoteRecord = {
@@ -177,7 +177,7 @@ async function getExistingHolderVote(walletAddress: string) {
 
 function createVoteMessage(walletAddress: string, optionId: string, optionLabel: string, timestamp: string) {
   return [
-    "AUREN Holder Vote",
+    "VANTA Holder Vote",
     `Wallet: ${walletAddress}`,
     `Option: ${optionLabel}`,
     `Option ID: ${optionId}`,

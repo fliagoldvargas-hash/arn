@@ -1,5 +1,5 @@
 export const ryuxConfig = {
-  xUrl: "https://x.com/Aurenagents",
+  xUrl: "https://x.com/Vantaagents",
 
   pumpFunUrl: "https://pump.fun/coin/",
 

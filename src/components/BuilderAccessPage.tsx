@@ -18,7 +18,7 @@ type WhitelistRecord = {
   joinedAt: string;
 };
 
-const STORAGE_PREFIX = "auren-builder-whitelist:";
+const STORAGE_PREFIX = "vanta-builder-whitelist:";
 
 export function BuilderAccessPage() {
   const [walletAddress, setWalletAddress] = useState("");
@@ -72,7 +72,7 @@ export function BuilderAccessPage() {
 
     const timestamp = Date.now().toString();
     const text = [
-      "AUREN BUILDER WHITELIST",
+      "VANTA BUILDER WHITELIST",
       `Wallet: ${walletAddress}`,
       `Timestamp: ${timestamp}`,
       "This signature is free and only confirms wallet ownership.",
@@ -111,8 +111,8 @@ export function BuilderAccessPage() {
         />
       </div>
       <PillNav
-        logo="/images/auren/auren-logo-v2.png"
-        logoAlt="Auren Agents"
+        logo="/images/vanta/vanta-logo.png"
+        logoAlt="Vanta Agents"
         activeHref="/builder"
         items={[
           { label: "Build", href: "/builder" },
@@ -121,7 +121,7 @@ export function BuilderAccessPage() {
           { label: "Roadmap", href: "/roadmap" },
         ]}
         rightContent={<div className="nav__actions">
-          <a className="social-link" href={ryuxConfig.xUrl} target="_blank" rel="noreferrer" aria-label="AUREN on X">X</a>
+          <a className="social-link" href={ryuxConfig.xUrl} target="_blank" rel="noreferrer" aria-label="VANTA on X">X</a>
           <button className="builder-nav-wallet" onClick={connectWallet} type="button">
             <Wallet size={13} />
             <span>{walletLabel}</span>
@@ -133,7 +133,7 @@ export function BuilderAccessPage() {
         <span className="docs-eyebrow">BUILDER ACCESS</span>
         <h1 id="builder-access-title">
           <span>Join the whitelist.</span>
-          <em>Build with Auren.</em>
+          <em>Build with Vanta.</em>
         </h1>
         <p>Builder access is opening in stages. Join the whitelist with your wallet and we&apos;ll enable your workspace when it is ready.</p>
 

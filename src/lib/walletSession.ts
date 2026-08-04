@@ -1,4 +1,4 @@
-const WALLET_SESSION_KEY = "auren-wallet-session";
+const WALLET_SESSION_KEY = "vanta-wallet-session";
 
 export function readWalletSession() {
   if (typeof window === "undefined") return "";

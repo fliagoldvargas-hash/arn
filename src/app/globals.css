@@ -1838,6 +1838,18 @@ button {
   transition: transform 0.22s ease, border-color 0.22s ease, background 0.22s ease;
 }
 
+.marketplace-card-glare {
+  display: block;
+  min-height: 330px;
+  background: transparent;
+  border: 0;
+}
+
+.marketplace-card-glare .marketplace-demo-card {
+  width: 100%;
+  height: 100%;
+}
+
 .marketplace-demo-card:hover {
   transform: translateY(-4px);
   border-color: rgba(255, 255, 255, 0.18);

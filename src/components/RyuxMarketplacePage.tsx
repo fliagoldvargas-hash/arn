@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import { CheckCircle2, Loader2, Search, Wallet } from "lucide-react";
 import { ryuxConfig } from "@/config/ryux";
 import { LightRays } from "@/components/LightRays";
+import GlareHover from "@/components/GlareHover";
 import { PillNav } from "@/components/PillNav";
 import { SpecularButton } from "@/components/SpecularButton";
 import { useRyuxMotion } from "@/components/useRyuxMotion";
@@ -396,7 +397,19 @@ export function RyuxMarketplacePage({ holderVotingOnly = false }: { holderVoting
               {visibleTokens.map((agent) => {
                 const live = liveTokens[agent.contractAddress];
                 return (
-                <article className={`marketplace-demo-card marketplace-demo-card--${agent.tone}`} key={agent.name}>
+                <GlareHover
+                  key={agent.name}
+                  className="marketplace-card-glare"
+                  width="100%"
+                  height="100%"
+                  background="transparent"
+                  borderColor="transparent"
+                  borderRadius="0"
+                  glareOpacity={0.24}
+                  glareSize={300}
+                  transitionDuration={800}
+                >
+                <article className={`marketplace-demo-card marketplace-demo-card--${agent.tone}`}>
                   <div className="marketplace-demo-card__head">
                     <div className="marketplace-demo-orb">
                       <img className="marketplace-token-image" src={live?.imageUrl ?? "/images/auren/auren-logo-v2.png"} alt="" />
@@ -431,6 +444,7 @@ export function RyuxMarketplacePage({ holderVotingOnly = false }: { holderVoting
                     </a>
                   </div>
                 </article>
+                </GlareHover>
                 );
               })}
             </div>

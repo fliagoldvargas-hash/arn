@@ -27,7 +27,7 @@ type RoadmapPhase = {
 
 const phases: RoadmapPhase[] = [
   {
-    date: "31 JUL 2026",
+    date: "01 AUG 2026",
     status: "completed",
     phase: "PHASE 1",
     count: "4/4",
@@ -36,7 +36,7 @@ const phases: RoadmapPhase[] = [
     milestones: ["Token Launch", "AUREN Website", "X / Twitter Live", "Docs and Roadmap Pages"],
   },
   {
-    date: "04 AUG 2026",
+    date: "05 AUG 2026",
     status: "completed",
     phase: "PHASE 2",
     count: "4/4",
@@ -45,7 +45,7 @@ const phases: RoadmapPhase[] = [
     milestones: ["Marketplace Public Release", "Agent Listing Cards", "Project Discovery", "Trading Links"],
   },
   {
-    date: "MID AUG 2026",
+    date: "LATE AUG 2026",
     status: "pending",
     phase: "PHASE 3",
     count: "0/4",
@@ -54,7 +54,7 @@ const phases: RoadmapPhase[] = [
     milestones: ["Wallet Session Polish", "User Dashboard", "Portfolio Overview", "Dashboard Update Modal Removal"],
   },
   {
-    date: "LATE AUG 2026",
+    date: "SEP 2026",
     status: "pending",
     phase: "PHASE 4",
     count: "0/5",
@@ -63,7 +63,7 @@ const phases: RoadmapPhase[] = [
     milestones: ["Agent Templates", "Skill Modules", "Creator Setup Flow", "Agent Metadata", "Cloud Deploy Prep"],
   },
   {
-    date: "SEP 2026",
+    date: "OCT 2026",
     status: "pending",
     phase: "PHASE 5",
     count: "0/4",

@@ -8,6 +8,7 @@ import { LightRays } from "@/components/LightRays";
 import { PillNav } from "@/components/PillNav";
 import { SpecularButton } from "@/components/SpecularButton";
 import { useRyuxMotion } from "@/components/useRyuxMotion";
+import { readWalletSession, saveWalletSession } from "@/lib/walletSession";
 
 const processSteps = [
   {
@@ -53,7 +54,7 @@ type WalletLike = {
 export function RyuxDocsPage() {
   const pageRef = useRef<HTMLElement | null>(null);
   const [scrolled, setScrolled] = useState(false);
-  const [walletAddress, setWalletAddress] = useState("");
+  const [walletAddress, setWalletAddress] = useState(() => readWalletSession());
   const [walletStatus, setWalletStatus] = useState<"idle" | "connecting" | "missing">("idle");
 
   useEffect(() => {
@@ -67,7 +68,11 @@ export function RyuxDocsPage() {
     const provider = getSolanaProvider();
     provider
       ?.connect({ onlyIfTrusted: true })
-      .then((response) => setWalletAddress(response.publicKey.toString()))
+      .then((response) => {
+        const address = response.publicKey.toString();
+        saveWalletSession(address);
+        setWalletAddress(address);
+      })
       .catch(() => undefined);
   }, []);
 
@@ -82,7 +87,9 @@ export function RyuxDocsPage() {
     try {
       setWalletStatus("connecting");
       const response = await provider.connect();
-      setWalletAddress(response.publicKey.toString());
+      const address = response.publicKey.toString();
+      saveWalletSession(address);
+      setWalletAddress(address);
       setWalletStatus("idle");
     } catch {
       setWalletStatus("idle");

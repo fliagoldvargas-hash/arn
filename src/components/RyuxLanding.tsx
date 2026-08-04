@@ -19,6 +19,7 @@ import GlareHover from "@/components/GlareHover";
 import { PillNav } from "@/components/PillNav";
 import { SpecularButton } from "@/components/SpecularButton";
 import { useRyuxMotion } from "@/components/useRyuxMotion";
+import { readWalletSession, saveWalletSession } from "@/lib/walletSession";
 import type { Metric, PlatformCard } from "@/types/ryux";
 
 type SolanaWalletProvider = {
@@ -108,7 +109,7 @@ export function RyuxLanding() {
   const pageRef = useRef<HTMLElement | null>(null);
   const [scrolled, setScrolled] = useState(false);
   const [copied, setCopied] = useState(false);
-  const [walletAddress, setWalletAddress] = useState("");
+  const [walletAddress, setWalletAddress] = useState(() => readWalletSession());
   const [walletStatus, setWalletStatus] = useState<"idle" | "connecting" | "missing">("idle");
   const [activeModal, setActiveModal] = useState<"building" | "marketplace" | null>(null);
   const [tokenStats, setTokenStats] = useState<TokenStats>(defaultTokenStats);
@@ -126,7 +127,11 @@ export function RyuxLanding() {
     const provider = getSolanaProvider();
     provider
       ?.connect({ onlyIfTrusted: true })
-      .then((response) => setWalletAddress(response.publicKey.toString()))
+      .then((response) => {
+        const address = response.publicKey.toString();
+        saveWalletSession(address);
+        setWalletAddress(address);
+      })
       .catch(() => undefined);
   }, []);
 
@@ -203,7 +208,9 @@ export function RyuxLanding() {
     try {
       setWalletStatus("connecting");
       const response = await provider.connect();
-      setWalletAddress(response.publicKey.toString());
+      const address = response.publicKey.toString();
+      saveWalletSession(address);
+      setWalletAddress(address);
       setWalletStatus("idle");
     } catch {
       setWalletStatus("idle");

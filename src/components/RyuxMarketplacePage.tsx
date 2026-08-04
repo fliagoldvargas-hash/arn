@@ -9,6 +9,7 @@ import { PillNav } from "@/components/PillNav";
 import { SpecularButton } from "@/components/SpecularButton";
 import { useRyuxMotion } from "@/components/useRyuxMotion";
 import { marketplaceTokens } from "@/config/marketplace";
+import { readWalletSession, saveWalletSession } from "@/lib/walletSession";
 
 type WalletLike = {
   isPhantom?: boolean;
@@ -100,7 +101,7 @@ const holderVoteOptions: HolderVoteOption[] = [
 export function RyuxMarketplacePage({ holderVotingOnly = false }: { holderVotingOnly?: boolean }) {
   const pageRef = useRef<HTMLElement | null>(null);
   const [scrolled, setScrolled] = useState(false);
-  const [walletAddress, setWalletAddress] = useState("");
+  const [walletAddress, setWalletAddress] = useState(() => readWalletSession());
   const [walletStatus, setWalletStatus] = useState<"idle" | "connecting" | "missing">("idle");
   const [holderVotePreview, setHolderVotePreview] = useState(false);
   const [voteTotals, setVoteTotals] = useState<HolderVoteResponse["totals"]>(() => emptyVoteTotals());
@@ -148,6 +149,18 @@ export function RyuxMarketplacePage({ holderVotingOnly = false }: { holderVoting
   }, []);
 
   useEffect(() => {
+    const provider = getSolanaProvider();
+    provider
+      ?.connect({ onlyIfTrusted: true })
+      .then((response) => {
+        const address = response.publicKey.toString();
+        saveWalletSession(address);
+        setWalletAddress(address);
+      })
+      .catch(() => undefined);
+  }, []);
+
+  useEffect(() => {
     const searchParams = new URLSearchParams(window.location.search);
     const hasPreviewParam = searchParams.get("holderVotePreview") === "1";
 
@@ -179,6 +192,7 @@ export function RyuxMarketplacePage({ holderVotingOnly = false }: { holderVoting
       setWalletStatus("connecting");
       const response = await provider.connect();
       const nextWalletAddress = response.publicKey.toString();
+      saveWalletSession(nextWalletAddress);
       setWalletAddress(nextWalletAddress);
       setWalletStatus("idle");
       return nextWalletAddress;

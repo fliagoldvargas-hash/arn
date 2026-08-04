@@ -19,12 +19,4 @@ export const marketplaceTokens: MarketplaceToken[] = [
     description: "Autonomous agent infrastructure for on-chain intelligence and execution.",
     tone: "blue",
   },
-  {
-    name: "Token Name",
-    ticker: "$TICKER",
-    contractAddress: "8rWNVQoFyhWgKfBQGo1o7va5imP9rYT9jNroDqN4pump",
-    pumpFunUrl: "https://pump.fun/coin/8rWNVQoFyhWgKfBQGo1o7va5imP9rYT9jNroDqN4pump",
-    description: "Token listed on the Vanta marketplace.",
-    tone: "blue",
-  },
 ];

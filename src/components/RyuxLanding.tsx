@@ -15,7 +15,6 @@ import {
 } from "lucide-react";
 import { getContractLabel, ryuxConfig } from "@/config/ryux";
 import { LightRays } from "@/components/LightRays";
-import ElectricBorder from "@/components/ElectricBorder";
 import { PillNav } from "@/components/PillNav";
 import { SpecularButton } from "@/components/SpecularButton";
 import { useRyuxMotion } from "@/components/useRyuxMotion";
@@ -387,16 +386,12 @@ function Hero({
           work for you. Tokenize it on day one, or never. The choice is yours.
         </p>
         <div className="hero__buttons">
-          <ElectricBorder className="hero-electric-button" color="#06B6D4" speed={0.7} chaos={0.01} borderRadius={2}>
-            <button className="hero-start-button" onClick={onStartBuilding} type="button">
-              Start Building
-            </button>
-          </ElectricBorder>
-          <ElectricBorder className="hero-electric-button" color="#06B6D4" speed={0.7} chaos={0.01} borderRadius={2}>
-            <a className="hero-marketplace-button" href="/marketplace">
-              Marketplace
-            </a>
-          </ElectricBorder>
+          <button className="hero-start-button" onClick={onStartBuilding} type="button">
+            Start Building
+          </button>
+          <a className="hero-marketplace-button" href="/marketplace">
+            Marketplace
+          </a>
         </div>
         <div className="hero-token-stats" aria-label="AUREN token stats">
           {liveTokenStats.map((stat) => (

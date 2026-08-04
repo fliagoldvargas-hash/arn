@@ -418,8 +418,8 @@ button {
 }
 
 .hero-start-button {
-  width: 100%;
-  height: 100%;
+  width: 176px;
+  height: 52px;
   padding: 0 24px;
   border: 0;
   background: transparent;
@@ -434,8 +434,8 @@ button {
 
 .hero-marketplace-button {
   display: inline-flex;
-  width: 100%;
-  height: 100%;
+  width: 176px;
+  height: 52px;
   align-items: center;
   justify-content: center;
   border: 0;
@@ -446,22 +446,6 @@ button {
   font-weight: 700;
   letter-spacing: 0.13em;
   text-transform: uppercase;
-}
-
-.hero-electric-button {
-  flex: 0 0 176px;
-  height: 52px;
-  background: rgba(255, 255, 255, 0.035);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-}
-
-.hero-electric-button > .eb-content {
-  width: 100%;
-}
-
-.hero-electric-button > .eb-content > * {
-  position: relative;
-  z-index: 2;
 }
 
 .builder-access-page {

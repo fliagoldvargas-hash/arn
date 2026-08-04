@@ -593,15 +593,6 @@ button {
   }
 }
 
-/* The source effect is subtle at hero-button scale; this keeps its integration visible. */
-
-.hero-start-button:hover {
-  transform: translateY(-2px);
-  border-color: rgba(255, 255, 255, 0.38);
-  background: rgba(255, 255, 255, 0.055);
-  box-shadow: 0 16px 38px rgba(255, 255, 255, 0.1);
-}
-
 .hero-token-stats {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));

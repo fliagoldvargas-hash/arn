@@ -131,7 +131,10 @@ export function BuilderAccessPage() {
 
       <section className="builder-access-panel" aria-labelledby="builder-access-title">
         <span className="docs-eyebrow">BUILDER ACCESS</span>
-        <h1 id="builder-access-title">Build what earns.</h1>
+        <h1 id="builder-access-title">
+          <span>Join the whitelist.</span>
+          <em>Build with Auren.</em>
+        </h1>
         <p>Builder access is opening in stages. Join the whitelist with your wallet and we&apos;ll enable your workspace when it is ready.</p>
 
         {record ? (

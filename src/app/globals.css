@@ -479,6 +479,16 @@ button {
   font-weight: 400;
 }
 
+.builder-access-panel h1 span,
+.builder-access-panel h1 em {
+  display: block;
+}
+
+.builder-access-panel h1 em {
+  color: rgba(255, 255, 255, 0.58);
+  font-style: italic;
+}
+
 .builder-access-panel > p {
   margin: 28px auto 34px;
   color: rgba(255, 255, 255, 0.62);

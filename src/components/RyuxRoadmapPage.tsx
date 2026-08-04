@@ -36,12 +36,12 @@ const phases: RoadmapPhase[] = [
     milestones: ["Token Launch", "AUREN Website", "X / Twitter Live", "Docs and Roadmap Pages"],
   },
   {
-    date: "03 AUG 2026",
-    status: "pending",
+    date: "04 AUG 2026",
+    status: "completed",
     phase: "PHASE 2",
-    count: "0/4",
+    count: "4/4",
     title: "Marketplace Opening",
-    body: "The marketplace opens for discovery, project listings, agent cards, and early investor exploration.",
+    body: "The marketplace is live with project listings, agent cards, live market data, and direct token links.",
     milestones: ["Marketplace Public Release", "Agent Listing Cards", "Project Discovery", "Trading Links"],
   },
   {

@@ -466,7 +466,7 @@ button {
 .builder-access-panel {
   position: relative;
   z-index: 1;
-  width: min(520px, calc(100% - 40px));
+  width: min(820px, calc(100% - 40px));
   margin: 0 auto;
   padding: 220px 0 120px;
   text-align: center;
@@ -475,8 +475,9 @@ button {
 .builder-access-panel h1 {
   margin: 22px 0 0;
   font-family: var(--font-serif), Georgia, serif;
-  font-size: clamp(42px, 6vw, 72px);
+  font-size: clamp(36px, 5vw, 68px);
   font-weight: 400;
+  white-space: nowrap;
 }
 
 .builder-access-panel h1 span,
@@ -573,6 +574,16 @@ button {
   font-size: 10px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
+}
+
+@media (max-width: 560px) {
+  .builder-access-panel {
+    width: calc(100% - 28px);
+  }
+
+  .builder-access-panel h1 {
+    font-size: clamp(30px, 9.5vw, 52px);
+  }
 }
 
 /* The source effect is subtle at hero-button scale; this keeps its integration visible. */

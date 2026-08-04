@@ -1,9 +1,9 @@
 export const ryuxConfig = {
   xUrl: "https://x.com/Vantaagents",
 
-  pumpFunUrl: "https://pump.fun/coin/",
+  pumpFunUrl: "https://pump.fun/coin/D1wD7EnYL5wPREVgGbdbMwwp5uwhMSVTmLkKRJ9Vpump",
 
-  contractAddress: "",
+  contractAddress: "D1wD7EnYL5wPREVgGbdbMwwp5uwhMSVTmLkKRJ9Vpump",
 };
 
 export function getContractLabel() {

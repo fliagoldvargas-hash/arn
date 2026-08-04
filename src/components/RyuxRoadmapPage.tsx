@@ -27,7 +27,7 @@ type RoadmapPhase = {
 
 const phases: RoadmapPhase[] = [
   {
-    date: "01 AUG 2026",
+    date: "EARLY AUG 2026",
     status: "completed",
     phase: "PHASE 1",
     count: "4/4",
@@ -36,7 +36,7 @@ const phases: RoadmapPhase[] = [
     milestones: ["Token Launch", "AUREN Website", "X / Twitter Live", "Docs and Roadmap Pages"],
   },
   {
-    date: "05 AUG 2026",
+    date: "EARLY AUG 2026",
     status: "completed",
     phase: "PHASE 2",
     count: "4/4",

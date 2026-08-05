@@ -101,7 +101,8 @@ export function BuilderLaunchPage() {
     setMessage("");
 
     const provider = getSolanaProvider();
-    const address = walletAddress || await connectWallet();
+    // Re-authorize the provider before signing so a stale local session cannot reach signTransaction.
+    const address = await connectWallet();
     if (!provider || !address) return;
     if (!provider.signTransaction) {
       setLaunchState("error");

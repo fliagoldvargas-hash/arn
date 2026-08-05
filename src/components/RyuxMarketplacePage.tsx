@@ -42,6 +42,10 @@ type LiveToken = {
   liquidity: number | null;
 };
 
+type MarketplaceTokenEvent = {
+  token?: (typeof marketplaceTokens)[number];
+};
+
 type HolderVoteOption = {
   id:
     | "agent-profiles"
@@ -111,6 +115,7 @@ export function RyuxMarketplacePage({ holderVotingOnly = false }: { holderVoting
   const [voteStatus, setVoteStatus] = useState<"idle" | "loading" | "submitting">("loading");
   const [voteMessage, setVoteMessage] = useState("");
   const [liveTokens, setLiveTokens] = useState<Record<string, LiveToken>>({});
+  const [catalogTokens, setCatalogTokens] = useState(marketplaceTokens);
   const [activeTab, setActiveTab] = useState<"all" | "recent" | "valued">("all");
   const [searchQuery, setSearchQuery] = useState("");
   const holderVotingEnabled =
@@ -123,7 +128,8 @@ export function RyuxMarketplacePage({ holderVotingOnly = false }: { holderVoting
     let cancelled = false;
     const loadMarketData = async () => {
       try {
-        const addresses = marketplaceTokens.map((token) => token.contractAddress).join(",");
+        const addresses = catalogTokens.map((token) => token.contractAddress).filter(Boolean).join(",");
+        if (!addresses) return;
         const response = await fetch(`/api/marketplace?addresses=${encodeURIComponent(addresses)}`, { cache: "no-store" });
         if (!response.ok) throw new Error("Market data unavailable");
         const data = (await response.json()) as { tokens?: LiveToken[] };
@@ -147,6 +153,26 @@ export function RyuxMarketplacePage({ holderVotingOnly = false }: { holderVoting
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
+  }, [catalogTokens]);
+
+  useEffect(() => {
+    let cancelled = false;
+    void fetch("/api/marketplace/tokens", { cache: "no-store" })
+      .then((response) => response.json())
+      .then((data: { tokens?: typeof marketplaceTokens }) => {
+        if (!cancelled && data.tokens?.length) setCatalogTokens((current) => mergeMarketplaceTokens(current, data.tokens ?? []));
+      })
+      .catch(() => undefined);
+    return () => { cancelled = true; };
+  }, []);
+
+  useEffect(() => {
+    const onLaunch = (event: Event) => {
+      const token = (event as CustomEvent<MarketplaceTokenEvent>).detail?.token;
+      if (token) setCatalogTokens((current) => mergeMarketplaceTokens(current, [token]));
+    };
+    window.addEventListener("auren-token-launched", onLaunch);
+    return () => window.removeEventListener("auren-token-launched", onLaunch);
   }, []);
 
   useEffect(() => {
@@ -290,7 +316,7 @@ export function RyuxMarketplacePage({ holderVotingOnly = false }: { holderVoting
   const lockedVoteLabel = userVote
     ? holderVoteOptions.find((option) => option.id === userVote.vote_option)?.label ?? userVote.vote_label
     : "";
-  const visibleTokens = marketplaceTokens
+  const visibleTokens = catalogTokens
     .filter((token) => {
       const live = liveTokens[token.contractAddress];
       const query = searchQuery.trim().toLowerCase();
@@ -369,7 +395,7 @@ export function RyuxMarketplacePage({ holderVotingOnly = false }: { holderVoting
               <MarketStat value={formatCompactUsd(sumMarketData(liveTokens, "marketCap"))} label="Total Market Cap" />
               <MarketStat value={formatCompactUsd(sumMarketData(liveTokens, "liquidity"))} label="Total Liquidity" />
               <MarketStat value={formatCompactUsd(sumMarketData(liveTokens, "volume24h"))} label="24h Volume" />
-              <MarketStat value={String(marketplaceTokens.length)} label="Listed Agents" />
+              <MarketStat value={String(catalogTokens.length)} label="Listed Agents" />
             </div>
 
             <label className="marketplace-demo-search">
@@ -613,4 +639,10 @@ function buildChartPath(values: number[]) {
       return `${index === 0 ? "M" : "L"}${x.toFixed(1)} ${y.toFixed(1)}`;
     })
     .join(" ");
+}
+
+function mergeMarketplaceTokens(current: typeof marketplaceTokens, incoming: typeof marketplaceTokens) {
+  const byAddress = new Map(current.map((token) => [token.contractAddress, token]));
+  incoming.forEach((token) => byAddress.set(token.contractAddress, { ...byAddress.get(token.contractAddress), ...token }));
+  return Array.from(byAddress.values());
 }

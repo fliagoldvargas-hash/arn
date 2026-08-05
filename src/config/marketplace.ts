@@ -6,6 +6,7 @@ export type MarketplaceToken = {
   contractAddress: string;
   pumpFunUrl: string;
   description: string;
+  imageUrl?: string;
   tone: "blue" | "green" | "violet";
 };
 
@@ -17,14 +18,6 @@ export const marketplaceTokens: MarketplaceToken[] = [
     contractAddress: ryuxConfig.contractAddress,
     pumpFunUrl: ryuxConfig.pumpFunUrl,
     description: "Autonomous agent infrastructure for on-chain intelligence and execution.",
-    tone: "blue",
-  },
-  {
-    name: "Token Name",
-    ticker: "$TICKER",
-    contractAddress: "8rWNVQoFyhWgKfBQGo1o7va5imP9rYT9jNroDqN4pump",
-    pumpFunUrl: "https://pump.fun/coin/8rWNVQoFyhWgKfBQGo1o7va5imP9rYT9jNroDqN4pump",
-    description: "Token listed on the Auren marketplace.",
     tone: "blue",
   },
 ];

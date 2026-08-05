@@ -1,5 +1,5 @@
-import { BuilderAccessPage } from "@/components/BuilderAccessPage";
+import { BuilderLaunchPage } from "@/components/BuilderLaunchPage";
 
 export default function BuilderPage() {
-  return <BuilderAccessPage />;
+  return <BuilderLaunchPage />;
 }

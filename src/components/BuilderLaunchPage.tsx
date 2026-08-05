@@ -137,6 +137,7 @@ export function BuilderLaunchPage() {
 
       const initialBuy = parseSolLamports(form.initialBuy);
       if (initialBuy == null) throw new Error("Initial buy must be zero or a valid SOL amount.");
+      const hasInitialBuy = BigInt(initialBuy) > BigInt(0);
 
       setLaunchState("building");
       const buildResponse = await fetch("/api/pump/create", {
@@ -152,8 +153,8 @@ export function BuilderLaunchPage() {
           solLamports: initialBuy,
           mayhemMode: form.mayhemMode,
           cashback: form.cashback,
-          frontRunningProtection: form.frontRunningProtection,
-          tipAmount: form.frontRunningProtection ? Number(form.tipAmount || "0") : 0,
+          frontRunningProtection: form.frontRunningProtection && hasInitialBuy,
+          tipAmount: form.frontRunningProtection && hasInitialBuy ? Number(form.tipAmount || "0") : 0,
         }),
       });
       const built = await readJson<{ transaction?: string; mintPublicKey?: string; error?: string }>(buildResponse);
@@ -167,7 +168,7 @@ export function BuilderLaunchPage() {
       const sendResponse = await fetch("/api/pump/send", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ signedTransaction: encodeBase64(signedTransaction.serialize()), frontRunningProtection: form.frontRunningProtection }),
+        body: JSON.stringify({ signedTransaction: encodeBase64(signedTransaction.serialize()), frontRunningProtection: form.frontRunningProtection && hasInitialBuy }),
       });
       const sent = await readJson<{ signature?: string; error?: string }>(sendResponse);
       if (!sendResponse.ok || !sent.signature) throw new Error(sent.error ?? "The transaction could not be confirmed.");

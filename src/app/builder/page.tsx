@@ -1,5 +1,3 @@
-import { BuilderAccessPage } from "@/components/BuilderAccessPage";
+import { redirect } from "next/navigation";
 
-export default function BuilderPage() {
-  return <BuilderAccessPage />;
-}
+export default function BuilderPage() { redirect("/launch"); }

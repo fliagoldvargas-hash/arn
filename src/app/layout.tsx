@@ -21,9 +21,9 @@ const lora = Lora({
 });
 
 export const metadata: Metadata = {
-  title: "Vanta Agents - The Autonomous Agent Protocol",
+  title: "Any Pair - Pair Anything on Solana",
   description:
-    "Deploy, discover, and invest in autonomous AI agents on Solana. The platform for onchain intelligence.",
+    "Launch Solana memecoins on Pump.fun, then pair them with crypto, tokenized stocks, commodities, indexes, and more.",
   icons: {
     icon: "/images/vanta/vanta-logo.png",
     apple: "/images/vanta/vanta-logo.png",

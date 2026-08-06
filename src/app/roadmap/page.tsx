@@ -1,5 +1,5 @@
-import { RyuxRoadmapPage } from "@/components/RyuxRoadmapPage";
+import { AnyPairRoadmapPage } from "@/components/AnyPairRoadmapPage";
 
 export default function Roadmap() {
-  return <RyuxRoadmapPage />;
+  return <AnyPairRoadmapPage />;
 }

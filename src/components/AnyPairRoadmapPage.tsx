@@ -1,0 +1,12 @@
+import { Check, Circle } from "lucide-react";
+import { AnyPairPage } from "@/components/AnyPairChrome";
+
+const phases = [
+  { status: "SHIPPED", title: "Fair launch foundation", body: "Any Pair identity, wallet connection, token launch flow, Pump.fun integration, and live market data foundations.", items: ["Self-launch flow", "Pump.fun bonding curve", "Wallet signing", "Public market lookup"] },
+  { status: "IN PROGRESS", title: "Any Pair markets", body: "Verify graduated tokens, configure paired assets, and make market discovery readable for every participant.", items: ["Pair verification", "Asset registry", "Meteora pool creation", "Market listing"] },
+  { status: "NEXT", title: "Rewards and liquidity", body: "Give creators and eligible holders a transparent view of fees, positions, claims, and pool performance.", items: ["Creator fee claims", "Holder reward claims", "LP position view", "Fee analytics"] },
+  { status: "PLANNED", title: "$STONK economy", body: "Make platform revenue, buybacks, burns, and treasury actions verifiable from one public surface.", items: ["Buyback executor", "Burn index", "On-chain event feed", "Public treasury view"] },
+  { status: "VISION", title: "Any market", body: "Expand verified pairings across tokenized equities, commodities, indexes, and every liquid Solana asset.", items: ["xStocks registry", "Commodity markets", "Cross-asset routing", "Permissionless listings"] },
+];
+
+export function AnyPairRoadmapPage() { return <AnyPairPage activeHref="/roadmap"><section className="roadmap-hero"><span className="anypair-kicker">DEVELOPMENT ROADMAP</span><h1>From launch<br /><em>to liquidity.</em></h1><p>Any Pair turns a token launch into a market that can evolve. This is the path from fair launch to programmable pairings.</p></section><section className="anypair-roadmap-list">{phases.map((phase, index) => <article className={`anypair-roadmap-phase ${index === 0 ? "is-shipped" : ""}`} key={phase.title}><div className="phase-marker">{index === 0 ? <Check size={13} /> : <Circle size={10} />}</div><div><span className="anypair-kicker">{phase.status} / PHASE {index + 1}</span><h2>{phase.title}</h2><p>{phase.body}</p><div className="phase-items">{phase.items.map((item) => <span key={item}>{item}</span>)}</div></div></article>)}</section><footer className="anypair-footer"><span>© 2026 ANY PAIR</span><div><a href="/">Home</a><a href="/docs">Docs</a><a href={"https://x.com/AnyPairProtocol"}>X</a></div></footer></AnyPairPage>; }

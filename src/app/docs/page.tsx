@@ -1,5 +1,5 @@
-import { RyuxDocsPage } from "@/components/RyuxDocsPage";
+import { AnyPairDocsPage } from "@/components/AnyPairDocsPage";
 
 export default function Docs() {
-  return <RyuxDocsPage />;
+  return <AnyPairDocsPage />;
 }

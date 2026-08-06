@@ -1,5 +1,5 @@
-import { RyuxLanding } from "@/components/RyuxLanding";
+import { AnyPairLanding } from "@/components/AnyPairLanding";
 
 export default function Home() {
-  return <RyuxLanding />;
+  return <AnyPairLanding />;
 }

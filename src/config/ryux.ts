@@ -1,9 +1,12 @@
 export const ryuxConfig = {
-  xUrl: "https://x.com/Vantaagents",
+  brandName: "Any Pair",
+  tokenName: "$STONK",
+  xUrl: "https://x.com/AnyPairProtocol",
 
   pumpFunUrl: "https://pump.fun/coin/D1wD7EnYL5wPREVgGbdbMwwp5uwhMSVTmLkKRJ9Vpump",
 
   contractAddress: "D1wD7EnYL5wPREVgGbdbMwwp5uwhMSVTmLkKRJ9Vpump",
+  stonkMint: "D1wD7EnYL5wPREVgGbdbMwwp5uwhMSVTmLkKRJ9Vpump",
 };
 
 export function getContractLabel() {
@@ -12,5 +15,5 @@ export function getContractLabel() {
   }
 
   const ca = ryuxConfig.contractAddress;
-  return `CA: ${ca.slice(0, 8)}...${ca.slice(-6)} - click to copy`;
+  return ca ? `CA: ${ca.slice(0, 8)}...${ca.slice(-6)} - click to copy` : "CA: Configure token";
 }
